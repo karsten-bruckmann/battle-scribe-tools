@@ -22,6 +22,9 @@
       "@battle-scribe-tools/data-access/avatar-images": [
         "libs/data-access/avatar-images/src/index.ts"
       ],
+      "@battle-scribe-tools/data-access/flash-cards": [
+        "libs/data-access/flash-cards/src/index.ts"
+      ],
       "@battle-scribe-tools/data-access/rosters": [
         "libs/data-access/rosters/src/index.ts"
       ],

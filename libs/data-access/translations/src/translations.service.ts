@@ -10,17 +10,15 @@ import {
   switchMap,
 } from 'rxjs';
 import { Md5 } from 'ts-md5';
-
-export enum Language {
-  en = 'en',
-  de = 'de',
-  fr = 'fr',
-  es = 'es',
-}
+import { Language } from './language';
+import {
+  loadTranslation,
+  translationsStorageKeyPrefix,
+  writeTranslation,
+} from './translation.loader';
 
 @Injectable({ providedIn: 'root' })
 export class TranslationsService {
-  private readonly translationsStorageKeyPrefix = 'translations-v2-';
   private readonly languageStorageKey = 'language-v2';
 
   private _updatedTexts$: Subject<string> = new Subject();
@@ -58,12 +56,7 @@ export class TranslationsService {
         this.updatedTexts$.pipe(
           startWith(md5),
           filter((hash) => hash === md5),
-          map(
-            () =>
-              localStorage.getItem(
-                `${this.translationsStorageKeyPrefix}${language}-${md5}`
-              ) || original
-          )
+          map(() => loadTranslation(original, language))
         )
       )
     );
@@ -74,23 +67,10 @@ export class TranslationsService {
     translation: string | null,
     translationLanguage?: Language
   ): Promise<void> {
-    const md5 = Md5.hashStr(original);
-
     const language =
       translationLanguage || (await firstValueFrom(this.selectedLanguage$));
 
-    if (!translation || original === translation) {
-      localStorage.removeItem(
-        `${this.translationsStorageKeyPrefix}${language}-${md5}`
-      );
-      this._updatedTexts$.next(md5);
-      return;
-    }
-
-    localStorage.setItem(
-      `${this.translationsStorageKeyPrefix}${language}-${md5}`,
-      translation
-    );
+    const md5 = writeTranslation(original, translation, language);
     this._updatedTexts$.next(md5);
   }
 
@@ -129,7 +109,7 @@ export class TranslationsService {
       if (
         !key.match(
           new RegExp(
-            `^${this.translationsStorageKeyPrefix}(en|de|fr|es)-[0-9a-f]{32}`
+            `^${translationsStorageKeyPrefix}(en|de|fr|es)-[0-9a-f]{32}`
           )
         )
       ) {

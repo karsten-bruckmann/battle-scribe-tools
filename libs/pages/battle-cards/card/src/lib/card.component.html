@@ -1,10 +1,9 @@
 <ng-container *ngIf="roster$ | async as roster">
   <ion-text color="primary">
-    <h1 id="roster-title">
+    <h1 id="roster-title" (click)="createFlashCardsDeck()">
       {{ roster.title }}
     </h1>
   </ion-text>
 
-  <!-- <sheet-unit></sheet-unit> -->
   <bc-card-unit></bc-card-unit>
 </ng-container>
