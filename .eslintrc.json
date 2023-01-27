@@ -31,6 +31,18 @@
               {
                 "sourceTag": "utility",
                 "onlyDependOnLibsWithTags": ["utility"]
+              },
+              {
+                "sourceTag": "scope:shared",
+                "onlyDependOnLibsWithTags": ["scope:shared"]
+              },
+              {
+                "sourceTag": "scope:battle-cards",
+                "onlyDependOnLibsWithTags": ["scope:battle-cards"]
+              },
+              {
+                "sourceTag": "scope:flash-cards-generator",
+                "onlyDependOnLibsWithTags": ["scope:flash-cards-generator"]
               }
             ]
           }
