@@ -42,7 +42,8 @@ export class UnitListComponent implements AfterViewInit {
 
   public async ngAfterViewInit(): Promise<void> {
     const roster = await firstValueFrom(this.roster$);
-    if (roster) {
+    const selection = await firstValueFrom(this.userSettings.selectedUint$);
+    if (roster && !selection) {
       this.modal?.present();
     }
   }
@@ -54,18 +55,6 @@ export class UnitListComponent implements AfterViewInit {
     }
     this.userSettings.selectUnit(selection);
   }
-
-  // public async showSummary(summaryName: string): Promise<void> {
-  //   const roster = await firstValueFrom(this.state.roster$);
-  //   if (!roster) {
-  //     return;
-  //   }
-  //   this.state.setSheet({
-  //     type: 'summary',
-  //     roster,
-  //     summary: summaryName,
-  //   });
-  // }
 
   public setView(view: 'list' | 'grid'): void {
     this.userSettings.setListView(view);

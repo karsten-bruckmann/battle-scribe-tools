@@ -9,7 +9,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "bc",
+            "prefix": "bcCard",
             "style": "camelCase"
           }
         ],
@@ -17,7 +17,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "bc",
+            "prefix": "bc-card",
             "style": "kebab-case"
           }
         ]

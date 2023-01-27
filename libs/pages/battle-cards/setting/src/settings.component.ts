@@ -9,11 +9,17 @@ import {
 import { RosterModule, RosterService } from '@battle-scribe-tools/core/roster';
 import { IonicModule, ModalController } from '@ionic/angular';
 import { firstValueFrom } from 'rxjs';
+import { TranslationConfigComponent } from './components/translation-config/translation-config.component';
 
 @Component({
   selector: 'bc-settings',
   standalone: true,
-  imports: [CommonModule, IonicModule, RosterModule],
+  imports: [
+    CommonModule,
+    IonicModule,
+    RosterModule,
+    TranslationConfigComponent,
+  ],
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss'],
 })

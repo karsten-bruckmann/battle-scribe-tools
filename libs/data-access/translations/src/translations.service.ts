@@ -11,7 +11,7 @@ import {
 } from 'rxjs';
 import { Md5 } from 'ts-md5';
 
-enum Language {
+export enum Language {
   en = 'en',
   de = 'de',
   fr = 'fr',
