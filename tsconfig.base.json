@@ -32,6 +32,9 @@
       ],
       "@battle-scribe-tools/utility/ngrx-storage-sync": [
         "libs/utility/ngrx-storage-sync/src/index.ts"
+      ],
+      "@battle-scribe-tools/utility/rosz2js": [
+        "libs/utility/rosz2js/src/index.ts"
       ]
     }
   },
