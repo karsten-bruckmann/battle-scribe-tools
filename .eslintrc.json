@@ -57,10 +57,10 @@
                 ]
               },
               {
-                "sourceTag": "scope:flash-cards-generator",
+                "sourceTag": "scope:flash-cards",
                 "onlyDependOnLibsWithTags": [
                   "scope:shared",
-                  "scope:flash-cards-generator"
+                  "scope:flash-cards"
                 ]
               }
             ]

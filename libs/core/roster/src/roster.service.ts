@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { deckAddedAction } from '@battle-scribe-tools/data-access/flash-cards';
 import {
   addRosterAction,
   deleteRosterAction,
@@ -52,21 +53,6 @@ export class RosterService {
         roosterFlashCardDeckSelector(language, loadTranslation)
       )
     );
-    const data = deck.cards.reduce(
-      (csv, card) =>
-        csv + `"${csvify(card.question)}","${csvify(card.answer)}"\n`,
-      ''
-    );
-    const a = document.createElement('a');
-    const blob = new Blob([data], { type: 'octet/stream' });
-    const url = window.URL.createObjectURL(blob);
-    a.href = url;
-    a.download = 'flash-cards.csv';
-    a.click();
-    window.URL.revokeObjectURL(url);
+    this.store$.dispatch(deckAddedAction({ deck }));
   }
-}
-
-function csvify(input: string): string {
-  return input.replaceAll('"', '""').replaceAll('\n', '\\n');
 }

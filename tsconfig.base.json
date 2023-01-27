@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@battle-scribe-tools/core/learning": ["libs/core/learning/src/index.ts"],
       "@battle-scribe-tools/core/roster": ["libs/core/roster/src/index.ts"],
       "@battle-scribe-tools/core/user-settings": [
         "libs/core/user-settings/src/index.ts"
@@ -48,6 +49,9 @@
       ],
       "@battle-scribe-tools/pages/battle-cards/unit-list": [
         "libs/pages/battle-cards/unit-list/src/index.ts"
+      ],
+      "@battle-scribe-tools/pages/flash-cards/index": [
+        "libs/pages/flash-cards/index/src/index.ts"
       ],
       "@battle-scribe-tools/utility/ngrx-storage-sync": [
         "libs/utility/ngrx-storage-sync/src/index.ts"
