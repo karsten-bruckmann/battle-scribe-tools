@@ -12,26 +12,27 @@
   #modal
 >
   <ng-template>
-    <p>apps-battle-cards-pages-unit-list works!</p>
-
-    <!-- <ion-header *ngIf="roster$ | async as roster">
+    <ion-header *ngIf="roster$ | async as roster">
       <ion-toolbar>
         <ion-buttons slot="start">
           <ion-button
             (click)="setView('list')"
-            [color]="view === 'list' ? 'primary' : 'medium'">
+            [color]="view === 'list' ? 'primary' : 'medium'"
+          >
             <ion-icon name="list-outline"></ion-icon>
           </ion-button>
           <ion-button
             (click)="setView('grid')"
-            [color]="view === 'grid' ? 'primary' : 'medium'">
+            [color]="view === 'grid' ? 'primary' : 'medium'"
+          >
             <ion-icon name="grid-outline"></ion-icon>
           </ion-button>
         </ion-buttons>
         <ion-title
-          ><app-translatable
+          ><bst-translatable
             [text]="roster.title"
-            [translateOnClick]="false"></app-translatable
+            [translateOnClick]="false"
+          ></bst-translatable
         ></ion-title>
         <ion-buttons slot="end">
           <ion-button (click)="modal.dismiss()">
@@ -44,34 +45,39 @@
       <div class="detachment" *ngFor="let detachment of roster.detachments">
         <ion-text color="primary">
           <h2>
-            <app-translatable
+            <bst-translatable
               [text]="detachment.title"
-              [translateOnClick]="false"></app-translatable>
+              [translateOnClick]="false"
+            ></bst-translatable>
           </h2>
         </ion-text>
         <div
           class="units"
-          [ngClass]="{ list: view === 'list', grid: view === 'grid' }">
+          [ngClass]="{ list: view === 'list', grid: view === 'grid' }"
+        >
           <div
             class="unit"
             *ngFor="let unit of detachment.units"
             (click)="
-              showSection(roster.title, detachment.title, unit.title);
+              showSection({ detachment: detachment.title, unit: unit.title });
               modal.dismiss()
-            ">
+            "
+          >
             <ion-text color="primary">
-              <app-unit-image
+              <bst-avatar
                 *ngIf="view === 'grid'"
-                [unitName]="unit.title"></app-unit-image>
+                [name]="unit.title"
+              ></bst-avatar>
               <h4>
-                <app-translatable
+                <bst-translatable
                   [text]="unit.title"
-                  [translateOnClick]="false"></app-translatable>
+                  [translateOnClick]="false"
+                ></bst-translatable>
               </h4>
             </ion-text>
           </div>
         </div>
       </div>
-    </ion-content> -->
+    </ion-content>
   </ng-template>
 </ion-modal>

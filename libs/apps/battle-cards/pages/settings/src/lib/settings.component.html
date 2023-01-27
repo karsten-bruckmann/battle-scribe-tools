@@ -34,18 +34,12 @@
         <ion-button fill="outline" (click)="f.click()">wählen...</ion-button>
         <input (change)="saveFile($event)" class="ion-hide" #f type="file" />
       </ion-item>
-      <ion-item *ngFor="let roster of rosterTitles$ | async">
-        <ion-label (click)="selectRoster(roster)">
-          <ion-icon
-            color="primary"
-            slot="start"
-            [name]="
-              'open' + ((rosterSelected | async) === roster ? '' : '-outline')
-            "
-          ></ion-icon>
+      <ion-item *ngFor="let roster of rosterTitles$ | async; let i = index">
+        <ion-label (click)="selectRoster(i)">
+          <ion-icon color="primary" slot="start"></ion-icon>
           {{ roster }}
         </ion-label>
-        <ion-button slot="end" fill="clear" (click)="deleteRoster(roster)">
+        <ion-button slot="end" fill="clear" (click)="deleteRoster(i)">
           <ion-icon color="primary" name="trash"></ion-icon>
         </ion-button>
       </ion-item>

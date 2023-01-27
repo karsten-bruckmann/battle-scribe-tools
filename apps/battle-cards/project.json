@@ -24,7 +24,7 @@
           }
         ],
         "styles": [
-          "apps/battle-cards/src/styles.css",
+          "apps/battle-cards/src/styles.scss",
           {
             "input": "node_modules/@ionic/angular/css/core.css"
           },
@@ -54,6 +54,9 @@
           },
           {
             "input": "node_modules/@ionic/angular/css/flex-utils.css"
+          },
+          {
+            "input": "apps/battle-cards/src/theme/variables.css"
           }
         ],
         "scripts": []

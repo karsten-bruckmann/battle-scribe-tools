@@ -18,7 +18,12 @@
               },
               {
                 "sourceTag": "page",
-                "onlyDependOnLibsWithTags": ["feature"]
+                "onlyDependOnLibsWithTags": [
+                  "feature",
+                  "ui",
+                  "core",
+                  "data-access"
+                ]
               },
               {
                 "sourceTag": "feature",

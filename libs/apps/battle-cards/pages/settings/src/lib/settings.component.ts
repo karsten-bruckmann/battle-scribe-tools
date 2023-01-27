@@ -1,28 +1,31 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, Output, ViewChild } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
-import { Observable, of, ReplaySubject } from 'rxjs';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  Output,
+  ViewChild,
+} from '@angular/core';
+import { RosterModule, RosterService } from '@battle-scribe-tools/core/roster';
+import { IonicModule, ModalController } from '@ionic/angular';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'bc-settings',
   standalone: true,
-  imports: [CommonModule, IonicModule],
+  imports: [CommonModule, IonicModule, RosterModule],
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss'],
 })
 export class SettingsComponent implements AfterViewInit {
-  // constructor(
-  //   private rostersService: RostersService,
-  //   public state: StateService,
-  //   private modalController: ModalController
-  // ) {}
+  constructor(
+    private rostersService: RosterService,
+    private modalController: ModalController
+  ) {}
 
-  public rosterTitles$ = of(['Foo']);
-  // public rosterTitles$ = this.rostersService.titles$;
-  public selectedRoster$: ReplaySubject<string> = new ReplaySubject(1);
+  public rosterTitles$ = this.rostersService.list$;
 
-  @Output() public rosterSelected: Observable<string> =
-    this.selectedRoster$.asObservable();
+  @Output() public rosterSelected: EventEmitter<void> = new EventEmitter();
 
   @ViewChild('modal') public modal?: HTMLIonModalElement;
 
@@ -30,10 +33,12 @@ export class SettingsComponent implements AfterViewInit {
     if (!this.modal) {
       return;
     }
-    // const roster = await firstValueFrom(this.state.roster$);
-    // if (!roster) {
-    //   this.modal.present();
-    // }
+    const roster = await firstValueFrom(this.rostersService.selected$);
+    if (!roster) {
+      this.modal.present();
+    } else {
+      this.rosterSelected.next();
+    }
   }
 
   public async saveFile(event: Event): Promise<void> {
@@ -46,17 +51,16 @@ export class SettingsComponent implements AfterViewInit {
     if (!file) {
       return;
     }
-    // const roster = await this.rostersService.addFromFile(file);
-    // this.selectRoster(roster.title);
+    await this.rostersService.addRoster(file);
   }
 
-  public deleteRoster(title: string): void {
-    // this.rostersService.delete(title);
+  public deleteRoster(index: number): void {
+    this.rostersService.deleteRoster(index);
   }
 
-  public selectRoster(title: string): void {
-    this.selectedRoster$.next(title);
-    // this.state.setRoster(title);
-    // this.modalController.dismiss();
+  public selectRoster(index: number): void {
+    this.rostersService.selectRoster(index);
+    this.rosterSelected.next();
+    this.modalController.dismiss();
   }
 }

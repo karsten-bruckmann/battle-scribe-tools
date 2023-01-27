@@ -1,59 +1,59 @@
 import { CommonModule } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { RosterService } from '@battle-scribe-tools/core/roster';
+import {
+  UnitSelection,
+  UserSettingsModule,
+  UserSettingsService,
+} from '@battle-scribe-tools/core/user-settings';
+import { AvatarComponent } from '@battle-scribe-tools/feature/avatar';
+import { FeatureTranslatableComponent } from '@battle-scribe-tools/feature/translatable';
 import { IonicModule } from '@ionic/angular';
-import { of } from 'rxjs';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'bc-unit-list',
   standalone: true,
-  imports: [CommonModule, IonicModule],
+  imports: [
+    CommonModule,
+    IonicModule,
+    FeatureTranslatableComponent,
+    UserSettingsModule,
+    AvatarComponent,
+  ],
   templateUrl: './unit-list.component.html',
   styleUrls: ['./unit-list.component.scss'],
 })
-export class UnitListComponent {
-  // constructor(
-  //   private rostersService: RostersService,
-  //   private state: StateService
-  // ) {}
+export class UnitListComponent implements AfterViewInit {
+  constructor(
+    private rosterService: RosterService,
+    private userSettings: UserSettingsService
+  ) {}
 
-  // public roster$ = this.state.roster$.pipe(
-  //   filter((r): r is string => !!r),
-  //   switchMap((roster) => this.rostersService.roster$(roster))
-  // );
+  public roster$ = this.rosterService.selected$;
 
   @ViewChild('modal') public modal?: HTMLIonModalElement;
 
-  public view$ = of('foo');
-  // public view$ = this.state.indexView$;
+  public view$ = this.userSettings.listView$;
 
   public open(): void {
     this.modal?.present();
   }
 
-  // public async ngAfterViewInit(): Promise<void> {
-  //   const roster = await firstValueFrom(this.state.roster$);
-  //   const sheet = await firstValueFrom(this.state.sheet$);
-  //   if (!!roster && !sheet) {
-  //     this.modal?.present();
-  //   }
-  // }
+  public async ngAfterViewInit(): Promise<void> {
+    const roster = await firstValueFrom(this.roster$);
+    if (roster) {
+      this.modal?.present();
+    }
+  }
 
-  // public async showSection(
-  //   rosterName: string,
-  //   detachmentName: string,
-  //   unitName: string
-  // ): Promise<void> {
-  //   const roster = await firstValueFrom(this.state.roster$);
-  //   if (!roster) {
-  //     return;
-  //   }
-  //   this.state.setSheet({
-  //     type: 'unit',
-  //     roster: rosterName,
-  //     detachment: detachmentName,
-  //     unit: unitName,
-  //   });
-  // }
+  public async showSection(selection: UnitSelection | null): Promise<void> {
+    const roster = await firstValueFrom(this.roster$);
+    if (!roster) {
+      return;
+    }
+    this.userSettings.selectUnit(selection);
+  }
 
   // public async showSummary(summaryName: string): Promise<void> {
   //   const roster = await firstValueFrom(this.state.roster$);
@@ -67,7 +67,7 @@ export class UnitListComponent {
   //   });
   // }
 
-  // public setView(view: 'list' | 'grid'): void {
-  //   this.state.setIndexView(view);
-  // }
+  public setView(view: 'list' | 'grid'): void {
+    this.userSettings.setListView(view);
+  }
 }

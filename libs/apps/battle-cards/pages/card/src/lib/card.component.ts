@@ -1,12 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { AvatarComponent } from '@battle-scribe-tools/feature/avatar';
+import { RosterService } from '@battle-scribe-tools/core/roster';
+import { IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'bc-card',
   standalone: true,
-  imports: [CommonModule, AvatarComponent],
+  imports: [CommonModule, IonicModule],
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css'],
 })
-export class CardComponent {}
+export class CardComponent {
+  constructor(private rosterService: RosterService) {}
+
+  public roster$ = this.rosterService.selected$;
+}

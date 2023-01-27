@@ -10,7 +10,7 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": ["es2017", "dom"],
+    "lib": ["es2021", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
@@ -24,11 +24,27 @@
       "@battle-scribe-tools/apps/battle-cards/pages/unit-list": [
         "libs/apps/battle-cards/pages/unit-list/src/index.ts"
       ],
+      "@battle-scribe-tools/core/roster": ["libs/core/roster/src/index.ts"],
+      "@battle-scribe-tools/core/user-settings": [
+        "libs/core/user-settings/src/index.ts"
+      ],
       "@battle-scribe-tools/data-access/avatar-images": [
         "libs/data-access/avatar-images/src/index.ts"
       ],
+      "@battle-scribe-tools/data-access/rosters": [
+        "libs/data-access/rosters/src/index.ts"
+      ],
+      "@battle-scribe-tools/data-access/translations": [
+        "libs/data-access/translations/src/index.ts"
+      ],
+      "@battle-scribe-tools/data-access/user-settings": [
+        "libs/data-access/user-settings/src/index.ts"
+      ],
       "@battle-scribe-tools/feature/avatar": [
         "libs/feature/avatar/src/index.ts"
+      ],
+      "@battle-scribe-tools/feature/translatable": [
+        "libs/feature/translatable/src/index.ts"
       ],
       "@battle-scribe-tools/utility/ngrx-storage-sync": [
         "libs/utility/ngrx-storage-sync/src/index.ts"
