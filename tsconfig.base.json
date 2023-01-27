@@ -15,6 +15,15 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@battle-scribe-tools/apps/battle-cards/pages/card": [
+        "libs/apps/battle-cards/pages/card/src/index.ts"
+      ],
+      "@battle-scribe-tools/data-access/avatar-images": [
+        "libs/data-access/avatar-images/src/index.ts"
+      ],
+      "@battle-scribe-tools/feature/avatar": [
+        "libs/feature/avatar/src/index.ts"
+      ],
       "@battle-scribe-tools/utility/ngrx-storage-sync": [
         "libs/utility/ngrx-storage-sync/src/index.ts"
       ]

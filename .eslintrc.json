@@ -13,12 +13,20 @@
             "allow": [],
             "depConstraints": [
               {
-                "sourceTag": "ui",
-                "onlyDependOnLibsWithTags": ["ui"]
+                "sourceTag": "app",
+                "onlyDependOnLibsWithTags": ["page"]
+              },
+              {
+                "sourceTag": "page",
+                "onlyDependOnLibsWithTags": ["feature"]
               },
               {
                 "sourceTag": "feature",
-                "onlyDependOnLibsWithTags": ["ui", "core"]
+                "onlyDependOnLibsWithTags": ["ui", "core", "data-access"]
+              },
+              {
+                "sourceTag": "ui",
+                "onlyDependOnLibsWithTags": ["ui"]
               },
               {
                 "sourceTag": "core",
@@ -38,11 +46,17 @@
               },
               {
                 "sourceTag": "scope:battle-cards",
-                "onlyDependOnLibsWithTags": ["scope:battle-cards"]
+                "onlyDependOnLibsWithTags": [
+                  "scope:shared",
+                  "scope:battle-cards"
+                ]
               },
               {
                 "sourceTag": "scope:flash-cards-generator",
-                "onlyDependOnLibsWithTags": ["scope:flash-cards-generator"]
+                "onlyDependOnLibsWithTags": [
+                  "scope:shared",
+                  "scope:flash-cards-generator"
+                ]
               }
             ]
           }

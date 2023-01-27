@@ -16,9 +16,46 @@
         "tsConfig": "apps/battle-cards/tsconfig.app.json",
         "assets": [
           "apps/battle-cards/src/favicon.ico",
-          "apps/battle-cards/src/assets"
+          "apps/battle-cards/src/assets",
+          {
+            "glob": "**/*.svg",
+            "input": "node_modules/ionicons/dist/ionicons/svg",
+            "output": "./svg"
+          }
         ],
-        "styles": ["apps/battle-cards/src/styles.css"],
+        "styles": [
+          "apps/battle-cards/src/styles.css",
+          {
+            "input": "node_modules/@ionic/angular/css/core.css"
+          },
+          {
+            "input": "node_modules/@ionic/angular/css/normalize.css"
+          },
+          {
+            "input": "node_modules/@ionic/angular/css/structure.css"
+          },
+          {
+            "input": "node_modules/@ionic/angular/css/typography.css"
+          },
+          {
+            "input": "node_modules/@ionic/angular/css/display.css"
+          },
+          {
+            "input": "node_modules/@ionic/angular/css/padding.css"
+          },
+          {
+            "input": "node_modules/@ionic/angular/css/float-elements.css"
+          },
+          {
+            "input": "node_modules/@ionic/angular/css/text-alignment.css"
+          },
+          {
+            "input": "node_modules/@ionic/angular/css/text-transformation.css"
+          },
+          {
+            "input": "node_modules/@ionic/angular/css/flex-utils.css"
+          }
+        ],
         "scripts": []
       },
       "configurations": {
@@ -91,5 +128,5 @@
       }
     }
   },
-  "tags": []
+  "tags": ["app", "scope:battle-cards"]
 }

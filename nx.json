@@ -44,14 +44,17 @@
       "style": "css",
       "linter": "eslint",
       "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
+      "e2eTestRunner": "cypress",
+      "standalone": true
     },
     "@nrwl/angular:library": {
       "linter": "eslint",
-      "unitTestRunner": "jest"
+      "unitTestRunner": "jest",
+      "skipModule": true
     },
     "@nrwl/angular:component": {
-      "style": "css"
+      "style": "css",
+      "standalone": true
     }
   }
 }
