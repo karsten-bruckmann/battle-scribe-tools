@@ -1,6 +1,8 @@
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let lesson of lessons$ | async"
+    <ion-item
+      *ngFor="let lesson of lessons$ | async; let i = index"
+      [routerLink]="['/', 'lesson', i]"
       >{{ lesson.name }} ({{ lesson.boxContent.join(', ') }})</ion-item
     >
   </ion-list>

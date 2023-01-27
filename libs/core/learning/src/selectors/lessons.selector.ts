@@ -1,9 +1,9 @@
-import { flashCardsSelector } from '@battle-scribe-tools/data-access/flash-cards';
+import { decksSelector } from '@battle-scribe-tools/data-access/flash-cards';
 import { createSelector } from '@ngrx/store';
 import { Lesson } from '../models/lesson.model';
 
 export const lessonsSelector = createSelector(
-  flashCardsSelector,
+  decksSelector,
   (state): Lesson[] =>
     state.map((deck) => ({
       name: deck.name,

@@ -16,10 +16,15 @@
         "tsConfig": "apps/flash-cards/tsconfig.app.json",
         "assets": [
           "apps/flash-cards/src/favicon.ico",
-          "apps/flash-cards/src/assets"
+          "apps/flash-cards/src/assets",
+          {
+            "glob": "**/*.svg",
+            "input": "node_modules/ionicons/dist/ionicons/svg",
+            "output": "./svg"
+          }
         ],
         "styles": [
-          "apps/flash-cards/src/styles.css",
+          "apps/flash-cards/src/styles.scss",
           {
             "input": "node_modules/@ionic/angular/css/core.css"
           },
@@ -131,5 +136,5 @@
       }
     }
   },
-  "tags": []
+  "tags": ["app", "scope:flash-cards"]
 }

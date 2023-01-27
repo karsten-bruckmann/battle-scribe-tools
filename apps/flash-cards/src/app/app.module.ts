@@ -13,7 +13,6 @@ import { AppComponent } from './app.component';
     BrowserModule,
     StoreModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 50 }),
-    IonicModule.forRoot(),
     RouterModule.forRoot([
       {
         path: '',
@@ -22,7 +21,15 @@ import { AppComponent } from './app.component';
             (m) => m.IndexComponent
           ),
       },
+      {
+        path: 'lesson/:index',
+        loadComponent: () =>
+          import('@battle-scribe-tools/pages/flash-cards/lesson').then(
+            (m) => m.LessonComponent
+          ),
+      },
     ]),
+    IonicModule.forRoot({}),
   ],
   providers: [],
   bootstrap: [AppComponent],
