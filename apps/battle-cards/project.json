@@ -75,7 +75,8 @@
               "maximumError": "4kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "baseHref": "/battle-scribe-tools/battle-cards/"
         },
         "development": {
           "buildOptimizer": false,

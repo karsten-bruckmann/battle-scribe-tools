@@ -1,24 +1,24 @@
 {
-  "name": "flash-card-generator",
+  "name": "flash-cards",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "sourceRoot": "apps/flash-card-generator/src",
+  "sourceRoot": "apps/flash-cards/src",
   "prefix": "battle-scribe-tools",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/flash-card-generator",
-        "index": "apps/flash-card-generator/src/index.html",
-        "main": "apps/flash-card-generator/src/main.ts",
+        "outputPath": "dist/apps/flash-cards",
+        "index": "apps/flash-cards/src/index.html",
+        "main": "apps/flash-cards/src/main.ts",
         "polyfills": ["zone.js"],
-        "tsConfig": "apps/flash-card-generator/tsconfig.app.json",
+        "tsConfig": "apps/flash-cards/tsconfig.app.json",
         "assets": [
-          "apps/flash-card-generator/src/favicon.ico",
-          "apps/flash-card-generator/src/assets"
+          "apps/flash-cards/src/favicon.ico",
+          "apps/flash-cards/src/assets"
         ],
-        "styles": ["apps/flash-card-generator/src/styles.css"],
+        "styles": ["apps/flash-cards/src/styles.css"],
         "scripts": []
       },
       "configurations": {
@@ -52,10 +52,10 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "flash-card-generator:build:production"
+          "browserTarget": "flash-cards:build:production"
         },
         "development": {
-          "browserTarget": "flash-card-generator:build:development"
+          "browserTarget": "flash-cards:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -63,7 +63,7 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "flash-card-generator:build"
+        "browserTarget": "flash-cards:build"
       }
     },
     "lint": {
@@ -71,8 +71,8 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "apps/flash-card-generator/**/*.ts",
-          "apps/flash-card-generator/**/*.html"
+          "apps/flash-cards/**/*.ts",
+          "apps/flash-cards/**/*.html"
         ]
       }
     },
@@ -80,7 +80,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/flash-card-generator/jest.config.ts",
+        "jestConfig": "apps/flash-cards/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
