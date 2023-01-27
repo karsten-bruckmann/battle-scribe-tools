@@ -13,8 +13,24 @@
             "allow": [],
             "depConstraints": [
               {
-                "sourceTag": "*",
-                "onlyDependOnLibsWithTags": ["*"]
+                "sourceTag": "ui",
+                "onlyDependOnLibsWithTags": ["ui"]
+              },
+              {
+                "sourceTag": "feature",
+                "onlyDependOnLibsWithTags": ["ui", "core"]
+              },
+              {
+                "sourceTag": "core",
+                "onlyDependOnLibsWithTags": ["data-access", "infrastructure"]
+              },
+              {
+                "sourceTag": "data-access",
+                "onlyDependOnLibsWithTags": ["infrastructure"]
+              },
+              {
+                "sourceTag": "infrastructure",
+                "onlyDependOnLibsWithTags": ["infrastructure"]
               }
             ]
           }
