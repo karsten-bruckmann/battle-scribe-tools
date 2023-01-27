@@ -70,7 +70,8 @@
               "maximumError": "4kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "baseHref": "/battle-scribe-tools/flash-cards/"
         },
         "development": {
           "buildOptimizer": false,
