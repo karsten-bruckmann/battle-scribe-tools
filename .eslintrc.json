@@ -22,15 +22,15 @@
               },
               {
                 "sourceTag": "core",
-                "onlyDependOnLibsWithTags": ["data-access", "infrastructure"]
+                "onlyDependOnLibsWithTags": ["data-access", "utility"]
               },
               {
                 "sourceTag": "data-access",
-                "onlyDependOnLibsWithTags": ["infrastructure"]
+                "onlyDependOnLibsWithTags": ["utility"]
               },
               {
-                "sourceTag": "infrastructure",
-                "onlyDependOnLibsWithTags": ["infrastructure"]
+                "sourceTag": "utility",
+                "onlyDependOnLibsWithTags": ["utility"]
               }
             ]
           }
