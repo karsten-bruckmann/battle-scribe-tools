@@ -15,15 +15,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@battle-scribe-tools/apps/battle-cards/pages/card": [
-        "libs/apps/battle-cards/pages/card/src/index.ts"
-      ],
-      "@battle-scribe-tools/apps/battle-cards/pages/settings": [
-        "libs/apps/battle-cards/pages/settings/src/index.ts"
-      ],
-      "@battle-scribe-tools/apps/battle-cards/pages/unit-list": [
-        "libs/apps/battle-cards/pages/unit-list/src/index.ts"
-      ],
       "@battle-scribe-tools/core/roster": ["libs/core/roster/src/index.ts"],
       "@battle-scribe-tools/core/user-settings": [
         "libs/core/user-settings/src/index.ts"
@@ -45,6 +36,15 @@
       ],
       "@battle-scribe-tools/feature/translatable": [
         "libs/feature/translatable/src/index.ts"
+      ],
+      "@battle-scribe-tools/pages/battle-cards/card": [
+        "libs/pages/battle-cards/card/src/index.ts"
+      ],
+      "@battle-scribe-tools/pages/battle-cards/setting": [
+        "libs/pages/battle-cards/setting/src/index.ts"
+      ],
+      "@battle-scribe-tools/pages/battle-cards/unit-list": [
+        "libs/pages/battle-cards/unit-list/src/index.ts"
       ],
       "@battle-scribe-tools/utility/ngrx-storage-sync": [
         "libs/utility/ngrx-storage-sync/src/index.ts"

@@ -1,15 +1,15 @@
 {
-  "name": "apps-battle-cards-pages-unit-list",
-  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "name": "pages-battle-cards-card",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "libs/apps/battle-cards/pages/unit-list/src",
+  "sourceRoot": "libs/pages/battle-cards/card/src",
   "prefix": "battle-scribe-tools",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/apps/battle-cards/pages/unit-list/jest.config.ts",
+        "jestConfig": "libs/pages/battle-cards/card/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
@@ -24,8 +24,8 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "libs/apps/battle-cards/pages/unit-list/**/*.ts",
-          "libs/apps/battle-cards/pages/unit-list/**/*.html"
+          "libs/pages/battle-cards/card/**/*.ts",
+          "libs/pages/battle-cards/card/**/*.html"
         ]
       }
     }

@@ -1,15 +1,15 @@
 {
-  "name": "apps-battle-cards-pages-settings",
-  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "name": "pages-battle-cards-setting",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "libs/apps/battle-cards/pages/settings/src",
+  "sourceRoot": "libs/pages/battle-cards/setting/src",
   "prefix": "battle-scribe-tools",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/apps/battle-cards/pages/settings/jest.config.ts",
+        "jestConfig": "libs/pages/battle-cards/setting/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
@@ -24,8 +24,8 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "libs/apps/battle-cards/pages/settings/**/*.ts",
-          "libs/apps/battle-cards/pages/settings/**/*.html"
+          "libs/pages/battle-cards/setting/**/*.ts",
+          "libs/pages/battle-cards/setting/**/*.html"
         ]
       }
     }

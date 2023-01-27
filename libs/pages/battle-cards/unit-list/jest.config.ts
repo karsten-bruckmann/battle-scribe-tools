@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
-  displayName: 'apps-battle-cards-pages-settings',
-  preset: '../../../../../jest.preset.js',
+  displayName: 'pages-battle-cards-unit-list',
+  preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -9,8 +9,7 @@ export default {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory:
-    '../../../../../coverage/libs/apps/battle-cards/pages/settings',
+  coverageDirectory: '../../../../coverage/libs/pages/battle-cards/unit-list',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },
