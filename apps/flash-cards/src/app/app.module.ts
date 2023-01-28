@@ -13,22 +13,27 @@ import { AppComponent } from './app.component';
     BrowserModule,
     StoreModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 50 }),
-    RouterModule.forRoot([
+    RouterModule.forRoot(
+      [
+        {
+          path: '',
+          loadComponent: () =>
+            import('@battle-scribe-tools/pages/flash-cards/index').then(
+              (m) => m.IndexComponent
+            ),
+        },
+        {
+          path: 'lesson/:index',
+          loadComponent: () =>
+            import('@battle-scribe-tools/pages/flash-cards/lesson').then(
+              (m) => m.LessonComponent
+            ),
+        },
+      ],
       {
-        path: '',
-        loadComponent: () =>
-          import('@battle-scribe-tools/pages/flash-cards/index').then(
-            (m) => m.IndexComponent
-          ),
-      },
-      {
-        path: 'lesson/:index',
-        loadComponent: () =>
-          import('@battle-scribe-tools/pages/flash-cards/lesson').then(
-            (m) => m.LessonComponent
-          ),
-      },
-    ]),
+        useHash: true,
+      }
+    ),
     IonicModule.forRoot({}),
   ],
   providers: [],
