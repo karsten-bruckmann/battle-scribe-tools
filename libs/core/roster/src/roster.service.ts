@@ -13,7 +13,8 @@ import {
 import { Store } from '@ngrx/store';
 import { firstValueFrom } from 'rxjs';
 import { createRoster } from './create-roster';
-import { roosterFlashCardDeckSelector } from './selectors/rooster-flash-card-deck.selector';
+import { FlashCardCreationSettings } from './models/flash-card-creation-settings';
+import { rosterFlashCardDeckSelector } from './selectors/roster-flash-card-deck.selector';
 import { rosterTitlesSelector } from './selectors/roster-titles.selector';
 
 @Injectable({ providedIn: 'root' })
@@ -44,13 +45,21 @@ export class RosterService {
     this.store$.dispatch(selectRosterAction({ index }));
   }
 
-  public async createFlashCardDeck(): Promise<void> {
+  public async createFlashCardDeck(
+    rosterIndex: number,
+    settings: FlashCardCreationSettings
+  ): Promise<void> {
     const language = await firstValueFrom(
       this.translationService.selectedLanguage$
     );
     const deck = await firstValueFrom(
       this.store$.select(
-        roosterFlashCardDeckSelector(language, loadTranslation)
+        rosterFlashCardDeckSelector(
+          rosterIndex,
+          settings,
+          language,
+          loadTranslation
+        )
       )
     );
     this.store$.dispatch(deckAddedAction({ deck }));

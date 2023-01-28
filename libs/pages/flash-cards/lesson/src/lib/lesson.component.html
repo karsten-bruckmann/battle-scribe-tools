@@ -6,9 +6,15 @@
           <ion-icon name="chevron-back"></ion-icon>
         </ion-button>
       </ion-buttons>
-      <ion-title *ngIf="session$ | async as session">
-        <h1>{{ session.deckName }}</h1>
-      </ion-title>
+      <ng-container *ngIf="session$ | async as session">
+        <ion-title>
+          <h1>{{ session.deckName }}</h1>
+        </ion-title>
+        <span slot="end">
+          Box {{ session.box + 1 }}/{{ session.maxBox + 1 }} | Noch
+          {{ session.remainingCards }} Karten
+        </span>
+      </ng-container>
     </ion-toolbar>
   </ion-header>
   <ng-container *ngIf="session$ | async as session">

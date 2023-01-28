@@ -15,8 +15,4 @@ export class CardComponent {
   constructor(private rosterService: RosterService) {}
 
   public roster$ = this.rosterService.selected$;
-
-  public createFlashCardsDeck(): void {
-    this.rosterService.createFlashCardDeck();
-  }
 }

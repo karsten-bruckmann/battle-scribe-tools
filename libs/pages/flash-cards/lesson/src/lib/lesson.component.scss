@@ -10,10 +10,10 @@ ion-footer {
 
 ion-card {
   transition: all 300ms;
-  max-height: 1000px;
+  max-height: 300px;
 
   &.hidden {
-    transition: all 100ms;
+    transition: none;
     overflow: scroll;
     max-height: 0px;
   }
