@@ -12,7 +12,7 @@ export const flashCardsReducer = createReducer<State>(
     next[action.deckIndex].cards = [...state[action.deckIndex].cards];
     next[action.deckIndex].cards[action.cardIndex] = {
       ...next[action.deckIndex].cards[action.cardIndex],
-      box: next[action.deckIndex].cards[action.cardIndex].box + 1,
+      box: action.box,
     };
     return next;
   })
