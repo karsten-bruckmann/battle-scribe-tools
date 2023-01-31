@@ -192,12 +192,8 @@
                       ></bst-translatable>
                     </td>
                   </tr>
-                  <tr>
-                    <td
-                      *ngIf="profile.abilities | cleanEmpty"
-                      class="wrap dimmed"
-                      colspan="5"
-                    >
+                  <tr *ngIf="profile.abilities | cleanEmpty">
+                    <td class="wrap dimmed" colspan="5">
                       <bst-translatable
                         [text]="profile.abilities"
                       ></bst-translatable>

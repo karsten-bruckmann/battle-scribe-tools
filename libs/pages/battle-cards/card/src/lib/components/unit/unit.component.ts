@@ -63,7 +63,7 @@ export class UnitComponent {
   public getMultiProfileWeaponLineAmount(weapon: Weapon): number {
     return weapon.profiles.reduce(
       (lines, profile) =>
-        this.cleanEmptyPipe.transform(profile.abilities) ? 0 : 1,
+        lines + (this.cleanEmptyPipe.transform(profile.abilities) ? 2 : 1),
       1
     );
   }
