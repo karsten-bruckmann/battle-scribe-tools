@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1675203541717,
+  "timestamp": 1675203854128,
   "index": "/battle-scribe-tools/battle-cards/index.html",
   "assetGroups": [
     {
@@ -32,7 +32,7 @@
         "/battle-scribe-tools/battle-cards/3648.d7ad91f74ce607fd.js",
         "/battle-scribe-tools/battle-cards/3804.788376ecf660fc9d.js",
         "/battle-scribe-tools/battle-cards/388.245d97b43279e7c9.js",
-        "/battle-scribe-tools/battle-cards/389.98f43431ea416373.js",
+        "/battle-scribe-tools/battle-cards/389.9f538b2ffa1fc2aa.js",
         "/battle-scribe-tools/battle-cards/4174.75d953f03422bb14.js",
         "/battle-scribe-tools/battle-cards/4203.74bc0928c2b573e1.js",
         "/battle-scribe-tools/battle-cards/4330.aa631cc28de944d6.js",
@@ -78,7 +78,7 @@
         "/battle-scribe-tools/battle-cards/polyfills-core-js.be3c4db4ba12d4e4.js",
         "/battle-scribe-tools/battle-cards/polyfills-dom.55a512cb243f4299.js",
         "/battle-scribe-tools/battle-cards/polyfills.7e22781db45a7d3e.js",
-        "/battle-scribe-tools/battle-cards/runtime.b44f72e720b672cb.js",
+        "/battle-scribe-tools/battle-cards/runtime.38992254d486c52e.js",
         "/battle-scribe-tools/battle-cards/styles.ad414dd5193f8dda.css"
       ],
       "patterns": []
@@ -126,7 +126,7 @@
     "/battle-scribe-tools/battle-cards/3648.d7ad91f74ce607fd.js": "87caf684b87d593ea922cbb03612094749896b66",
     "/battle-scribe-tools/battle-cards/3804.788376ecf660fc9d.js": "e902f7846e44c98fe58034bd6b4ba3048803bb0f",
     "/battle-scribe-tools/battle-cards/388.245d97b43279e7c9.js": "06bbe9637128ce32ae62b1f2fee78fd61e97be63",
-    "/battle-scribe-tools/battle-cards/389.98f43431ea416373.js": "10e023e1052239f7a0def22a333ff6372b35aba3",
+    "/battle-scribe-tools/battle-cards/389.9f538b2ffa1fc2aa.js": "0ada17210c7b47da786db4718699a343c729c94a",
     "/battle-scribe-tools/battle-cards/4174.75d953f03422bb14.js": "c157e13f7ab1b2b9ec76a70c2ae13d7c5a64dc11",
     "/battle-scribe-tools/battle-cards/4203.74bc0928c2b573e1.js": "430cb97b8bb25764fa47d942b6eccfd708b59c3b",
     "/battle-scribe-tools/battle-cards/4330.aa631cc28de944d6.js": "d6b5b2b0a11ee924e8892121c07a61a28e123e00",
@@ -174,13 +174,13 @@
     "/battle-scribe-tools/battle-cards/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/battle-scribe-tools/battle-cards/common.4161ae1a55c11c54.js": "1c3d5c6de5b7bad5bcf384cd597d5a0b9c257838",
     "/battle-scribe-tools/battle-cards/favicon.ico": "4e23d0f9b6ddaf3c9ddef90dbaed2342941297b5",
-    "/battle-scribe-tools/battle-cards/index.html": "137bacd27467a13860d99552eccaccde1fef472e",
+    "/battle-scribe-tools/battle-cards/index.html": "c9cd74b18a1622347013325f8d4662153afea3de",
     "/battle-scribe-tools/battle-cards/main.7e14ce9d793ba5f1.js": "e0fe118518e3b62404f506e2f17e4bd348ea9c59",
-    "/battle-scribe-tools/battle-cards/manifest.webmanifest": "34ee0bfe1d17a9cb265a2cd0f1f78d9fed8eafed",
+    "/battle-scribe-tools/battle-cards/manifest.webmanifest": "54e3778b6e47274d500f5bbf5dba5eeeaf8803dd",
     "/battle-scribe-tools/battle-cards/polyfills-core-js.be3c4db4ba12d4e4.js": "83ec711f891793fe224ec13df63736c3c4734519",
     "/battle-scribe-tools/battle-cards/polyfills-dom.55a512cb243f4299.js": "90ba5cea322637e1d67a9d2dfda588b6c8f51bff",
     "/battle-scribe-tools/battle-cards/polyfills.7e22781db45a7d3e.js": "4856bbbea76ffeb2b50294441da9ecf44dd8c483",
-    "/battle-scribe-tools/battle-cards/runtime.b44f72e720b672cb.js": "250cb86653b98eda6aad82eb5cc9b8e894dbad69",
+    "/battle-scribe-tools/battle-cards/runtime.38992254d486c52e.js": "cee8f60e9f1de343c7a00d12be4201fbfda8ba63",
     "/battle-scribe-tools/battle-cards/styles.ad414dd5193f8dda.css": "5c83c0432cc03c87aed9aaafe1423039a28e158e"
   },
   "navigationUrls": [
