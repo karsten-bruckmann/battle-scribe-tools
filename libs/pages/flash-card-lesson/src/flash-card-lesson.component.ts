@@ -11,17 +11,17 @@ import { filter, map, shareReplay, switchMap } from 'rxjs';
 @Component({
   standalone: true,
   imports: [CommonModule, LearningModule, RouterModule, IonicModule],
-  templateUrl: './lesson.component.html',
-  styleUrls: ['./lesson.component.scss'],
+  templateUrl: './flash-card-lesson.component.html',
+  styleUrls: ['./flash-card-lesson.component.scss'],
 })
-export class LessonComponent {
+export class FlashCardLessonComponent {
   constructor(
     private learningService: LearningService,
     private activatedRoute: ActivatedRoute
   ) {}
 
   public session$ = this.activatedRoute.paramMap.pipe(
-    map((map) => map.get('index')),
+    map((map) => map.get('lesson-index')),
     filter((index): index is string => null !== index),
     map((index) => parseInt(index)),
     switchMap((index) => this.learningService.getSession(index)),

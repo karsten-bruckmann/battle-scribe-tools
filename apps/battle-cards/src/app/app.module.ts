@@ -59,6 +59,13 @@ import { AppComponent } from './app.component';
               },
             ],
           },
+          {
+            path: 'flash-card-lesson/:lesson-index',
+            loadComponent: () =>
+              import('@battle-scribe-tools/pages/flash-card-lesson').then(
+                (m) => m.FlashCardLessonComponent
+              ),
+          },
         ],
       },
     ]),

@@ -1,10 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>BattleScribe 2Go</ion-title>
+    <ion-title>BattleScribe Helper</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-item-divider>Roster</ion-item-divider>
   <ion-item>
     <ion-label>
       <ion-icon color="primary" slot="start" name="document-outline"></ion-icon>
@@ -13,16 +14,39 @@
     <ion-button fill="outline" (click)="f.click()">wählen...</ion-button>
     <input (change)="saveFile($event)" class="ion-hide" #f type="file" />
   </ion-item>
+
   <ion-item *ngFor="let roster of rosterTitles$ | async; let i = index">
     <ion-label [routerLink]="['roster', i]">
-      <ion-icon color="primary" slot="start"></ion-icon>
+      <ion-icon color="primary" slot="start" name="document-outline"></ion-icon>
       {{ roster }}
     </ion-label>
     <ion-button slot="end" fill="clear" (click)="deleteRoster(i)">
       <ion-icon color="primary" name="trash"></ion-icon>
     </ion-button>
   </ion-item>
-  <ion-item href="../flash-cards/" target="_blank"> Lernen </ion-item>
+
+  <ion-item-divider>Flash Card Decks</ion-item-divider>
+  <ion-item
+    *ngFor="let lesson of lessons$ | async; let i = index"
+    [routerLink]="['flash-card-lesson', i]"
+  >
+    {{ lesson.name }}
+    <div
+      slot="end"
+      class="boxes"
+      *ngFor="let cardAmount of lesson.boxContent; let i = index"
+    >
+      <ion-icon
+        [name]="
+          cardAmount === 0 ? 'file-tray-outline' : 'file-tray-full-outline'
+        "
+      ></ion-icon>
+      <ion-badge
+        [color]="lesson.boxContent.length - 1 === i ? 'success' : 'medium'"
+        >{{ cardAmount }}</ion-badge
+      >
+    </div>
+  </ion-item>
 </ion-content>
 
 <bst-translation-settings></bst-translation-settings>

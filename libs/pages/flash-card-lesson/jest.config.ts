@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
-  displayName: 'pages-flash-cards-index',
-  preset: '../../../../jest.preset.js',
+  displayName: 'pages-flash-card-lesson',
+  preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -9,7 +9,7 @@ export default {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../../coverage/libs/pages/flash-cards/index',
+  coverageDirectory: '../../../coverage/libs/pages/flash-card-lesson',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

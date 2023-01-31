@@ -48,11 +48,8 @@
       "@battle-scribe-tools/pages/battle-card": [
         "libs/pages/battle-card/src/index.ts"
       ],
-      "@battle-scribe-tools/pages/flash-cards/index": [
-        "libs/pages/flash-cards/index/src/index.ts"
-      ],
-      "@battle-scribe-tools/pages/flash-cards/lesson": [
-        "libs/pages/flash-cards/lesson/src/index.ts"
+      "@battle-scribe-tools/pages/flash-card-lesson": [
+        "libs/pages/flash-card-lesson/src/index.ts"
       ],
       "@battle-scribe-tools/pages/main-menu": [
         "libs/pages/main-menu/src/index.ts"
