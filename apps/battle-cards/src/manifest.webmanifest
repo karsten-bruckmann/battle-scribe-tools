@@ -1,8 +1,8 @@
 {
   "name": "battle-cards",
   "short_name": "battle-cards",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "theme_color": "#3d0000",
+  "background_color": "#393535",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
