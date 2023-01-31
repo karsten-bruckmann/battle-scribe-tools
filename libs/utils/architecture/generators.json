@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "utils-architecture",
+  "version": "0.0.1",
+  "generators": {
+    "page": {
+      "factory": "./src/generators/page/generator",
+      "schema": "./src/generators/page/schema.json",
+      "description": "page generator"
+    }
+  }
+}
