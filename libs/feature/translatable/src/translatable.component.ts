@@ -15,10 +15,10 @@ import {
   selector: 'bst-translatable',
   standalone: true,
   imports: [CommonModule, IonicModule],
-  templateUrl: './feature-translatable.component.html',
-  styleUrls: ['./feature-translatable.component.scss'],
+  templateUrl: './translatable.component.html',
+  styleUrls: ['./translatable.component.scss'],
 })
-export class FeatureTranslatableComponent implements OnChanges {
+export class TranslatableComponent implements OnChanges {
   constructor(
     private translationService: TranslationsService,
     private domSanitizer: DomSanitizer

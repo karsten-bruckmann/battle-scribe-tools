@@ -17,7 +17,7 @@ import { IonicModule } from '@ionic/angular';
   templateUrl: './main-menu.component.html',
   styleUrls: ['./main-menu.component.scss'],
 })
-export class SettingsComponent {
+export class MainMenuComponent {
   constructor(private rostersService: RosterService) {}
 
   public rosterTitles$ = this.rostersService.list$;

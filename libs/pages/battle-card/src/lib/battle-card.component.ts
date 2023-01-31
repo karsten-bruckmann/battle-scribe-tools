@@ -5,7 +5,7 @@ import { RosterModule, RosterService } from '@battle-scribe-tools/core/roster';
 import { UserSettingsService } from '@battle-scribe-tools/core/user-settings';
 import { Weapon } from '@battle-scribe-tools/data-access/rosters';
 import { AvatarComponent } from '@battle-scribe-tools/feature/avatar';
-import { FeatureTranslatableComponent } from '@battle-scribe-tools/feature/translatable';
+import { TranslatableComponent } from '@battle-scribe-tools/feature/translatable';
 import { IonicModule } from '@ionic/angular';
 import { CleanEmptyPipe } from './pipes/clean-empty.pipe';
 
@@ -15,16 +15,16 @@ import { CleanEmptyPipe } from './pipes/clean-empty.pipe';
     CommonModule,
     IonicModule,
     RosterModule,
-    FeatureTranslatableComponent,
+    TranslatableComponent,
     AvatarComponent,
     CleanEmptyPipe,
     RouterModule,
   ],
   providers: [CleanEmptyPipe],
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss'],
+  templateUrl: './battle-card.component.html',
+  styleUrls: ['./battle-card.component.scss'],
 })
-export class CardComponent {
+export class BattleCardComponent {
   constructor(
     private rosterService: RosterService,
     private userSettings: UserSettingsService,

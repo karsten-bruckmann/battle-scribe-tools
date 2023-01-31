@@ -22,7 +22,7 @@ import { AppComponent } from './app.component';
             path: '',
             loadComponent: () =>
               import('@battle-scribe-tools/pages/main-menu').then(
-                (m) => m.SettingsComponent
+                (m) => m.MainMenuComponent
               ),
           },
           {
@@ -35,7 +35,7 @@ import { AppComponent } from './app.component';
                     path: '',
                     loadComponent: () =>
                       import('@battle-scribe-tools/pages/roster').then(
-                        (m) => m.PagesRosterComponent
+                        (m) => m.RosterComponent
                       ),
                   },
                   {
@@ -49,7 +49,7 @@ import { AppComponent } from './app.component';
                             loadComponent: () =>
                               import(
                                 '@battle-scribe-tools/pages/battle-card'
-                              ).then((m) => m.CardComponent),
+                              ).then((m) => m.BattleCardComponent),
                           },
                         ],
                       },

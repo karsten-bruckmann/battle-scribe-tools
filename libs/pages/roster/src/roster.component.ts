@@ -8,7 +8,7 @@ import {
 } from '@battle-scribe-tools/core/user-settings';
 import { RostersModule } from '@battle-scribe-tools/data-access/rosters';
 import { AvatarComponent } from '@battle-scribe-tools/feature/avatar';
-import { FeatureTranslatableComponent } from '@battle-scribe-tools/feature/translatable';
+import { TranslatableComponent } from '@battle-scribe-tools/feature/translatable';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
@@ -19,13 +19,13 @@ import { IonicModule } from '@ionic/angular';
     CommonModule,
     IonicModule,
     RouterModule,
-    FeatureTranslatableComponent,
+    TranslatableComponent,
     AvatarComponent,
   ],
-  templateUrl: './pages-roster.component.html',
-  styleUrls: ['./pages-roster.component.scss'],
+  templateUrl: './roster.component.html',
+  styleUrls: ['./roster.component.scss'],
 })
-export class PagesRosterComponent {
+export class RosterComponent {
   constructor(
     private rosterService: RosterService,
     private userSettings: UserSettingsService,

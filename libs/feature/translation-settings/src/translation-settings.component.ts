@@ -5,7 +5,7 @@ import { ActionSheetController, IonicModule } from '@ionic/angular';
 import { map } from 'rxjs';
 
 @Component({
-  selector: 'translation-settings',
+  selector: 'bst-translation-settings',
   standalone: true,
   imports: [CommonModule, IonicModule],
   templateUrl: './translation-settings.component.html',

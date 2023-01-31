@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PagesRosterComponent } from './pages-roster.component';
+import { TranslatableComponent } from './translatable.component';
 
-describe('PagesRosterComponent', () => {
-  let component: PagesRosterComponent;
-  let fixture: ComponentFixture<PagesRosterComponent>;
+describe('TranslatableComponent', () => {
+  let component: TranslatableComponent;
+  let fixture: ComponentFixture<TranslatableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PagesRosterComponent],
+      imports: [TranslatableComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(PagesRosterComponent);
+    fixture = TestBed.createComponent(TranslatableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

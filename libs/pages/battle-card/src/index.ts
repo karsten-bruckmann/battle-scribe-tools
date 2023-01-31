@@ -1,1 +1,1 @@
-export * from './lib/card.component';
+export * from './lib/battle-card.component';

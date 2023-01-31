@@ -1,1 +1,1 @@
-export * from './lib/pages-roster.component';
+export * from './roster.component';
