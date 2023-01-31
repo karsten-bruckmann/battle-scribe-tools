@@ -7,7 +7,9 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "libs/data-access/user-settings/jest.config.ts",
         "passWithNoTests": true
@@ -21,7 +23,9 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
         "lintFilePatterns": [
           "libs/data-access/user-settings/**/*.ts",
@@ -30,5 +34,7 @@
       }
     }
   },
-  "tags": ["data-access"]
+  "tags": [
+    "data-access"
+  ]
 }

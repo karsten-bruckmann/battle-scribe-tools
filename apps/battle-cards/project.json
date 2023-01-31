@@ -7,12 +7,16 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/battle-cards",
         "index": "apps/battle-cards/src/index.html",
         "main": "apps/battle-cards/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/battle-cards/tsconfig.app.json",
         "assets": [
           "apps/battle-cards/src/favicon.ico",
@@ -21,7 +25,8 @@
             "glob": "**/*.svg",
             "input": "node_modules/ionicons/dist/ionicons/svg",
             "output": "./svg"
-          }
+          },
+          "apps/battle-cards/src/manifest.webmanifest"
         ],
         "styles": [
           "apps/battle-cards/src/styles.scss",
@@ -59,7 +64,9 @@
             "input": "apps/battle-cards/src/theme/variables.css"
           }
         ],
-        "scripts": []
+        "scripts": [],
+        "serviceWorker": true,
+        "ngswConfigPath": "apps/battle-cards/ngsw-config.json"
       },
       "configurations": {
         "production": {
@@ -113,7 +120,9 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
         "lintFilePatterns": [
           "apps/battle-cards/**/*.ts",
@@ -123,7 +132,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "apps/battle-cards/jest.config.ts",
         "passWithNoTests": true
@@ -136,5 +147,7 @@
       }
     }
   },
-  "tags": ["app"]
+  "tags": [
+    "app"
+  ]
 }
