@@ -63,9 +63,6 @@
       ],
       "@battle-scribe-tools/utility/rosz2js": [
         "libs/utility/rosz2js/src/index.ts"
-      ],
-      "@battle-scribe-tools/utils/architecture": [
-        "libs/utils/architecture/src/index.ts"
       ]
     }
   },
