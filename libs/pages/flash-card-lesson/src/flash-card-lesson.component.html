@@ -1,68 +1,64 @@
-<ion-app>
-  <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-button [routerLink]="['/']">
-          <ion-icon name="chevron-back"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-      <ng-container *ngIf="session$ | async as session">
-        <ion-title>
-          <h1>{{ session.deckName }}</h1>
-        </ion-title>
-        <span slot="end">
-          Box {{ session.box + 1 }}/{{ session.maxBox + 1 }} | Noch
-          {{ session.remainingCards }} Karten
-        </span>
-      </ng-container>
-    </ion-toolbar>
-  </ion-header>
-  <ng-container *ngIf="session$ | async as session">
-    <ng-container *ngIf="session.currentCard as card; else finished">
-      <ion-content>
-        <ion-card>
-          <ion-card-content>
-            <h1>
-              {{ card.question }}
-            </h1>
-          </ion-card-content>
-        </ion-card>
-        <ion-card [ngClass]="{ hidden: !card.answer }">
-          <ion-card-content>
-            <h1>{{ card.answer }}</h1>
-          </ion-card-content>
-        </ion-card>
-      </ion-content>
-
-      <ion-footer>
-        <ion-toolbar>
-          <ion-buttons *ngIf="!card.answer">
-            <ion-button (click)="session.showAnswer()"> Lösung </ion-button>
-            <ion-button (click)="session.skip()"> Überspringen </ion-button>
-          </ion-buttons>
-          <ion-buttons *ngIf="card.answer">
-            <ion-button (click)="session.markIncorrect()">
-              wusste ich nicht
-            </ion-button>
-            <ion-button (click)="session.markCorrect()">
-              wusste ich
-            </ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-footer>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button [routerLink]="['/']">
+        <ion-icon name="chevron-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ng-container *ngIf="session$ | async as session">
+      <ion-title>
+        <h1>{{ session.deckName }}</h1>
+      </ion-title>
+      <span slot="end">
+        Box {{ session.box + 1 }}/{{ session.maxBox + 1 }} | Noch
+        {{ session.remainingCards }} Karten
+      </span>
     </ng-container>
-    <ng-template #finished>
-      <ion-content
-        ><div class="finished">
-          <div class="icon">
-            <ion-icon color="success" name="checkmark-circle"></ion-icon>
-          </div>
-          <div>
-            <ion-button [routerLink]="'../../'">zurück</ion-button>
-            <ion-button (click)="restart()">weiter</ion-button>
-          </div>
-        </div>
-      </ion-content>
-    </ng-template>
+  </ion-toolbar>
+</ion-header>
+<ng-container *ngIf="session$ | async as session">
+  <ng-container *ngIf="session.currentCard as card; else finished">
+    <ion-content>
+      <ion-card>
+        <ion-card-content>
+          <h1>
+            {{ card.question }}
+          </h1>
+        </ion-card-content>
+      </ion-card>
+      <ion-card [ngClass]="{ hidden: !card.answer }">
+        <ion-card-content>
+          <h1>{{ card.answer }}</h1>
+        </ion-card-content>
+      </ion-card>
+    </ion-content>
+
+    <ion-footer>
+      <ion-toolbar>
+        <ion-buttons *ngIf="!card.answer">
+          <ion-button (click)="session.showAnswer()"> Lösung </ion-button>
+          <ion-button (click)="session.skip()"> Überspringen </ion-button>
+        </ion-buttons>
+        <ion-buttons *ngIf="card.answer">
+          <ion-button (click)="session.markIncorrect()">
+            wusste ich nicht
+          </ion-button>
+          <ion-button (click)="session.markCorrect()"> wusste ich </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-footer>
   </ng-container>
-</ion-app>
+  <ng-template #finished>
+    <ion-content
+      ><div class="finished">
+        <div class="icon">
+          <ion-icon color="success" name="checkmark-circle"></ion-icon>
+        </div>
+        <div>
+          <ion-button [routerLink]="'../../'">zurück</ion-button>
+          <ion-button (click)="restart()">weiter</ion-button>
+        </div>
+      </div>
+    </ion-content>
+  </ng-template>
+</ng-container>
