@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, EnvironmentInjector } from '@angular/core';
 
 @Component({
   selector: 'bc-root',
-  templateUrl: './app.component.html',
+  template:
+    '<ion-app><ion-router-outlet [environmentInjector]="environmentInjector"></ion-router-outlet></ion-app>',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {}
+export class AppComponent {
+  constructor(public environmentInjector: EnvironmentInjector) {}
+}

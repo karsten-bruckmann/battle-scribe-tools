@@ -1,4 +1,4 @@
-import { createSelector } from '@ngrx/store';
-import { stateSelector } from './state.selector';
+import { createFeatureSelector } from '@ngrx/store';
+import { State } from '../models/state.model';
 
-export const rostersSelector = createSelector(stateSelector, (s) => s.rosters);
+export const rostersSelector = createFeatureSelector<State>('rosters');

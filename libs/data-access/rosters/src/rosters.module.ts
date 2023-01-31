@@ -8,7 +8,7 @@ import { rostersReducer } from './reducers/rosters.reducer';
   imports: [
     StoreModule.forFeature<State>('rosters', rostersReducer, {
       metaReducers: [
-        createStorageSyncMetaReducer('rosters', { storage: localStorage }),
+        createStorageSyncMetaReducer('rosters/v2', { storage: localStorage }),
       ],
     }),
   ],

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>BattleScribe 2Go</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>
+      <ion-icon color="primary" slot="start" name="document-outline"></ion-icon>
+      Neue Datei (exportierte .rosz Datei)
+    </ion-label>
+    <ion-button fill="outline" (click)="f.click()">wählen...</ion-button>
+    <input (change)="saveFile($event)" class="ion-hide" #f type="file" />
+  </ion-item>
+  <ion-item *ngFor="let roster of rosterTitles$ | async; let i = index">
+    <ion-label [routerLink]="['roster', i]">
+      <ion-icon color="primary" slot="start"></ion-icon>
+      {{ roster }}
+    </ion-label>
+    <ion-button slot="end" fill="clear" (click)="deleteRoster(i)">
+      <ion-icon color="primary" name="trash"></ion-icon>
+    </ion-button>
+  </ion-item>
+  <ion-item href="../flash-cards/" target="_blank"> Lernen </ion-item>
+</ion-content>
+
+<translation-settings></translation-settings>

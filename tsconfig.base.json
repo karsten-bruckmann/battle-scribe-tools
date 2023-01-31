@@ -13,6 +13,7 @@
     "lib": ["es2021", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "strict": true,
     "baseUrl": ".",
     "paths": {
       "@battle-scribe-tools/core/learning": ["libs/core/learning/src/index.ts"],
@@ -41,14 +42,11 @@
       "@battle-scribe-tools/feature/translatable": [
         "libs/feature/translatable/src/index.ts"
       ],
-      "@battle-scribe-tools/pages/battle-cards/card": [
-        "libs/pages/battle-cards/card/src/index.ts"
+      "@battle-scribe-tools/feature/translation-settings": [
+        "libs/feature/translation-settings/src/index.ts"
       ],
-      "@battle-scribe-tools/pages/battle-cards/setting": [
-        "libs/pages/battle-cards/setting/src/index.ts"
-      ],
-      "@battle-scribe-tools/pages/battle-cards/unit-list": [
-        "libs/pages/battle-cards/unit-list/src/index.ts"
+      "@battle-scribe-tools/pages/battle-card": [
+        "libs/pages/battle-card/src/index.ts"
       ],
       "@battle-scribe-tools/pages/flash-cards/index": [
         "libs/pages/flash-cards/index/src/index.ts"
@@ -56,6 +54,10 @@
       "@battle-scribe-tools/pages/flash-cards/lesson": [
         "libs/pages/flash-cards/lesson/src/index.ts"
       ],
+      "@battle-scribe-tools/pages/main-menu": [
+        "libs/pages/main-menu/src/index.ts"
+      ],
+      "@battle-scribe-tools/pages/roster": ["libs/pages/roster/src/index.ts"],
       "@battle-scribe-tools/utility/ngrx-storage-sync": [
         "libs/utility/ngrx-storage-sync/src/index.ts"
       ],

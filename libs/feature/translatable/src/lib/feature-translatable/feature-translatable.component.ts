@@ -21,7 +21,6 @@ import {
 export class FeatureTranslatableComponent implements OnChanges {
   constructor(
     private translationService: TranslationsService,
-    // public state: StateService,
     private domSanitizer: DomSanitizer
   ) {}
 

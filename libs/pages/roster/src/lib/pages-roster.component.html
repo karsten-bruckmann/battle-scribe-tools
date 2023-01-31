@@ -1,0 +1,75 @@
+<ng-container *ngIf="view$ | async as view">
+  <ng-container *ngIf="roster$ | async as roster">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-button [routerLink]="'../../'">
+            <ion-icon name="chevron-back"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+        <ion-title
+          ><h1>
+            <bst-translatable
+              [text]="roster.title"
+              [translateOnClick]="false"
+            ></bst-translatable></h1
+        ></ion-title>
+        <ion-buttons slot="end">
+          <ion-button
+            (click)="setView('list')"
+            [color]="view === 'list' ? 'primary' : 'medium'"
+          >
+            <ion-icon name="list-outline"></ion-icon>
+          </ion-button>
+          <ion-button
+            (click)="setView('grid')"
+            [color]="view === 'grid' ? 'primary' : 'medium'"
+          >
+            <ion-icon name="grid-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <div
+        class="detachment"
+        *ngFor="
+          let detachment of roster.detachments;
+          let detachmentIndex = index
+        "
+      >
+        <ion-text color="primary">
+          <h2>
+            <bst-translatable
+              [text]="detachment.title"
+              [translateOnClick]="false"
+            ></bst-translatable>
+          </h2>
+        </ion-text>
+        <div
+          class="units"
+          [ngClass]="{ list: view === 'list', grid: view === 'grid' }"
+        >
+          <div
+            class="unit"
+            *ngFor="let unit of detachment.units; let unitIndex = index"
+            [routerLink]="['detachment', detachmentIndex, 'unit', unitIndex]"
+          >
+            <ion-text color="primary">
+              <bst-avatar
+                *ngIf="view === 'grid'"
+                [name]="unit.title"
+              ></bst-avatar>
+              <h4>
+                <bst-translatable
+                  [text]="unit.title"
+                  [translateOnClick]="false"
+                ></bst-translatable>
+              </h4>
+            </ion-text>
+          </div>
+        </div>
+      </div>
+    </ion-content>
+  </ng-container>
+</ng-container>
