@@ -18,7 +18,7 @@
     </ion-toolbar>
   </ion-header>
   <ng-container *ngIf="session$ | async as session">
-    <ng-container *ngIf="session.currentCard as card">
+    <ng-container *ngIf="session.currentCard as card; else finished">
       <ion-content>
         <ion-card>
           <ion-card-content>
@@ -51,5 +51,16 @@
         </ion-toolbar>
       </ion-footer>
     </ng-container>
+    <ng-template #finished>
+      <ion-content class="finished">
+        <div class="icon">
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </div>
+        <div>
+          <ion-button>zurück</ion-button>
+          <ion-button>weiter</ion-button>
+        </div>
+      </ion-content>
+    </ng-template>
   </ng-container>
 </ion-app>

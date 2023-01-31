@@ -24,6 +24,21 @@
       [routerLink]="['/', 'lesson', i]"
     >
       {{ lesson.name }} ({{ lesson.boxContent.join(', ') }})
+      <div
+        slot="end"
+        class="boxes"
+        *ngFor="let cardAmount of lesson.boxContent; let i = index"
+      >
+        <ion-icon
+          [name]="
+            cardAmount === 0 ? 'file-tray-outline' : 'file-tray-full-outline'
+          "
+        ></ion-icon>
+        <ion-badge
+          [color]="lesson.boxContent.length - 1 === i ? 'success' : 'medium'"
+          >{{ cardAmount }}</ion-badge
+        >
+      </div>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -18,3 +18,26 @@ ion-card {
     max-height: 0px;
   }
 }
+
+.finished {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  --padding-start: 20%;
+  --padding-end: 20%;
+
+  div {
+    display: flex;
+    justify-content: space-evenly;
+
+    &.icon {
+      display: inline;
+
+      ion-icon {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  }
+}

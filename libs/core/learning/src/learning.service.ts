@@ -56,7 +56,7 @@ export class LearningService {
       deckName: sortedDeck.name,
       box: currentBox,
       maxBox: sortedDeck.boxes - 1,
-      remainingCards: deck.length,
+      remainingCards: deck.length + 1,
       currentCard: currentCard
         ? {
             question: currentCard.question,
@@ -102,12 +102,17 @@ export class LearningService {
       },
       skip: () => {
         currentCard = deck.pop();
-        if (!currentCard || !session.currentCard) {
+        if (!session.currentCard) {
           return;
         }
-        session.currentCard.answer = null;
-        session.currentCard.question = currentCard.question;
-        session.remainingCards = deck.length;
+        session.currentCard = currentCard
+          ? {
+              ...session.currentCard,
+              question: currentCard.question,
+              answer: null,
+            }
+          : null;
+        session.remainingCards = deck.length + (currentCard ? 1 : 0);
       },
     };
     return session;
