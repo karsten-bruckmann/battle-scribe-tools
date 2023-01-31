@@ -4,9 +4,10 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import {
   LearningModule,
   LearningService,
+  Session,
 } from '@battle-scribe-tools/core/learning';
 import { IonicModule } from '@ionic/angular';
-import { filter, map, shareReplay, switchMap } from 'rxjs';
+import { filter, map, Observable, shareReplay, switchMap } from 'rxjs';
 
 @Component({
   standalone: true,
@@ -20,11 +21,19 @@ export class FlashCardLessonComponent {
     private activatedRoute: ActivatedRoute
   ) {}
 
-  public session$ = this.activatedRoute.paramMap.pipe(
-    map((map) => map.get('lesson-index')),
-    filter((index): index is string => null !== index),
-    map((index) => parseInt(index)),
-    switchMap((index) => this.learningService.getSession(index)),
-    shareReplay({ refCount: true, bufferSize: 1 })
-  );
+  public session$ = this.initSession();
+
+  public restart(): void {
+    this.session$ = this.initSession();
+  }
+
+  private initSession(): Observable<Session> {
+    return this.activatedRoute.paramMap.pipe(
+      map((map) => map.get('lesson-index')),
+      filter((index): index is string => null !== index),
+      map((index) => parseInt(index)),
+      switchMap((index) => this.learningService.getSession(index)),
+      shareReplay({ refCount: true, bufferSize: 1 })
+    );
+  }
 }

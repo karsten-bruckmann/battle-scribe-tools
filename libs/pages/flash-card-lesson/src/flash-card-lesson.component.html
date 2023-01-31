@@ -52,13 +52,15 @@
       </ion-footer>
     </ng-container>
     <ng-template #finished>
-      <ion-content class="finished">
-        <div class="icon">
-          <ion-icon name="checkmark-circle"></ion-icon>
-        </div>
-        <div>
-          <ion-button>zurück</ion-button>
-          <ion-button>weiter</ion-button>
+      <ion-content
+        ><div class="finished">
+          <div class="icon">
+            <ion-icon color="success" name="checkmark-circle"></ion-icon>
+          </div>
+          <div>
+            <ion-button [routerLink]="'../../'">zurück</ion-button>
+            <ion-button (click)="restart()">weiter</ion-button>
+          </div>
         </div>
       </ion-content>
     </ng-template>
