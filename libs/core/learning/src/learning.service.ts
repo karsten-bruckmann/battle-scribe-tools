@@ -1,19 +1,54 @@
 import { Injectable } from '@angular/core';
 import {
+  deckAddedAction,
+  deckDeletedAction,
   deckSelector,
   movedToBoxAction,
 } from '@battle-scribe-tools/data-access/flash-cards';
+import {
+  loadTranslation,
+  TranslationsService,
+} from '@battle-scribe-tools/data-access/translations';
 import { Store } from '@ngrx/store';
 import { firstValueFrom } from 'rxjs';
+import { FlashCardCreationSettings } from './models/flash-card-creation-settings';
 import { Session } from './models/session.model';
 import { lessonsSelector } from './selectors/lessons.selector';
+import { rosterFlashCardDeckSelector } from './selectors/roster-flash-card-deck.selector';
 
 @Injectable({ providedIn: 'root' })
 export class LearningService {
-  constructor(private store$: Store) {}
+  constructor(
+    private store$: Store,
+    private translationService: TranslationsService
+  ) {}
 
   public get lessons$() {
     return this.store$.select(lessonsSelector);
+  }
+
+  public deleteDeck(index: number): void {
+    this.store$.dispatch(deckDeletedAction({ index }));
+  }
+
+  public async createFlashCardDeck(
+    rosterIndex: number,
+    settings: FlashCardCreationSettings
+  ): Promise<void> {
+    const language = await firstValueFrom(
+      this.translationService.selectedLanguage$
+    );
+    const deck = await firstValueFrom(
+      this.store$.select(
+        rosterFlashCardDeckSelector(
+          rosterIndex,
+          settings,
+          language,
+          loadTranslation
+        )
+      )
+    );
+    this.store$.dispatch(deckAddedAction({ deck }));
   }
 
   public async getSession(index: number): Promise<Session> {

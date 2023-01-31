@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { deckAddedAction } from '@battle-scribe-tools/data-access/flash-cards';
 import {
   addRosterAction,
   deleteRosterAction,
@@ -11,23 +10,14 @@ import {
   Unit,
   unitSelector,
 } from '@battle-scribe-tools/data-access/rosters';
-import {
-  loadTranslation,
-  TranslationsService,
-} from '@battle-scribe-tools/data-access/translations';
 import { Store } from '@ngrx/store';
-import { firstValueFrom, NEVER, Observable, switchMap } from 'rxjs';
+import { NEVER, Observable, switchMap } from 'rxjs';
 import { createRoster } from './create-roster';
-import { FlashCardCreationSettings } from './models/flash-card-creation-settings';
-import { rosterFlashCardDeckSelector } from './selectors/roster-flash-card-deck.selector';
 import { rosterTitlesSelector } from './selectors/roster-titles.selector';
 
 @Injectable({ providedIn: 'root' })
 export class RosterService {
-  constructor(
-    private store$: Store,
-    private translationService: TranslationsService
-  ) {}
+  constructor(private store$: Store) {}
 
   public get list$() {
     return this.store$.select(rosterTitlesSelector);
@@ -95,25 +85,5 @@ export class RosterService {
 
   public async deleteRoster(index: number): Promise<void> {
     this.store$.dispatch(deleteRosterAction({ index }));
-  }
-
-  public async createFlashCardDeck(
-    rosterIndex: number,
-    settings: FlashCardCreationSettings
-  ): Promise<void> {
-    const language = await firstValueFrom(
-      this.translationService.selectedLanguage$
-    );
-    const deck = await firstValueFrom(
-      this.store$.select(
-        rosterFlashCardDeckSelector(
-          rosterIndex,
-          settings,
-          language,
-          loadTranslation
-        )
-      )
-    );
-    this.store$.dispatch(deckAddedAction({ deck }));
   }
 }

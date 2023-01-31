@@ -2,8 +2,8 @@ import { Deck } from '@battle-scribe-tools/data-access/flash-cards';
 import { rostersSelector } from '@battle-scribe-tools/data-access/rosters';
 import { createSelector } from '@ngrx/store';
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
-import { Language } from 'libs/data-access/translations/src/language';
-import { FlashCardCreationSettings } from '../models/flash-card-creation-settings';
+import { FlashCardCreationSettings } from '@battle-scribe-tools/core/roster';
+import { Language } from '@battle-scribe-tools/data-access/translations';
 
 export const rosterFlashCardDeckSelector = (
   rosterIndex: number,

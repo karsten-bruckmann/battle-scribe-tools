@@ -1,5 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { deckAddedAction } from '../actions/deck-added.action';
+import { deckDeletedAction } from '../actions/deck-deleted.action';
 import { movedToBoxAction } from '../actions/moved-to-box.action';
 import { State } from '../models/state.model';
 
@@ -15,5 +16,8 @@ export const flashCardsReducer = createReducer<State>(
       box: action.box,
     };
     return next;
-  })
+  }),
+  on(deckDeletedAction, (state, action) =>
+    [...state].filter((v, i) => i !== action.index)
+  )
 );

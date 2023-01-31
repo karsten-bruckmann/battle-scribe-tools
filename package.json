@@ -6,8 +6,8 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "deploy": "npx gh-pages -d dist/apps",
-    "predeploy": "npx nx run-many --all --target=build"
+    "deploy": "npx gh-pages -d dist/apps/battle-cards",
+    "predeploy": "npx nx run battle-cards:build"
   },
   "private": true,
   "devDependencies": {

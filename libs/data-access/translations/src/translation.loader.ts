@@ -7,6 +7,9 @@ export const loadTranslation = (
   original: string,
   language: Language
 ): string => {
+  if (!original) {
+    return '';
+  }
   const md5 = Md5.hashStr(original);
   return (
     localStorage.getItem(`${translationsStorageKeyPrefix}${language}-${md5}`) ||
