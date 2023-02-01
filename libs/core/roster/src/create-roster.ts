@@ -54,19 +54,33 @@ export const getModels = (unit: BsSelection): Model[] => {
 
   const unitProfiles = getProfiles(unit);
 
-  const models = unit.selections
-    .filter((selection) => ['unit', 'model'].includes(selection.type))
-    .map((selection) => {
-      const modelProfiles = getProfiles(selection);
-      const profiles = modelProfiles.length > 0 ? modelProfiles : unitProfiles;
+  const models = unit.profiles
+    .filter((profile) => ['Unit'].includes(profile.typeName))
+    .map((profile) => {
       return {
-        title: selection.customName || selection.name,
-        amount: selection.number,
-        profiles: profiles,
-        weapons: getWeapons(selection),
-        psychicPowers: getPsychicPowers(selection),
+        title: profile.name,
+        amount: 1,
+        profiles: getProfiles(unit),
+        weapons: getWeapons(unit),
+        psychicPowers: getPsychicPowers(unit),
       };
-    });
+    })
+    .concat(
+      unit.selections
+        .filter((selection) => ['unit', 'model'].includes(selection.type))
+        .map((selection) => {
+          const modelProfiles = getProfiles(selection);
+          const profiles =
+            modelProfiles.length > 0 ? modelProfiles : unitProfiles;
+          return {
+            title: selection.customName || selection.name,
+            amount: selection.number,
+            profiles: profiles,
+            weapons: getWeapons(selection),
+            psychicPowers: getPsychicPowers(selection),
+          };
+        })
+    );
 
   return deduplicateModels(models);
 };
