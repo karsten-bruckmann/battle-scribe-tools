@@ -1,5 +1,6 @@
 import {
   Model,
+  Mutation,
   Prayer,
   Profile,
   PsychicPower,
@@ -10,6 +11,7 @@ import {
 import {
   AbilityProfile,
   Force as BsForce,
+  MutatedBeyondReasonProfile,
   Parser,
   PrayerProfile,
   PsychicPowerProfile,
@@ -51,6 +53,7 @@ export const getModels = (unit: BsSelection): Model[] => {
         weapons: getWeapons(unit),
         psychicPowers: getPsychicPowers(unit),
         prayers: getPrayers(unit),
+        mutations: getMutations(unit),
       },
     ];
   }
@@ -67,6 +70,7 @@ export const getModels = (unit: BsSelection): Model[] => {
         weapons: getWeapons(unit),
         psychicPowers: getPsychicPowers(unit),
         prayers: getPrayers(unit),
+        mutations: getMutations(unit),
       };
     })
     .concat(
@@ -83,6 +87,7 @@ export const getModels = (unit: BsSelection): Model[] => {
             weapons: getWeapons(selection),
             psychicPowers: getPsychicPowers(selection),
             prayers: getPrayers(selection),
+            mutations: getMutations(unit, selection),
           };
         })
     );
@@ -192,6 +197,22 @@ export const getPrayers = (unit: BsSelection): Prayer[] => {
           title: profile.name,
           effect: profile.effect,
         })),
+    }));
+};
+
+export const getMutations = (
+  unit: BsSelection,
+  model?: BsSelection
+): Mutation[] => {
+  return unit.profiles
+    .concat(model?.selections.map((s) => s.profiles).flat() || [])
+    .filter(
+      (profile): profile is MutatedBeyondReasonProfile =>
+        profile.typeName === TypeName.MUTATED_BEYOND_REASON
+    )
+    .map((profile) => ({
+      title: profile.name,
+      effect: profile.effect,
     }));
 };
 

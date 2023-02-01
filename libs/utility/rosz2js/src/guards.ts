@@ -6,6 +6,7 @@ import {
   BSCost,
   BSExplosionCharacteristic,
   BSForce,
+  BSMutatedBeyondReasonCharacteristic,
   BSPrayerCharacteristic,
   BSProfile,
   BSPsychicPowerCharacteristic,
@@ -114,6 +115,12 @@ export function isBSPrayerProfile(
   bsProfile: BSProfile<BSCharacteristic>
 ): bsProfile is BSProfile<BSPrayerCharacteristic> {
   return bsProfile.$.typeName === BSTypeName.PRAYER;
+}
+
+export function isBSMutatedBeyondReasonProfile(
+  bsProfile: BSProfile<BSCharacteristic>
+): bsProfile is BSProfile<BSMutatedBeyondReasonCharacteristic> {
+  return bsProfile.$.typeName === BSTypeName.MUTATED_BEYOND_REASON;
 }
 
 export function isBSExplosionProfile(

@@ -28,6 +28,7 @@ export interface Model {
   weapons: Weapon[];
   psychicPowers: PsychicPower[];
   prayers: Prayer[];
+  mutations: Mutation[];
 }
 
 export interface Profile {
@@ -58,6 +59,11 @@ export interface PsychicPower {
 export interface Prayer {
   title: string;
   profiles: PrayerProfile[];
+}
+
+export interface Mutation {
+  title: string;
+  effect: string;
 }
 
 export interface WeaponProfile {

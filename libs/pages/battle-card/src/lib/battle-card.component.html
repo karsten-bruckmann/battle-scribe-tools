@@ -361,6 +361,32 @@
               </ng-container>
             </table>
           </div>
+
+          <!-- MUTATIONS -->
+          <div class="scroller" *ngIf="model.mutations.length > 0">
+            <table class="aligned">
+              <tr>
+                <th>
+                  <bst-translatable [text]="'Mutation'"></bst-translatable>
+                </th>
+                <th><bst-translatable [text]="'Effect'"></bst-translatable></th>
+              </tr>
+              <ng-container *ngFor="let mutation of model.mutations">
+                <tr>
+                  <td class="wrap">
+                    <bst-translatable
+                      [text]="mutation.title"
+                    ></bst-translatable>
+                  </td>
+                  <td class="wrap">
+                    <bst-translatable
+                      [text]="mutation.effect"
+                    ></bst-translatable>
+                  </td>
+                </tr>
+              </ng-container>
+            </table>
+          </div>
         </ng-container>
 
         <!-- UNIT RULES -->

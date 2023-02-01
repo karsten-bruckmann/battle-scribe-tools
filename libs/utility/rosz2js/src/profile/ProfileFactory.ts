@@ -1,6 +1,7 @@
 import {
   isBSAbilitiesProfile,
   isBSExplosionProfile,
+  isBSMutatedBeyondReasonProfile,
   isBSPrayerProfile,
   isBSPsychicPowerProfile,
   isBSPsykerProfile,
@@ -13,6 +14,7 @@ import { BSCharacteristic, BSProfile, Profile, TypeName } from '../types';
 import AbilityProfileConverter from './AbilityProfileConverter';
 import AbstractProfileConverter from './AbstractProfileConverter';
 import ExplosionProfileConverter from './ExplosionProfileConverter';
+import MutatedBeyondReasonProfileConverter from './MutatedBeyondReasonProfileConverter';
 import PrayerProfileConverter from './PrayerProfileConverter';
 import PsychicPowerProfileConverter from './PsychicPowerProfileConverter';
 import PsykerProfileConverter from './PsykerProfileConverter';
@@ -45,6 +47,8 @@ class ProfileFactory {
       converter = new PrayerProfileConverter();
     else if (isBSExplosionProfile(bsProfile))
       converter = new ExplosionProfileConverter();
+    else if (isBSMutatedBeyondReasonProfile(bsProfile))
+      converter = new MutatedBeyondReasonProfileConverter();
     else
       converter = new UnknownProfileConverter(
         (bsProfile as { $: { name: string } }).$.name

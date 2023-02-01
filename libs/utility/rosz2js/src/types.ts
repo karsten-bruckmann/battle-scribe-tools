@@ -146,6 +146,7 @@ export enum TypeName {
   PRAYERS = 'Prayers',
   PSYKER = 'Psyker',
   EXPLOSION = 'Explosion',
+  MUTATED_BEYOND_REASON = 'Mutated Beyond Reason',
   UNKNOWN = 'Unknown',
 }
 
@@ -206,6 +207,11 @@ export interface ExplosionProfile extends Profile<TypeName.EXPLOSION> {
   mortalWounds: string;
 }
 
+export interface MutatedBeyondReasonProfile
+  extends Profile<TypeName.MUTATED_BEYOND_REASON> {
+  effect: string;
+}
+
 export interface UnknownProfile extends Profile<TypeName.UNKNOWN> {
   unexpectedTypeName: string;
   [key: string]: string;
@@ -228,6 +234,7 @@ export enum BSTypeName {
   PSYCHIC_POWER = 'Psychic Power',
   PSYKER = 'Psyker',
   PRAYER = 'Prayers',
+  MUTATED_BEYOND_REASON = 'Mutated Beyond Reason',
   EXPLOSION = 'Explosion',
 }
 
@@ -296,15 +303,14 @@ export interface BSPsykerCharacteristic extends BSCharacteristic {
   };
 }
 
-export interface BSPrayerCharacteristic extends BSCharacteristic {
-  $: {
-    name: 'Effect';
-  };
-}
-
 export interface BSExplosionCharacteristic extends BSCharacteristic {
   $: {
     name: 'Dice roll' | 'Distance' | 'Mortal wounds';
+  };
+}
+export interface BSMutatedBeyondReasonCharacteristic extends BSCharacteristic {
+  $: {
+    name: 'Effect';
   };
 }
 
