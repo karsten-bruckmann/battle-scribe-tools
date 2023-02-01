@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1675285195863,
+  "timestamp": 1675288118955,
   "index": "/battle-scribe-tools/index.html",
   "assetGroups": [
     {
@@ -54,7 +54,7 @@
         "/battle-scribe-tools/6183.e8cc497001abb54a.js",
         "/battle-scribe-tools/6560.0d4e3cd9b3c68e7d.js",
         "/battle-scribe-tools/657.1b2cf675051045e1.js",
-        "/battle-scribe-tools/7030.e0a38d0cb635fece.js",
+        "/battle-scribe-tools/7030.b380c29ef2aaafd1.js",
         "/battle-scribe-tools/7544.17c47bd18a7f0257.js",
         "/battle-scribe-tools/7602.3b1f7bbe1e17e9bc.js",
         "/battle-scribe-tools/8136.fc81ec41b3140b1c.js",
@@ -66,7 +66,7 @@
         "/battle-scribe-tools/9325.df2eafa84566460f.js",
         "/battle-scribe-tools/9434.0859771623af50d1.js",
         "/battle-scribe-tools/9536.4cd4484d6edfb3f0.js",
-        "/battle-scribe-tools/9652.a6eb0603da17312f.js",
+        "/battle-scribe-tools/9652.66f65c5a55eb098c.js",
         "/battle-scribe-tools/9654.c617cb0e88598647.js",
         "/battle-scribe-tools/9824.09d020f17491b308.js",
         "/battle-scribe-tools/9922.fa46f0ec88b4781f.js",
@@ -79,7 +79,7 @@
         "/battle-scribe-tools/polyfills-core-js.be3c4db4ba12d4e4.js",
         "/battle-scribe-tools/polyfills-dom.55a512cb243f4299.js",
         "/battle-scribe-tools/polyfills.7e22781db45a7d3e.js",
-        "/battle-scribe-tools/runtime.7903f665d7edd426.js",
+        "/battle-scribe-tools/runtime.a72cfe46846da5ec.js",
         "/battle-scribe-tools/styles.ad414dd5193f8dda.css"
       ],
       "patterns": []
@@ -149,7 +149,7 @@
     "/battle-scribe-tools/6183.e8cc497001abb54a.js": "0f3652375d2f9f036bc1d75b70ac55bd0c5a131b",
     "/battle-scribe-tools/6560.0d4e3cd9b3c68e7d.js": "f1a9ae5ccdbda8a7e60998c8724ce5c684d9b313",
     "/battle-scribe-tools/657.1b2cf675051045e1.js": "b7f96ae3e18febfbeabafc66e8133ec4b0fb072b",
-    "/battle-scribe-tools/7030.e0a38d0cb635fece.js": "73c804ec46c3c67eaed87338f8282cb9781a212f",
+    "/battle-scribe-tools/7030.b380c29ef2aaafd1.js": "87a9b6054f46dc265f8a6cf36f0c6a699221258f",
     "/battle-scribe-tools/7544.17c47bd18a7f0257.js": "fdd21710949de0b474d87179b47cb8554f35779b",
     "/battle-scribe-tools/7602.3b1f7bbe1e17e9bc.js": "3dd443a82359cef4d936783f83804e2fa845b9a8",
     "/battle-scribe-tools/8136.fc81ec41b3140b1c.js": "c421367a6036d1341b7db2f580b94562849d1f46",
@@ -161,7 +161,7 @@
     "/battle-scribe-tools/9325.df2eafa84566460f.js": "1b3b5f8c79bd00e4adc1e7ea333392bdae96ce3a",
     "/battle-scribe-tools/9434.0859771623af50d1.js": "471f94fbbcfc306a6ab88e6c37b9693ec61c18c9",
     "/battle-scribe-tools/9536.4cd4484d6edfb3f0.js": "e06f111f9271f45957ebac0ad6e1df1395f4f338",
-    "/battle-scribe-tools/9652.a6eb0603da17312f.js": "4b367334ed3efec1b58cd852b43a9205fcfe3273",
+    "/battle-scribe-tools/9652.66f65c5a55eb098c.js": "62acf7cc76c64f7adc0390a5582632319dcd5a6d",
     "/battle-scribe-tools/9654.c617cb0e88598647.js": "aa79b5c9552c707feea05adfce87f9798f536244",
     "/battle-scribe-tools/9824.09d020f17491b308.js": "39839226e98b28391baaaf5b80cd55fdfbdc86c9",
     "/battle-scribe-tools/9922.fa46f0ec88b4781f.js": "a6beb0a8b2c0697d5a42ef732233b2e214b5068d",
@@ -176,13 +176,13 @@
     "/battle-scribe-tools/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/battle-scribe-tools/common.08e765c8fa1fac2d.js": "2137ec3fc0c30bc938b7d32e498c91cde192fce8",
     "/battle-scribe-tools/favicon.ico": "4e23d0f9b6ddaf3c9ddef90dbaed2342941297b5",
-    "/battle-scribe-tools/index.html": "0ca3f670ecdb3eb058861515bf707b4bbe54fe26",
+    "/battle-scribe-tools/index.html": "50c7c106370f71f15449284d8779e7b8dba3210d",
     "/battle-scribe-tools/main.d0a2afced200f4a1.js": "b77deb5d17cbba6275b024323724f142e00b42d7",
     "/battle-scribe-tools/manifest.webmanifest": "54e3778b6e47274d500f5bbf5dba5eeeaf8803dd",
     "/battle-scribe-tools/polyfills-core-js.be3c4db4ba12d4e4.js": "83ec711f891793fe224ec13df63736c3c4734519",
     "/battle-scribe-tools/polyfills-dom.55a512cb243f4299.js": "90ba5cea322637e1d67a9d2dfda588b6c8f51bff",
     "/battle-scribe-tools/polyfills.7e22781db45a7d3e.js": "4856bbbea76ffeb2b50294441da9ecf44dd8c483",
-    "/battle-scribe-tools/runtime.7903f665d7edd426.js": "fa81340f596c64ce94d0a588b45272291ec89cfd",
+    "/battle-scribe-tools/runtime.a72cfe46846da5ec.js": "ba674c814217c7811f1c6a87bd0971cfe5a85adc",
     "/battle-scribe-tools/styles.ad414dd5193f8dda.css": "5c83c0432cc03c87aed9aaafe1423039a28e158e"
   },
   "navigationUrls": [
