@@ -1,6 +1,6 @@
 export interface Card {
   question: string;
   rules: string[];
-  answer: string;
+  answers: string[];
   box: number;
 }

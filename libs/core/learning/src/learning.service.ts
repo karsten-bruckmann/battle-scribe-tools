@@ -79,7 +79,7 @@ export class LearningService {
         ? {
             question: currentCard.question,
             rules: currentCard.rules,
-            answer: null,
+            answers: null,
             box: currentCard.box,
           }
         : null,
@@ -87,7 +87,7 @@ export class LearningService {
         if (!currentCard || !session.currentCard) {
           return;
         }
-        session.currentCard.answer = currentCard.answer;
+        session.currentCard.answers = currentCard.answers;
       },
       markCorrect: () => {
         if (!currentCard || !session.currentCard) {
@@ -129,7 +129,7 @@ export class LearningService {
               ...session.currentCard,
               question: currentCard.question,
               rules: currentCard.rules,
-              answer: null,
+              answers: null,
             }
           : null;
         session.remainingCards = deck.length + (currentCard ? 1 : 0);

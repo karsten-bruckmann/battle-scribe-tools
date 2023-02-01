@@ -32,9 +32,18 @@ export const rosterFlashCardDeckSelector = (
               rules: [
                 uniqueRule ? rule.title : `${rule.title} (${unit.title})`,
               ],
-              answer: rule.description,
+              answers: [rule.description],
               box: 0,
             });
+          });
+        }
+
+        if (settings.unitRules) {
+          deck.cards.push({
+            question: 'Einheiten Regeln',
+            rules: [unit.title],
+            answers: unit.rules.map((r) => r.title),
+            box: 0,
           });
         }
 
@@ -44,17 +53,17 @@ export const rosterFlashCardDeckSelector = (
           .forEach((profile) => {
             if (settings.unitProfiles.attacks) {
               deck.cards.push({
-                question: `Attacks (A)`,
+                question: `Atacken (A)`,
                 rules: [profile.title],
-                answer: profile.attacks,
+                answers: [profile.attacks],
                 box: 0,
               });
             }
             if (settings.unitProfiles.ballisticSkill) {
               deck.cards.push({
-                question: `Ballistic Strength (BS)`,
+                question: `Ballistische Fähigkeit (BF)`,
                 rules: [profile.title],
-                answer: profile.ballisticSkill,
+                answers: [profile.ballisticSkill],
                 box: 0,
               });
             }
@@ -62,7 +71,7 @@ export const rosterFlashCardDeckSelector = (
               deck.cards.push({
                 question: `Moralwert (MW)`,
                 rules: [profile.title],
-                answer: profile.leadership,
+                answers: [profile.leadership],
                 box: 0,
               });
             }
@@ -70,7 +79,7 @@ export const rosterFlashCardDeckSelector = (
               deck.cards.push({
                 question: `Bewegung (B)`,
                 rules: [profile.title],
-                answer: profile.movement,
+                answers: [profile.movement],
                 box: 0,
               });
             }
@@ -78,7 +87,7 @@ export const rosterFlashCardDeckSelector = (
               deck.cards.push({
                 question: `Rüstungswert (RW)`,
                 rules: [profile.title],
-                answer: profile.save,
+                answers: [profile.save],
                 box: 0,
               });
             }
@@ -86,7 +95,7 @@ export const rosterFlashCardDeckSelector = (
               deck.cards.push({
                 question: `Stärke (S)`,
                 rules: [profile.title],
-                answer: profile.strength,
+                answers: [profile.strength],
                 box: 0,
               });
             }
@@ -94,7 +103,7 @@ export const rosterFlashCardDeckSelector = (
               deck.cards.push({
                 question: `Wiederstand (W)`,
                 rules: [profile.title],
-                answer: profile.toughness,
+                answers: [profile.toughness],
                 box: 0,
               });
             }
@@ -102,7 +111,7 @@ export const rosterFlashCardDeckSelector = (
               deck.cards.push({
                 question: `Kampfgeschick (KG)`,
                 rules: [profile.title],
-                answer: profile.weaponSkill,
+                answers: [profile.weaponSkill],
                 box: 0,
               });
             }
@@ -110,7 +119,7 @@ export const rosterFlashCardDeckSelector = (
               deck.cards.push({
                 question: `Lebenspunkte (LP)`,
                 rules: [profile.title],
-                answer: profile.wounds,
+                answers: [profile.wounds],
                 box: 0,
               });
             }
@@ -126,7 +135,7 @@ export const rosterFlashCardDeckSelector = (
               deck.cards.push({
                 question: `Fähigkeiten`,
                 rules: [profile.title],
-                answer: profile.abilities,
+                answers: [profile.abilities],
                 box: 0,
               });
             }
@@ -134,7 +143,7 @@ export const rosterFlashCardDeckSelector = (
               deck.cards.push({
                 question: `Durchschlag (DS)`,
                 rules: [profile.title],
-                answer: profile.armourPenetration,
+                answers: [profile.armourPenetration],
                 box: 0,
               });
             }
@@ -142,7 +151,7 @@ export const rosterFlashCardDeckSelector = (
               deck.cards.push({
                 question: `Schdenswert (SW)`,
                 rules: [profile.title],
-                answer: profile.damage,
+                answers: [profile.damage],
                 box: 0,
               });
             }
@@ -150,7 +159,7 @@ export const rosterFlashCardDeckSelector = (
               deck.cards.push({
                 question: `Reichweite`,
                 rules: [profile.title],
-                answer: profile.range,
+                answers: [profile.range],
                 box: 0,
               });
             }
@@ -158,7 +167,7 @@ export const rosterFlashCardDeckSelector = (
               deck.cards.push({
                 question: `Stärke (S)`,
                 rules: [profile.title],
-                answer: profile.strength,
+                answers: [profile.strength],
                 box: 0,
               });
             }
@@ -166,7 +175,7 @@ export const rosterFlashCardDeckSelector = (
               deck.cards.push({
                 question: `Typ`,
                 rules: [profile.title],
-                answer: profile.type,
+                answers: [profile.type],
                 box: 0,
               });
             }
@@ -180,7 +189,9 @@ export const rosterFlashCardDeckSelector = (
         (card, index) =>
           index ===
           deck.cards.findIndex(
-            (c) => c.question === card.question && c.answer === card.answer
+            (c) =>
+              c.question === card.question &&
+              c.answers.join() === card.answers.join()
           )
       ),
     };

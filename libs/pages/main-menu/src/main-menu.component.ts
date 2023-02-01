@@ -16,6 +16,7 @@ interface SettingsForm {
   roster: FormControl<number | null>;
   name: FormControl<string | null>;
   rules: FormControl<boolean | null>;
+  unitRules: FormControl<boolean | null>;
   boxes: FormControl<number | null>;
   unitProfiles: FormGroup<{
     movement: FormControl<boolean | null>;
@@ -70,6 +71,7 @@ export class MainMenuComponent {
     name: new FormControl(''),
     boxes: new FormControl(3),
     rules: new FormControl(true),
+    unitRules: new FormControl(true),
     unitProfiles: new FormGroup({
       attacks: new FormControl(true),
       ballisticSkill: new FormControl(true),

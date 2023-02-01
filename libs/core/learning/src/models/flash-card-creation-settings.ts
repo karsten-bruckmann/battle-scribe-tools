@@ -19,6 +19,7 @@ export interface FlashCardCreationSettings {
     abilities: boolean;
   };
   rules: boolean;
+  unitRules: boolean;
   boxes: number;
   name: string;
 }

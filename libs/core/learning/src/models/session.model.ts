@@ -3,7 +3,7 @@ export interface Session {
   currentCard: {
     question: string;
     rules: string[];
-    answer: string | null;
+    answers: string[] | null;
     box: number;
   } | null;
   box: number;

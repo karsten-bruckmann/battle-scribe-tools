@@ -27,10 +27,10 @@
           </h1>
         </ion-card-content>
       </ion-card>
-      <ion-card [ngClass]="{ hidden: !card.answer }">
+      <ion-card [ngClass]="{ hidden: !card.answers }">
         <ion-card-content>
-          <h2>
-            <bst-translatable [text]="card.answer || ''"></bst-translatable>
+          <h2 *ngFor="let answer of card.answers">
+            <bst-translatable [text]="answer || ''"></bst-translatable>
           </h2>
         </ion-card-content>
       </ion-card>
@@ -38,11 +38,11 @@
 
     <ion-footer>
       <ion-toolbar>
-        <ion-buttons *ngIf="!card.answer">
+        <ion-buttons *ngIf="!card.answers">
           <ion-button (click)="session.showAnswer()"> Lösung </ion-button>
           <ion-button (click)="session.skip()"> Überspringen </ion-button>
         </ion-buttons>
-        <ion-buttons *ngIf="card.answer">
+        <ion-buttons *ngIf="card.answers">
           <ion-button (click)="session.markIncorrect()">
             wusste ich nicht
           </ion-button>
