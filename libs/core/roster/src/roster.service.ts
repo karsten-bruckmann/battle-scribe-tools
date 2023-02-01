@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {
@@ -5,22 +6,23 @@ import {
   deleteRosterAction,
   Detachment,
   detachmentSelector,
+  overwriteRosterAction,
   Roster,
   rosterSelector,
   Unit,
   unitSelector,
 } from '@battle-scribe-tools/data-access/rosters';
 import { Store } from '@ngrx/store';
-import { NEVER, Observable, switchMap } from 'rxjs';
+import { firstValueFrom, NEVER, Observable, switchMap } from 'rxjs';
 import { createRoster } from './create-roster';
-import { rosterTitlesSelector } from './selectors/roster-titles.selector';
+import { rosterListSelector } from './selectors/roster-list.selector';
 
 @Injectable({ providedIn: 'root' })
 export class RosterService {
-  constructor(private store$: Store) {}
+  constructor(private store$: Store, private http: HttpClient) {}
 
   public get list$() {
-    return this.store$.select(rosterTitlesSelector);
+    return this.store$.select(rosterListSelector);
   }
 
   public getRosterFromRoute$(
@@ -81,6 +83,36 @@ export class RosterService {
   public async addRoster(file: File): Promise<void> {
     const roster = await createRoster(file);
     this.store$.dispatch(addRosterAction({ roster }));
+  }
+
+  public async addRosterFromUrl(roszUrl: string): Promise<void> {
+    const blob = await firstValueFrom(
+      this.http.get(roszUrl, {
+        responseType: 'blob',
+      })
+    );
+    const file = new File([blob], 'donwloaded.rosz');
+    const roster = await createRoster(file);
+    this.store$.dispatch(addRosterAction({ roster: { ...roster, roszUrl } }));
+  }
+
+  public async updateRoster(index: number) {
+    const current = await firstValueFrom(
+      this.store$.select(rosterSelector(index))
+    );
+    if (!current.roszUrl) {
+      return;
+    }
+    const blob = await firstValueFrom(
+      this.http.get(current.roszUrl, {
+        responseType: 'blob',
+      })
+    );
+    const file = new File([blob], 'donwloaded.rosz');
+    const roster = await createRoster(file);
+    this.store$.dispatch(
+      overwriteRosterAction({ roster: { ...current, ...roster }, index })
+    );
   }
 
   public async deleteRoster(index: number): Promise<void> {

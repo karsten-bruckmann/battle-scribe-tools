@@ -8,3 +8,7 @@
 ion-item-divider:not(:first-of-type) {
   margin-top: 50px;
 }
+
+.add-roster {
+  --background: var(--ion-color-light);
+}

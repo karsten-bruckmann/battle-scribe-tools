@@ -59,7 +59,7 @@ export class MainMenuComponent {
     private learningService: LearningService
   ) {}
 
-  public rosterTitles$ = this.rostersService.list$;
+  public rosterList$ = this.rostersService.list$;
   public lessons$ = this.learningService.lessons$;
 
   @ViewChild('modal') public modal?: HTMLIonModalElement;
@@ -106,6 +106,14 @@ export class MainMenuComponent {
     await this.rostersService.addRoster(file);
   }
 
+  public async linkFile(url: string): Promise<void> {
+    await this.rostersService.addRosterFromUrl(url);
+  }
+
+  public async updateFile(index: number): Promise<void> {
+    await this.rostersService.updateRoster(index);
+  }
+
   public deleteRoster(index: number): void {
     this.rostersService.deleteRoster(index);
   }
@@ -115,12 +123,12 @@ export class MainMenuComponent {
   }
 
   public async createDeck(): Promise<void> {
-    const rosterTitles = await firstValueFrom(this.rosterTitles$);
+    const rosterList = await firstValueFrom(this.rosterList$);
     this.learningService.createFlashCardDeck(
       this.settingsForm.value.roster || 0,
       {
         ...(this.settingsForm.value as FlashCardCreationSettings),
-        name: rosterTitles[this.settingsForm.value.roster || 0],
+        name: rosterList[this.settingsForm.value.roster || 0].title,
       }
     );
   }

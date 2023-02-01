@@ -6,7 +6,7 @@
 
 <ion-content>
   <ion-item-divider>Roster</ion-item-divider>
-  <ion-item>
+  <ion-item class="add-roster">
     <ion-label>
       <ion-icon color="primary" slot="start" name="document-outline"></ion-icon>
       Neue Datei (exportierte .rosz Datei)
@@ -19,15 +19,30 @@
       type="file"
     />
   </ion-item>
+  <ion-item class="add-roster">
+    <ion-label>
+      <ion-icon color="primary" slot="start" name="document-outline"></ion-icon>
+      URL laden
+    </ion-label>
+    <input #u type="text" />
+    <ion-button slot="end" fill="outline" (click)="linkFile(u.value)"
+      >laden...</ion-button
+    >
+  </ion-item>
 
-  <ion-item *ngFor="let roster of rosterTitles$ | async; let i = index">
+  <ion-item *ngFor="let roster of rosterList$ | async; let i = index">
     <ion-label [routerLink]="['roster', i]">
       <ion-icon color="primary" slot="start" name="document-outline"></ion-icon>
-      {{ roster }}
+      {{ roster.title }}
     </ion-label>
-    <ion-button slot="end" fill="clear" (click)="deleteRoster(i)">
-      <ion-icon color="primary" name="trash"></ion-icon>
-    </ion-button>
+    <ion-buttons slot="end">
+      <ion-button *ngIf="roster.canUpdate" fill="clear" (click)="updateFile(i)">
+        <ion-icon color="primary" name="reload"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" (click)="deleteRoster(i)">
+        <ion-icon color="primary" name="trash"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-item>
 
   <ion-item-divider>
@@ -82,10 +97,10 @@
         <ion-select formControlName="roster">
           <ion-select-option></ion-select-option>
           <ion-select-option
-            *ngFor="let roster of rosterTitles$ | async; let i = index"
+            *ngFor="let roster of rosterList$ | async; let i = index"
             [value]="i"
             (click)="form.isOpen = false"
-            >{{ roster }}</ion-select-option
+            >{{ roster.title }}</ion-select-option
           >
         </ion-select>
       </ion-item>

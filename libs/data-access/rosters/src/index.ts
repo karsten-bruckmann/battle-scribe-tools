@@ -1,5 +1,6 @@
 export * from './actions/add-roster.action';
 export * from './actions/delete-roster.action';
+export * from './actions/overwrite-roster.action';
 export * from './models/roster.model';
 export * from './rosters.module';
 export * from './selectors/detachment.selector';
