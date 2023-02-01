@@ -1,5 +1,6 @@
 import {
   Model,
+  Prayer,
   Profile,
   PsychicPower,
   Rule,
@@ -10,6 +11,7 @@ import {
   AbilityProfile,
   Force as BsForce,
   Parser,
+  PrayerProfile,
   PsychicPowerProfile,
   Selection as BsSelection,
   TypeName,
@@ -48,6 +50,7 @@ export const getModels = (unit: BsSelection): Model[] => {
         profiles: getProfiles(unit),
         weapons: getWeapons(unit),
         psychicPowers: getPsychicPowers(unit),
+        prayers: getPrayers(unit),
       },
     ];
   }
@@ -63,6 +66,7 @@ export const getModels = (unit: BsSelection): Model[] => {
         profiles: getProfiles(unit),
         weapons: getWeapons(unit),
         psychicPowers: getPsychicPowers(unit),
+        prayers: getPrayers(unit),
       };
     })
     .concat(
@@ -78,6 +82,7 @@ export const getModels = (unit: BsSelection): Model[] => {
             profiles: profiles,
             weapons: getWeapons(selection),
             psychicPowers: getPsychicPowers(selection),
+            prayers: getPrayers(selection),
           };
         })
     );
@@ -162,6 +167,30 @@ export const getPsychicPowers = (unit: BsSelection): PsychicPower[] => {
           range: profile.range,
           warpCharge: profile.warpCharge,
           description: profile.details,
+        })),
+    }));
+};
+
+export const getPrayers = (unit: BsSelection): Prayer[] => {
+  return unit.selections
+    .filter(
+      (selection) =>
+        selection.type === 'upgrade' &&
+        selection.profiles.filter(
+          (profile): profile is PrayerProfile =>
+            profile.typeName === TypeName.PRAYERS
+        ).length > 0
+    )
+    .map((selection) => ({
+      title: selection.customName || selection.name,
+      profiles: selection.profiles
+        .filter(
+          (profile): profile is PrayerProfile =>
+            profile.typeName === TypeName.PRAYERS
+        )
+        .map((profile) => ({
+          title: profile.name,
+          effect: profile.effect,
         })),
     }));
 };

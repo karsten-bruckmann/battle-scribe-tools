@@ -27,6 +27,7 @@ export interface Model {
   profiles: Profile[];
   weapons: Weapon[];
   psychicPowers: PsychicPower[];
+  prayers: Prayer[];
 }
 
 export interface Profile {
@@ -54,6 +55,11 @@ export interface PsychicPower {
   profiles: PsychicPowerProfile[];
 }
 
+export interface Prayer {
+  title: string;
+  profiles: PrayerProfile[];
+}
+
 export interface WeaponProfile {
   title: string;
   range: string;
@@ -63,6 +69,11 @@ export interface WeaponProfile {
   damage: string;
   abilities: string;
 }
+export interface PrayerProfile {
+  title: string;
+  effect: string;
+}
+
 export interface PsychicPowerProfile {
   title: string;
   range: string;

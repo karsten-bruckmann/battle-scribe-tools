@@ -102,7 +102,9 @@
           <div class="scroller">
             <table class="aligned">
               <tr>
-                <th colspan="2"></th>
+                <th colspan="2">
+                  <bst-translatable [text]="'Weapon'"></bst-translatable>
+                </th>
                 <th><bst-translatable [text]="'Range'"></bst-translatable></th>
                 <th><bst-translatable [text]="'Type'"></bst-translatable></th>
                 <th><bst-translatable [text]="'S'"></bst-translatable></th>
@@ -242,7 +244,9 @@
           <div class="scroller" *ngIf="model.psychicPowers.length > 0">
             <table class="aligned">
               <tr>
-                <th></th>
+                <th>
+                  <bst-translatable [text]="'Psychic Power'"></bst-translatable>
+                </th>
                 <th><bst-translatable [text]="'Range'"></bst-translatable></th>
                 <th>
                   <bst-translatable [text]="'Warp Charge'"></bst-translatable>
@@ -301,6 +305,55 @@
                     <td>
                       <bst-translatable
                         [text]="profile.description"
+                      ></bst-translatable>
+                    </td>
+                  </tr>
+                </ng-template>
+              </ng-container>
+            </table>
+          </div>
+
+          <!-- PRAYERS -->
+          <div class="scroller" *ngIf="model.prayers.length > 0">
+            <table class="aligned">
+              <tr>
+                <th><bst-translatable [text]="'Prayer'"></bst-translatable></th>
+                <th><bst-translatable [text]="'Effect'"></bst-translatable></th>
+              </tr>
+              <ng-container *ngFor="let prayer of model.prayers">
+                <tr
+                  *ngIf="prayer.profiles.length === 1; else multiProfilePrayer"
+                >
+                  <td class="wrap">
+                    <bst-translatable [text]="prayer.title"></bst-translatable>
+                  </td>
+                  <td class="wrap">
+                    <bst-translatable
+                      [text]="prayer.profiles[0].effect"
+                    ></bst-translatable>
+                  </td>
+                </tr>
+                <ng-template #multiProfilePrayer>
+                  <tr>
+                    <td colspan="2">
+                      <bst-translatable
+                        [text]="prayer.title"
+                      ></bst-translatable>
+                    </td>
+                  </tr>
+                  <tr
+                    *ngFor="let profile of prayer.profiles"
+                    class="sub-profile"
+                  >
+                    <td></td>
+                    <td>
+                      <bst-translatable
+                        [text]="profile.title"
+                      ></bst-translatable>
+                    </td>
+                    <td>
+                      <bst-translatable
+                        [text]="profile.effect"
                       ></bst-translatable>
                     </td>
                   </tr>

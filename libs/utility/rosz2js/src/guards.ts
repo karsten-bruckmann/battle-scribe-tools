@@ -6,6 +6,7 @@ import {
   BSCost,
   BSExplosionCharacteristic,
   BSForce,
+  BSPrayerCharacteristic,
   BSProfile,
   BSPsychicPowerCharacteristic,
   BSPsykerCharacteristic,
@@ -107,6 +108,12 @@ export function isBSPsykerProfile(
   bsProfile: BSProfile<BSCharacteristic>
 ): bsProfile is BSProfile<BSPsykerCharacteristic> {
   return bsProfile.$.typeName === BSTypeName.PSYKER;
+}
+
+export function isBSPrayerProfile(
+  bsProfile: BSProfile<BSCharacteristic>
+): bsProfile is BSProfile<BSPrayerCharacteristic> {
+  return bsProfile.$.typeName === BSTypeName.PRAYER;
 }
 
 export function isBSExplosionProfile(

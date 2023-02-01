@@ -1,24 +1,26 @@
-import { BSProfile, BSCharacteristic, TypeName, Profile } from '../types';
 import {
-  isBSWeaponProfile,
-  isBSUnitProfile,
   isBSAbilitiesProfile,
-  isBSWoundTrackProfile,
-  isBSTransportProfile,
+  isBSExplosionProfile,
+  isBSPrayerProfile,
   isBSPsychicPowerProfile,
   isBSPsykerProfile,
-  isBSExplosionProfile,
+  isBSTransportProfile,
+  isBSUnitProfile,
+  isBSWeaponProfile,
+  isBSWoundTrackProfile,
 } from '../guards';
-import WeaponProfileConverter from './WeaponProfileConverter';
-import AbstractProfileConverter from './AbstractProfileConverter';
-import UnitProfileConverter from './UnitProfileConverter';
+import { BSCharacteristic, BSProfile, Profile, TypeName } from '../types';
 import AbilityProfileConverter from './AbilityProfileConverter';
-import WoundTrackProfileConverter from './WoundTrackProfileConverter';
-import TransportProfileConverter from './TransportProfileConverter';
+import AbstractProfileConverter from './AbstractProfileConverter';
+import ExplosionProfileConverter from './ExplosionProfileConverter';
+import PrayerProfileConverter from './PrayerProfileConverter';
 import PsychicPowerProfileConverter from './PsychicPowerProfileConverter';
 import PsykerProfileConverter from './PsykerProfileConverter';
-import ExplosionProfileConverter from './ExplosionProfileConverter';
+import TransportProfileConverter from './TransportProfileConverter';
+import UnitProfileConverter from './UnitProfileConverter';
 import UnknownProfileConverter from './UnknownProfileConverter';
+import WeaponProfileConverter from './WeaponProfileConverter';
+import WoundTrackProfileConverter from './WoundTrackProfileConverter';
 
 class ProfileFactory {
   static getProfile(bsProfile: BSProfile<BSCharacteristic>): Profile<TypeName> {
@@ -39,6 +41,8 @@ class ProfileFactory {
       converter = new PsychicPowerProfileConverter();
     else if (isBSPsykerProfile(bsProfile))
       converter = new PsykerProfileConverter();
+    else if (isBSPrayerProfile(bsProfile))
+      converter = new PrayerProfileConverter();
     else if (isBSExplosionProfile(bsProfile))
       converter = new ExplosionProfileConverter();
     else

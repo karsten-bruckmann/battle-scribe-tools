@@ -143,6 +143,7 @@ export enum TypeName {
   WOUND_TRACK = 'Wound Track',
   TRANSPORT = 'Transport',
   PSYCHIC_POWER = 'Psychic Power',
+  PRAYERS = 'Prayers',
   PSYKER = 'Psyker',
   EXPLOSION = 'Explosion',
   UNKNOWN = 'Unknown',
@@ -188,6 +189,10 @@ export interface PsychicPowerProfile extends Profile<TypeName.PSYCHIC_POWER> {
   details: string;
 }
 
+export interface PrayerProfile extends Profile<TypeName.PRAYERS> {
+  effect: string;
+}
+
 export interface PsykerProfile extends Profile<TypeName.PSYKER> {
   cast: string;
   deny: string;
@@ -222,6 +227,7 @@ export enum BSTypeName {
   TRANSPORT = 'Transport',
   PSYCHIC_POWER = 'Psychic Power',
   PSYKER = 'Psyker',
+  PRAYER = 'Prayers',
   EXPLOSION = 'Explosion',
 }
 
@@ -278,9 +284,21 @@ export interface BSPsychicPowerCharacteristic extends BSCharacteristic {
   };
 }
 
+export interface BSPrayerCharacteristic extends BSCharacteristic {
+  $: {
+    name: 'Effect';
+  };
+}
+
 export interface BSPsykerCharacteristic extends BSCharacteristic {
   $: {
     name: 'Cast' | 'Deny' | 'Powers Known' | 'Other';
+  };
+}
+
+export interface BSPrayerCharacteristic extends BSCharacteristic {
+  $: {
+    name: 'Effect';
   };
 }
 
