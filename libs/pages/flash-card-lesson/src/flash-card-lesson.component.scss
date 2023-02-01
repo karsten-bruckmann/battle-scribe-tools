@@ -1,7 +1,3 @@
-ion-card-content {
-  text-align: center;
-}
-
 ion-footer {
   ion-buttons {
     justify-content: space-evenly;
@@ -16,6 +12,16 @@ ion-card {
     transition: none;
     overflow: scroll;
     max-height: 0px;
+  }
+
+  &.question {
+    text-align: center;
+
+    ion-card-content {
+      h1:first-child {
+        margin-bottom: 20px;
+      }
+    }
   }
 }
 

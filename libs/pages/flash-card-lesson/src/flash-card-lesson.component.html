@@ -19,16 +19,19 @@
 <ng-container *ngIf="session$ | async as session">
   <ng-container *ngIf="session.currentCard as card; else finished">
     <ion-content>
-      <ion-card>
+      <ion-card class="question">
         <ion-card-content>
-          <h1>
-            {{ card.question }}
+          <h1><bst-translatable [text]="card.question"></bst-translatable>:</h1>
+          <h1 *ngFor="let rule of card.rules">
+            <bst-translatable [text]="rule"></bst-translatable>
           </h1>
         </ion-card-content>
       </ion-card>
       <ion-card [ngClass]="{ hidden: !card.answer }">
         <ion-card-content>
-          <h1>{{ card.answer }}</h1>
+          <h2>
+            <bst-translatable [text]="card.answer || ''"></bst-translatable>
+          </h2>
         </ion-card-content>
       </ion-card>
     </ion-content>

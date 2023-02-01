@@ -2,6 +2,7 @@ export interface Session {
   deckName: string;
   currentCard: {
     question: string;
+    rules: string[];
     answer: string | null;
     box: number;
   } | null;

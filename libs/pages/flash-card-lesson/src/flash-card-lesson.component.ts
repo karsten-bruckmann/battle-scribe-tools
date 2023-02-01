@@ -6,12 +6,19 @@ import {
   LearningService,
   Session,
 } from '@battle-scribe-tools/core/learning';
+import { TranslatableComponent } from '@battle-scribe-tools/feature/translatable';
 import { IonicModule } from '@ionic/angular';
 import { filter, map, Observable, shareReplay, switchMap } from 'rxjs';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, LearningModule, RouterModule, IonicModule],
+  imports: [
+    CommonModule,
+    LearningModule,
+    RouterModule,
+    IonicModule,
+    TranslatableComponent,
+  ],
   templateUrl: './flash-card-lesson.component.html',
   styleUrls: ['./flash-card-lesson.component.scss'],
 })

@@ -1,15 +1,11 @@
 import { Deck } from '@battle-scribe-tools/data-access/flash-cards';
 import { rostersSelector } from '@battle-scribe-tools/data-access/rosters';
 import { createSelector } from '@ngrx/store';
-// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
-import { FlashCardCreationSettings } from '@battle-scribe-tools/core/roster';
-import { Language } from '@battle-scribe-tools/data-access/translations';
+import { FlashCardCreationSettings } from '../models/flash-card-creation-settings';
 
 export const rosterFlashCardDeckSelector = (
   rosterIndex: number,
-  settings: FlashCardCreationSettings,
-  language: Language,
-  translate: (original: string, language: Language) => string
+  settings: FlashCardCreationSettings
 ) =>
   createSelector(rostersSelector, (rosters): Deck => {
     const roster = rosters[rosterIndex];
@@ -32,10 +28,11 @@ export const rosterFlashCardDeckSelector = (
                     r.title === rule.title && r.description !== rule.description
                 ) === undefined;
             deck.cards.push({
-              question: `${translate(rule.title, language)}${
-                uniqueRule ? '' : ` (${translate(unit.title, language)})`
-              }?`,
-              answer: translate(rule.description, language),
+              question: 'Rule?',
+              rules: [
+                uniqueRule ? rule.title : `${rule.title} (${unit.title})`,
+              ],
+              answer: rule.description,
               box: 0,
             });
           });
@@ -47,82 +44,73 @@ export const rosterFlashCardDeckSelector = (
           .forEach((profile) => {
             if (settings.unitProfiles.attacks) {
               deck.cards.push({
-                question: `${translate(profile.title, language)}: Atacken (A)`,
-                answer: translate(profile.attacks, language),
+                question: `Attacks (A)`,
+                rules: [profile.title],
+                answer: profile.attacks,
                 box: 0,
               });
             }
             if (settings.unitProfiles.ballisticSkill) {
               deck.cards.push({
-                question: `${translate(
-                  profile.title,
-                  language
-                )}: Ballistische Fähigkeit (BF)`,
-                answer: translate(profile.ballisticSkill, language),
+                question: `Ballistic Strength (BS)`,
+                rules: [profile.title],
+                answer: profile.ballisticSkill,
                 box: 0,
               });
             }
             if (settings.unitProfiles.leadership) {
               deck.cards.push({
-                question: `${translate(
-                  profile.title,
-                  language
-                )}: Moralwert (MW)`,
-                answer: translate(profile.leadership, language),
+                question: `Moralwert (MW)`,
+                rules: [profile.title],
+                answer: profile.leadership,
                 box: 0,
               });
             }
             if (settings.unitProfiles.movement) {
               deck.cards.push({
-                question: `${translate(profile.title, language)}: Bewegung (B)`,
-                answer: translate(profile.movement, language),
+                question: `Bewegung (B)`,
+                rules: [profile.title],
+                answer: profile.movement,
                 box: 0,
               });
             }
             if (settings.unitProfiles.save) {
               deck.cards.push({
-                question: `${translate(
-                  profile.title,
-                  language
-                )}: Rüstungswert (RW)`,
-                answer: translate(profile.save, language),
+                question: `Rüstungswert (RW)`,
+                rules: [profile.title],
+                answer: profile.save,
                 box: 0,
               });
             }
             if (settings.unitProfiles.strength) {
               deck.cards.push({
-                question: `${translate(profile.title, language)}: Stärke (S)`,
-                answer: translate(profile.strength, language),
+                question: `Stärke (S)`,
+                rules: [profile.title],
+                answer: profile.strength,
                 box: 0,
               });
             }
             if (settings.unitProfiles.toughness) {
               deck.cards.push({
-                question: `${translate(
-                  profile.title,
-                  language
-                )}: Wiederstand (W)`,
-                answer: translate(profile.toughness, language),
+                question: `Wiederstand (W)`,
+                rules: [profile.title],
+                answer: profile.toughness,
                 box: 0,
               });
             }
             if (settings.unitProfiles.weaponSkill) {
               deck.cards.push({
-                question: `${translate(
-                  profile.title,
-                  language
-                )}: Kampfgeschick (KG)`,
-                answer: translate(profile.weaponSkill, language),
+                question: `Kampfgeschick (KG)`,
+                rules: [profile.title],
+                answer: profile.weaponSkill,
                 box: 0,
               });
             }
             if (settings.unitProfiles.wounds) {
               deck.cards.push({
-                question: `${translate(
-                  profile.title,
-                  language
-                )}: Lebenspunkte (LP)`,
-                answer: translate(profile.wounds, language),
+                question: `Lebenspunkte (LP)`,
+                rules: [profile.title],
+                answer: profile.wounds,
                 box: 0,
               });
             }
@@ -136,49 +124,49 @@ export const rosterFlashCardDeckSelector = (
           .forEach((profile) => {
             if (settings.weaponProfiles.abilities) {
               deck.cards.push({
-                question: `${translate(profile.title, language)}: Fähigkeiten`,
-                answer: translate(profile.abilities, language),
+                question: `Fähigkeiten`,
+                rules: [profile.title],
+                answer: profile.abilities,
                 box: 0,
               });
             }
             if (settings.weaponProfiles.armourPenetration) {
               deck.cards.push({
-                question: `${translate(
-                  profile.title,
-                  language
-                )}: Durchschlag (DS)`,
-                answer: translate(profile.armourPenetration, language),
+                question: `Durchschlag (DS)`,
+                rules: [profile.title],
+                answer: profile.armourPenetration,
                 box: 0,
               });
             }
             if (settings.weaponProfiles.damage) {
               deck.cards.push({
-                question: `${translate(
-                  profile.title,
-                  language
-                )}: Schdenswert (SW)`,
-                answer: translate(profile.damage, language),
+                question: `Schdenswert (SW)`,
+                rules: [profile.title],
+                answer: profile.damage,
                 box: 0,
               });
             }
             if (settings.weaponProfiles.range) {
               deck.cards.push({
-                question: `${translate(profile.title, language)}: Reichweite`,
-                answer: translate(profile.range, language),
+                question: `Reichweite`,
+                rules: [profile.title],
+                answer: profile.range,
                 box: 0,
               });
             }
             if (settings.weaponProfiles.strength) {
               deck.cards.push({
-                question: `${translate(profile.title, language)}: Stärke (S)`,
-                answer: translate(profile.strength, language),
+                question: `Stärke (S)`,
+                rules: [profile.title],
+                answer: profile.strength,
                 box: 0,
               });
             }
             if (settings.weaponProfiles.type) {
               deck.cards.push({
-                question: `${translate(profile.title, language)}: Typ`,
-                answer: translate(profile.type, language),
+                question: `Typ`,
+                rules: [profile.title],
+                answer: profile.type,
                 box: 0,
               });
             }

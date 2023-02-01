@@ -3,14 +3,11 @@ import { Component, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import {
+  FlashCardCreationSettings,
   LearningModule,
   LearningService,
 } from '@battle-scribe-tools/core/learning';
-import {
-  FlashCardCreationSettings,
-  RosterModule,
-  RosterService,
-} from '@battle-scribe-tools/core/roster';
+import { RosterModule, RosterService } from '@battle-scribe-tools/core/roster';
 import { TranslationConfigComponent } from '@battle-scribe-tools/feature/translation-settings';
 import { IonicModule } from '@ionic/angular';
 import { firstValueFrom } from 'rxjs';

@@ -8,7 +8,9 @@ import { flashCardsReducer } from './reducers/flash-cards.reducer';
   imports: [
     StoreModule.forFeature<State>('flash-cards', flashCardsReducer, {
       metaReducers: [
-        createStorageSyncMetaReducer('flash-cards', { storage: localStorage }),
+        createStorageSyncMetaReducer('flash-cards/v2', {
+          storage: localStorage,
+        }),
       ],
     }),
   ],

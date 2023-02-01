@@ -5,10 +5,6 @@ import {
   deckSelector,
   movedToBoxAction,
 } from '@battle-scribe-tools/data-access/flash-cards';
-import {
-  loadTranslation,
-  TranslationsService,
-} from '@battle-scribe-tools/data-access/translations';
 import { Store } from '@ngrx/store';
 import { firstValueFrom } from 'rxjs';
 import { FlashCardCreationSettings } from './models/flash-card-creation-settings';
@@ -18,10 +14,7 @@ import { rosterFlashCardDeckSelector } from './selectors/roster-flash-card-deck.
 
 @Injectable({ providedIn: 'root' })
 export class LearningService {
-  constructor(
-    private store$: Store,
-    private translationService: TranslationsService
-  ) {}
+  constructor(private store$: Store) {}
 
   public get lessons$() {
     return this.store$.select(lessonsSelector);
@@ -35,18 +28,8 @@ export class LearningService {
     rosterIndex: number,
     settings: FlashCardCreationSettings
   ): Promise<void> {
-    const language = await firstValueFrom(
-      this.translationService.selectedLanguage$
-    );
     const deck = await firstValueFrom(
-      this.store$.select(
-        rosterFlashCardDeckSelector(
-          rosterIndex,
-          settings,
-          language,
-          loadTranslation
-        )
-      )
+      this.store$.select(rosterFlashCardDeckSelector(rosterIndex, settings))
     );
     this.store$.dispatch(deckAddedAction({ deck }));
   }
@@ -95,6 +78,7 @@ export class LearningService {
       currentCard: currentCard
         ? {
             question: currentCard.question,
+            rules: currentCard.rules,
             answer: null,
             box: currentCard.box,
           }
@@ -144,6 +128,7 @@ export class LearningService {
           ? {
               ...session.currentCard,
               question: currentCard.question,
+              rules: currentCard.rules,
               answer: null,
             }
           : null;
