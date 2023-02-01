@@ -235,6 +235,18 @@ export const getUnitRules = (
         title: rule.name,
         description: rule.description,
       }))
+    )
+    .concat(
+      detachment.rules.map((rule) => ({
+        title: rule.name,
+        description: rule.description,
+      }))
+    )
+    .filter(
+      (r, i, all) =>
+        all.findIndex(
+          (r2) => r.title === r2.title && r.description === r2.description
+        ) === i
     );
 };
 
