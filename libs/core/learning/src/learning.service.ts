@@ -97,7 +97,9 @@ export class LearningService {
           movedToBoxAction({
             deckIndex: index,
             cardIndex: sortedDeck.cards.findIndex(
-              (c) => c.question === currentCard?.question
+              (c) =>
+                c.question === currentCard?.question &&
+                JSON.stringify(c.rules) === JSON.stringify(currentCard.rules)
             ),
             box: currentCard?.box + 1,
           })
@@ -112,7 +114,9 @@ export class LearningService {
           movedToBoxAction({
             deckIndex: index,
             cardIndex: sortedDeck.cards.findIndex(
-              (c) => c.question === currentCard?.question
+              (c) =>
+                c.question === currentCard?.question &&
+                JSON.stringify(c.rules) === JSON.stringify(currentCard.rules)
             ),
             box: 0,
           })
