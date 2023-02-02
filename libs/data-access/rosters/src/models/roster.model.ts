@@ -7,6 +7,7 @@ export interface Roster {
 export interface Detachment {
   title: string;
   units: Unit[];
+  rules: Rule[];
 }
 
 export interface Costs {

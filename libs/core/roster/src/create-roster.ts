@@ -4,6 +4,7 @@ import {
   Prayer,
   Profile,
   PsychicPower,
+  Roster,
   Rule,
   Unit,
   Weapon,
@@ -15,20 +16,22 @@ import {
   Parser,
   PrayerProfile,
   PsychicPowerProfile,
+  Roster as BsRoster,
   Selection as BsSelection,
   TypeName,
   UnitProfile,
   WeaponProfile,
 } from '@battle-scribe-tools/utility/rosz2js';
 
-export const createRoster = async (file: File) => {
+export const createRoster = async (file: File): Promise<Roster> => {
   const parser = new Parser();
-  const bsRoster = await parser.parse(file);
+  const bsRoster: BsRoster = await parser.parse(file);
   return {
     title: bsRoster.name,
     detachments: bsRoster.forces.map((bsForce) => ({
       title: bsForce.name,
       units: getUnits(bsForce),
+      rules: getDetachmentRules(bsForce),
     })),
   };
 };
@@ -236,10 +239,24 @@ export const getUnitRules = (
         description: rule.description,
       }))
     )
+    .filter(
+      (r, i, all) =>
+        all.findIndex(
+          (r2) => r.title === r2.title && r.description === r2.description
+        ) === i
+    );
+};
+
+export const getDetachmentRules = (detachment: BsForce): Rule[] => {
+  return getAbilityProfiles(detachment)
+    .map((profile) => ({
+      title: profile.name,
+      description: profile.description,
+    }))
     .concat(
-      detachment.rules.map((rule) => ({
-        title: rule.name,
-        description: rule.description,
+      detachment.rules.map((r) => ({
+        title: r.name,
+        description: r.description,
       }))
     )
     .filter(

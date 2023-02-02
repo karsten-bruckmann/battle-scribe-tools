@@ -406,6 +406,27 @@
               </td>
             </tr>
           </table>
+
+          <!-- DETACHMENT RULES -->
+          <ion-text color="primary">
+            <h3 class="separated">
+              <bst-translatable [text]="'Detachment Rules'"></bst-translatable>
+            </h3>
+          </ion-text>
+          <div class="scroller">
+            <table>
+              <tr *ngFor="let rule of detachment.rules">
+                <td class="wrap">
+                  <bst-translatable [text]="rule.title"></bst-translatable>
+                </td>
+                <td class="wrap long">
+                  <bst-translatable
+                    [text]="rule.description"
+                  ></bst-translatable>
+                </td>
+              </tr>
+            </table>
+          </div>
         </div>
       </ion-content>
     </ng-container>
