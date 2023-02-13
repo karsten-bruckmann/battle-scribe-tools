@@ -9,16 +9,17 @@
       <ion-title>
         <h1>{{ session.deckName }}</h1>
       </ion-title>
-      <span slot="end">
-        Box {{ session.box + 1 }}/{{ session.maxBox + 1 }} | Noch
-        {{ session.remainingCards }} Karten
-      </span>
     </ng-container>
   </ion-toolbar>
 </ion-header>
 <ng-container *ngIf="session$ | async as session">
   <ng-container *ngIf="session.currentCard as card; else finished">
     <ion-content>
+      <p class="session-info">
+        Box {{ session.box + 1 }}/{{ session.maxBox + 1 }} | Noch
+        {{ session.remainingCards }} Karten
+      </p>
+
       <ion-card class="question">
         <ion-card-content>
           <h1><bst-translatable [text]="card.question"></bst-translatable>:</h1>
