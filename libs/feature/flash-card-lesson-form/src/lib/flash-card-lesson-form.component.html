@@ -10,9 +10,13 @@
     </ion-select>
   </ion-item>
   <ion-item>
-    <h4>Einheiten-Profile</h4>
+    <ion-label><h4>Einheiten Profile</h4></ion-label>
+    <ion-checkbox
+      #unitProfileToggle
+      (ionChange)="setUnitProfiles(unitProfileToggle.checked)"
+    ></ion-checkbox>
   </ion-item>
-  <ng-container formGroupName="unitProfiles">
+  <ng-container formGroupName="unitProfiles" *ngIf="unitProfileToggle.checked">
     <ion-item>
       <ion-label>Atacken (A)</ion-label>
       <ion-checkbox formControlName="attacks"></ion-checkbox>
@@ -50,10 +54,17 @@
       <ion-checkbox formControlName="strength"></ion-checkbox>
     </ion-item>
   </ng-container>
-  <ng-container formGroupName="weaponProfiles">
-    <ion-item>
-      <h4>Waffen-Profile</h4>
-    </ion-item>
+  <ion-item>
+    <ion-label><h4>Waffen-Profile</h4></ion-label>
+    <ion-checkbox
+      #weaponProfileToggle
+      (ionChange)="setWeaponProfiles(weaponProfileToggle.checked)"
+    ></ion-checkbox>
+  </ion-item>
+  <ng-container
+    formGroupName="weaponProfiles"
+    *ngIf="weaponProfileToggle.checked"
+  >
     <ion-item>
       <ion-label>Fähigkeiten</ion-label>
       <ion-checkbox formControlName="abilities"></ion-checkbox>
@@ -91,7 +102,7 @@
     <ion-checkbox formControlName="unitRules"></ion-checkbox>
   </ion-item>
   <ion-item>
-    <h4>Einstellungen</h4>
+    <ion-label><h4>Einstellungen</h4></ion-label>
   </ion-item>
   <ion-item>
     <ion-label>Karten-Boxen</ion-label>

@@ -44,4 +44,27 @@ export class FlashCardLessonFormComponent {
     });
     this.lessonCreated.next();
   }
+
+  public setUnitProfiles(enabled: boolean) {
+    this.form.controls.unitProfiles.controls.attacks.setValue(enabled);
+    this.form.controls.unitProfiles.controls.ballisticSkill.setValue(enabled);
+    this.form.controls.unitProfiles.controls.leadership.setValue(enabled);
+    this.form.controls.unitProfiles.controls.movement.setValue(enabled);
+    this.form.controls.unitProfiles.controls.save.setValue(enabled);
+    this.form.controls.unitProfiles.controls.strength.setValue(enabled);
+    this.form.controls.unitProfiles.controls.toughness.setValue(enabled);
+    this.form.controls.unitProfiles.controls.weaponSkill.setValue(enabled);
+    this.form.controls.unitProfiles.controls.wounds.setValue(enabled);
+  }
+
+  public setWeaponProfiles(enabled: boolean) {
+    this.form.controls.weaponProfiles.controls.abilities.setValue(enabled);
+    this.form.controls.weaponProfiles.controls.armourPenetration.setValue(
+      enabled
+    );
+    this.form.controls.weaponProfiles.controls.damage.setValue(enabled);
+    this.form.controls.weaponProfiles.controls.range.setValue(enabled);
+    this.form.controls.weaponProfiles.controls.strength.setValue(enabled);
+    this.form.controls.weaponProfiles.controls.type.setValue(enabled);
+  }
 }
