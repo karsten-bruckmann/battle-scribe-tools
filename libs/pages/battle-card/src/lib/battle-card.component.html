@@ -415,7 +415,7 @@
           </ion-text>
           <div class="scroller">
             <table>
-              <tr *ngFor="let rule of detachment.rules">
+              <tr *ngFor="let rule of detachmentRules$ | async">
                 <td class="wrap">
                   <bst-translatable [text]="rule.title"></bst-translatable>
                 </td>

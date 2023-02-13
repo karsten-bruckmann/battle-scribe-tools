@@ -2,11 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { RosterModule, RosterService } from '@battle-scribe-tools/core/roster';
-import { UserSettingsService } from '@battle-scribe-tools/core/user-settings';
 import { Weapon } from '@battle-scribe-tools/data-access/rosters';
 import { AvatarComponent } from '@battle-scribe-tools/feature/avatar';
 import { TranslatableComponent } from '@battle-scribe-tools/feature/translatable';
 import { IonicModule } from '@ionic/angular';
+import { combineLatest, map } from 'rxjs';
 import { CleanEmptyPipe } from './pipes/clean-empty.pipe';
 
 @Component({
@@ -27,7 +27,6 @@ import { CleanEmptyPipe } from './pipes/clean-empty.pipe';
 export class BattleCardComponent {
   constructor(
     private rosterService: RosterService,
-    private userSettings: UserSettingsService,
     private cleanEmptyPipe: CleanEmptyPipe,
     private activatedRoute: ActivatedRoute
   ) {}
@@ -39,6 +38,20 @@ export class BattleCardComponent {
   );
 
   public unit$ = this.rosterService.getUnitFromRoute$(this.activatedRoute);
+
+  public detachmentRules$ = combineLatest([this.detachment$, this.unit$]).pipe(
+    map(
+      ([detachment, unit]) =>
+        detachment?.rules.filter(
+          (rule) =>
+            unit?.rules.find(
+              (unitRule) =>
+                unitRule.title === rule.title &&
+                unitRule.description === rule.description
+            ) === undefined
+        ) || []
+    )
+  );
 
   public getMultiProfileWeaponLineAmount(weapon: Weapon): number {
     return weapon.profiles.reduce(
