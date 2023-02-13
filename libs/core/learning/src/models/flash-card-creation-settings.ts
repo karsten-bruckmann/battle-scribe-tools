@@ -21,6 +21,8 @@ export interface FlashCardCreationSettings {
   };
   rules: boolean;
   unitRules: boolean;
+  psychicPowers: boolean;
+  unitPsychicPowers: boolean;
   boxes: number;
   name: string;
 }
@@ -34,7 +36,7 @@ export function isFlashCardCreationSettings(
   if (typeof value !== 'object') {
     return false;
   }
-  if (Object.keys(value).length !== 7) {
+  if (Object.keys(value).length !== 9) {
     return false;
   }
   if (typeof (value as any)['rosterIndex'] !== 'number') {
@@ -103,6 +105,12 @@ export function isFlashCardCreationSettings(
     return false;
   }
   if (typeof (value as any)['unitRules'] !== 'boolean') {
+    return false;
+  }
+  if (typeof (value as any)['psychicPowers'] !== 'boolean') {
+    return false;
+  }
+  if (typeof (value as any)['unitPsychicPowers'] !== 'boolean') {
     return false;
   }
   if (typeof (value as any)['boxes'] !== 'number') {

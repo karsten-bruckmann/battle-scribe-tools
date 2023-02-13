@@ -13,6 +13,8 @@ export const flashCardCreationSettingsForm = () =>
       boxes: new FormControl(3),
       rules: new FormControl(true),
       unitRules: new FormControl(true),
+      psychicPowers: new FormControl(true),
+      unitPsychicPowers: new FormControl(true),
       unitProfiles: new FormGroup({
         attacks: new FormControl(false),
         ballisticSkill: new FormControl(false),

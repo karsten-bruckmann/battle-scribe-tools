@@ -27,7 +27,7 @@ export const rosterFlashCardDeckSelector = (
                     r.title === rule.title && r.description !== rule.description
                 ) === undefined;
             deck.cards.push({
-              question: 'Rule?',
+              question: 'Rule',
               rules: [
                 uniqueRule ? rule.title : `${rule.title} (${unit.title})`,
               ],
@@ -37,11 +37,38 @@ export const rosterFlashCardDeckSelector = (
           });
         }
 
+        const allPsychicPowers = unit.models
+          .map((model) => model.psychicPowers)
+          .flat();
+        const uniquePsychicPowers = allPsychicPowers.filter(
+          (v, i) => allPsychicPowers.findIndex((vv) => v === vv) === i
+        );
+
+        if (settings.psychicPowers) {
+          uniquePsychicPowers.forEach((power) => {
+            deck.cards.push({
+              question: 'Psychic Power',
+              rules: [power.title],
+              answers: power.profiles.map((profile) => profile.description),
+              box: 0,
+            });
+          });
+        }
+
         if (settings.unitRules) {
           deck.cards.push({
-            question: 'Einheiten Regeln',
+            question: "Unit's Rules",
             rules: [unit.title],
             answers: unit.rules.map((r) => r.title),
+            box: 0,
+          });
+        }
+
+        if (settings.unitPsychicPowers && uniquePsychicPowers.length > 0) {
+          deck.cards.push({
+            question: "Unit's Psychic Powers",
+            rules: [unit.title],
+            answers: uniquePsychicPowers.map((p) => p.title),
             box: 0,
           });
         }
@@ -52,7 +79,7 @@ export const rosterFlashCardDeckSelector = (
           .forEach((profile) => {
             if (settings.unitProfiles.attacks) {
               deck.cards.push({
-                question: `Atacken (A)`,
+                question: `Attacks (A)`,
                 rules: [profile.title],
                 answers: [profile.attacks],
                 box: 0,
@@ -60,7 +87,7 @@ export const rosterFlashCardDeckSelector = (
             }
             if (settings.unitProfiles.ballisticSkill) {
               deck.cards.push({
-                question: `Ballistische Fähigkeit (BF)`,
+                question: `Ballistic Skill (BS)`,
                 rules: [profile.title],
                 answers: [profile.ballisticSkill],
                 box: 0,
@@ -68,7 +95,7 @@ export const rosterFlashCardDeckSelector = (
             }
             if (settings.unitProfiles.leadership) {
               deck.cards.push({
-                question: `Moralwert (MW)`,
+                question: `Lead (Ld)`,
                 rules: [profile.title],
                 answers: [profile.leadership],
                 box: 0,
@@ -76,7 +103,7 @@ export const rosterFlashCardDeckSelector = (
             }
             if (settings.unitProfiles.movement) {
               deck.cards.push({
-                question: `Bewegung (B)`,
+                question: `Movement (M)`,
                 rules: [profile.title],
                 answers: [profile.movement],
                 box: 0,
@@ -84,7 +111,7 @@ export const rosterFlashCardDeckSelector = (
             }
             if (settings.unitProfiles.save) {
               deck.cards.push({
-                question: `Rüstungswert (RW)`,
+                question: `Save (Sv)`,
                 rules: [profile.title],
                 answers: [profile.save],
                 box: 0,
@@ -92,7 +119,7 @@ export const rosterFlashCardDeckSelector = (
             }
             if (settings.unitProfiles.strength) {
               deck.cards.push({
-                question: `Stärke (S)`,
+                question: `Strength (S)`,
                 rules: [profile.title],
                 answers: [profile.strength],
                 box: 0,
@@ -100,7 +127,7 @@ export const rosterFlashCardDeckSelector = (
             }
             if (settings.unitProfiles.toughness) {
               deck.cards.push({
-                question: `Wiederstand (W)`,
+                question: `Toughness (T)`,
                 rules: [profile.title],
                 answers: [profile.toughness],
                 box: 0,
@@ -108,7 +135,7 @@ export const rosterFlashCardDeckSelector = (
             }
             if (settings.unitProfiles.weaponSkill) {
               deck.cards.push({
-                question: `Kampfgeschick (KG)`,
+                question: `Weapon Skill (WS)`,
                 rules: [profile.title],
                 answers: [profile.weaponSkill],
                 box: 0,
@@ -116,7 +143,7 @@ export const rosterFlashCardDeckSelector = (
             }
             if (settings.unitProfiles.wounds) {
               deck.cards.push({
-                question: `Lebenspunkte (LP)`,
+                question: `Wounds (W)`,
                 rules: [profile.title],
                 answers: [profile.wounds],
                 box: 0,
@@ -132,7 +159,7 @@ export const rosterFlashCardDeckSelector = (
           .forEach((profile) => {
             if (settings.weaponProfiles.abilities) {
               deck.cards.push({
-                question: `Fähigkeiten`,
+                question: `Weapon abilities`,
                 rules: [profile.title],
                 answers: [profile.abilities],
                 box: 0,
@@ -140,7 +167,7 @@ export const rosterFlashCardDeckSelector = (
             }
             if (settings.weaponProfiles.armourPenetration) {
               deck.cards.push({
-                question: `Durchschlag (DS)`,
+                question: `Armor Penetration (AP)`,
                 rules: [profile.title],
                 answers: [profile.armourPenetration],
                 box: 0,
@@ -148,7 +175,7 @@ export const rosterFlashCardDeckSelector = (
             }
             if (settings.weaponProfiles.damage) {
               deck.cards.push({
-                question: `Schdenswert (SW)`,
+                question: `Damage (D)`,
                 rules: [profile.title],
                 answers: [profile.damage],
                 box: 0,
@@ -156,7 +183,7 @@ export const rosterFlashCardDeckSelector = (
             }
             if (settings.weaponProfiles.range) {
               deck.cards.push({
-                question: `Reichweite`,
+                question: `Range`,
                 rules: [profile.title],
                 answers: [profile.range],
                 box: 0,
@@ -164,7 +191,7 @@ export const rosterFlashCardDeckSelector = (
             }
             if (settings.weaponProfiles.strength) {
               deck.cards.push({
-                question: `Stärke (S)`,
+                question: `Strength (S)`,
                 rules: [profile.title],
                 answers: [profile.strength],
                 box: 0,
@@ -172,7 +199,7 @@ export const rosterFlashCardDeckSelector = (
             }
             if (settings.weaponProfiles.type) {
               deck.cards.push({
-                question: `Typ`,
+                question: `Type`,
                 rules: [profile.title],
                 answers: [profile.type],
                 box: 0,

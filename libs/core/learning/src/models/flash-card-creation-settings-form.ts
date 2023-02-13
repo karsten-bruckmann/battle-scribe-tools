@@ -5,6 +5,8 @@ export interface FlashCardCreationSettingsForm {
   name: FormControl<string | null>;
   rules: FormControl<boolean | null>;
   unitRules: FormControl<boolean | null>;
+  psychicPowers: FormControl<boolean | null>;
+  unitPsychicPowers: FormControl<boolean | null>;
   boxes: FormControl<number | null>;
   unitProfiles: FormGroup<{
     movement: FormControl<boolean | null>;
