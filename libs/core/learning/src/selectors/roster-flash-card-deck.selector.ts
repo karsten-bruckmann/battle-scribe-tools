@@ -4,11 +4,10 @@ import { createSelector } from '@ngrx/store';
 import { FlashCardCreationSettings } from '../models/flash-card-creation-settings';
 
 export const rosterFlashCardDeckSelector = (
-  rosterIndex: number,
   settings: FlashCardCreationSettings
 ) =>
   createSelector(rostersSelector, (rosters): Deck => {
-    const roster = rosters[rosterIndex];
+    const roster = rosters[settings.rosterIndex];
     const deck: Deck = {
       name: settings.name,
       cards: [],

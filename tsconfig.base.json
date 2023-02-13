@@ -39,6 +39,9 @@
       "@battle-scribe-tools/feature/avatar": [
         "libs/feature/avatar/src/index.ts"
       ],
+      "@battle-scribe-tools/feature/flash-card-lesson-form": [
+        "libs/feature/flash-card-lesson-form/src/index.ts"
+      ],
       "@battle-scribe-tools/feature/translatable": [
         "libs/feature/translatable/src/index.ts"
       ],

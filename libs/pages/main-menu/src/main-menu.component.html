@@ -47,7 +47,7 @@
 
   <ion-item-divider>
     Flash Card Decks
-    <ion-button slot="end" fill="clear" (click)="form.isOpen = true"
+    <ion-button slot="end" fill="clear" (click)="modal.isOpen = true"
       ><ion-icon name="add"></ion-icon
     ></ion-button>
   </ion-item-divider>
@@ -76,130 +76,25 @@
 
 <bst-translation-settings></bst-translation-settings>
 
-<ion-modal [isOpen]="false" #form>
-  <ion-content *ngIf="rosterForNewDeck !== null">
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>
-          <h1>Deck erstellen</h1>
-        </ion-title>
-        <ion-buttons slot="end">
-          <ion-button (click)="form.isOpen = false">
-            <ion-icon name="close"></ion-icon>
-          </ion-button>
-        </ion-buttons>
-      </ion-toolbar>
-    </ion-header>
-    <ion-list> </ion-list>
-    <ion-list [formGroup]="settingsForm">
-      <ion-item>
-        <ion-label>Roster</ion-label>
-        <ion-select formControlName="roster">
-          <ion-select-option></ion-select-option>
-          <ion-select-option
-            *ngFor="let roster of rosterList$ | async; let i = index"
-            [value]="i"
-            (click)="form.isOpen = false"
-            >{{ roster.title }}</ion-select-option
-          >
-        </ion-select>
-      </ion-item>
-      <ion-item>
-        <h4>Einheiten-Profile</h4>
-      </ion-item>
-      <ng-container formGroupName="unitProfiles">
-        <ion-item>
-          <ion-label>Atacken (A)</ion-label>
-          <ion-checkbox formControlName="attacks"></ion-checkbox>
-        </ion-item>
-        <ion-item>
-          <ion-label>Ballistische Fähigkeit (BF)</ion-label>
-          <ion-checkbox formControlName="ballisticSkill"></ion-checkbox>
-        </ion-item>
-        <ion-item>
-          <ion-label>Moralwert (MW)</ion-label>
-          <ion-checkbox formControlName="leadership"></ion-checkbox>
-        </ion-item>
-        <ion-item>
-          <ion-label>Rüstungswert (RW)</ion-label>
-          <ion-checkbox formControlName="save"></ion-checkbox>
-        </ion-item>
-        <ion-item>
-          <ion-label>Wiederstand (W)</ion-label>
-          <ion-checkbox formControlName="toughness"></ion-checkbox>
-        </ion-item>
-        <ion-item>
-          <ion-label>Kampfgeschick (KG)</ion-label>
-          <ion-checkbox formControlName="weaponSkill"></ion-checkbox>
-        </ion-item>
-        <ion-item>
-          <ion-label>Lebenspunkte (LP)</ion-label>
-          <ion-checkbox formControlName="wounds"></ion-checkbox>
-        </ion-item>
-        <ion-item>
-          <ion-label>Bewegung (B)</ion-label>
-          <ion-checkbox formControlName="movement"></ion-checkbox>
-        </ion-item>
-        <ion-item>
-          <ion-label>Stärke (S)</ion-label>
-          <ion-checkbox formControlName="strength"></ion-checkbox>
-        </ion-item>
-      </ng-container>
-      <ng-container formGroupName="weaponProfiles">
-        <ion-item>
-          <h4>Waffen-Profile</h4>
-        </ion-item>
-        <ion-item>
-          <ion-label>Fähigkeiten</ion-label>
-          <ion-checkbox formControlName="abilities"></ion-checkbox>
-        </ion-item>
-        <ion-item>
-          <ion-label>Durchschlag (DS)</ion-label>
-          <ion-checkbox formControlName="armourPenetration"></ion-checkbox>
-        </ion-item>
-        <ion-item>
-          <ion-label>Schadenswert (SW)</ion-label>
-          <ion-checkbox formControlName="damage"></ion-checkbox>
-        </ion-item>
-        <ion-item>
-          <ion-label>Reichweite</ion-label>
-          <ion-checkbox formControlName="range"></ion-checkbox>
-        </ion-item>
-        <ion-item>
-          <ion-label>Stärke (S)</ion-label>
-          <ion-checkbox formControlName="strength"></ion-checkbox>
-        </ion-item>
-        <ion-item>
-          <ion-label>Typ</ion-label>
-          <ion-checkbox formControlName="type"></ion-checkbox>
-        </ion-item>
-        <ion-item>
-          <h4>Sonstiges</h4>
-        </ion-item>
-      </ng-container>
-      <ion-item>
-        <ion-label>Regeln</ion-label>
-        <ion-checkbox formControlName="rules"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label>Einheiten-Regeln</ion-label>
-        <ion-checkbox formControlName="unitRules"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <h4>Einstellungen</h4>
-      </ion-item>
-      <ion-item>
-        <ion-label>Karten-Boxen</ion-label>
-        <ion-input
-          formControlName="boxes"
-          type="number"
-          inputmode="numeric"
-          value="3"
-        ></ion-input>
-      </ion-item>
-      <ion-button (click)="createDeck(); form.isOpen = false" expand="full"
-        >Deck erstellen</ion-button
-      >
-    </ion-list>
-  </ion-content>
+<ion-modal [isOpen]="false" #modal>
+  <ng-template>
+    <ion-content>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>
+            <h1>Deck erstellen</h1>
+          </ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="modal.isOpen = false">
+              <ion-icon name="close"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+
+      <bst-flash-card-lesson-form
+        (lessonCreated)="modal.isOpen = false"
+      ></bst-flash-card-lesson-form>
+    </ion-content>
+  </ng-template>
 </ion-modal>

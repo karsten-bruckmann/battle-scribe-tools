@@ -25,11 +25,10 @@ export class LearningService {
   }
 
   public async createFlashCardDeck(
-    rosterIndex: number,
     settings: FlashCardCreationSettings
   ): Promise<void> {
     const deck = await firstValueFrom(
-      this.store$.select(rosterFlashCardDeckSelector(rosterIndex, settings))
+      this.store$.select(rosterFlashCardDeckSelector(settings))
     );
     this.store$.dispatch(deckAddedAction({ deck }));
   }
