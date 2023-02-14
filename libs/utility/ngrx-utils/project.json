@@ -1,15 +1,15 @@
 {
-  "name": "data-access-avatar-images",
+  "name": "utility-ngrx-utils",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "libs/data-access/avatar-images/src",
+  "sourceRoot": "libs/utility/ngrx-utils/src",
   "prefix": "battle-scribe-tools",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/data-access/avatar-images/jest.config.ts",
+        "jestConfig": "libs/utility/ngrx-utils/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
@@ -24,11 +24,11 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "libs/data-access/avatar-images/**/*.ts",
-          "libs/data-access/avatar-images/**/*.html"
+          "libs/utility/ngrx-utils/**/*.ts",
+          "libs/utility/ngrx-utils/**/*.html"
         ]
       }
     }
   },
-  "tags": ["data-access", "core"]
+  "tags": ["utility"]
 }

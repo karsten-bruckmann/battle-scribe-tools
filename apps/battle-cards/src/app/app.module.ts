@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     IonicModule.forRoot(),
     StoreModule.forRoot(),
+    EffectsModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 50 }),
     RouterModule.forRoot([
       {

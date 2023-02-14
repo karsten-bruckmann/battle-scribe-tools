@@ -2,9 +2,9 @@ import { createReducer, on } from '@ngrx/store';
 import { addRosterAction } from '../actions/add-roster.action';
 import { deleteRosterAction } from '../actions/delete-roster.action';
 import { overwriteRosterAction } from '../actions/overwrite-roster.action';
-import { State } from '../models/state.model';
+import { RostersState } from '../models/rosters-state.model';
 
-export const rostersReducer = createReducer<State>(
+export const rostersReducer = createReducer<RostersState>(
   [],
   on(addRosterAction, (state, action) => {
     const next = [...state];
@@ -17,7 +17,7 @@ export const rostersReducer = createReducer<State>(
     return next;
   }),
   on(deleteRosterAction, (state, action) => {
-    const next: State = [...state];
+    const next: RostersState = [...state];
     return next.filter((v, i) => i !== action.index);
   })
 );

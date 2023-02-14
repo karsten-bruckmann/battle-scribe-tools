@@ -7,8 +7,9 @@ export const unitSelector = (
   detachmentIndex: number,
   unitIndex: number
 ) =>
-  createSelector(
-    rosterSelector(rosterIndex),
-    (roster): Unit =>
-      roster.detachments[detachmentIndex]?.units[unitIndex] || null
-  );
+  createSelector(rosterSelector(rosterIndex), (roster): Unit | null => {
+    if (!roster) {
+      return null;
+    }
+    return roster.detachments[detachmentIndex]?.units[unitIndex] || null;
+  });

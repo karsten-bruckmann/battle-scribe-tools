@@ -6,10 +6,19 @@ import {
   LearningModule,
   LearningService,
 } from '@battle-scribe-tools/core/learning';
-import { RosterModule, RosterService } from '@battle-scribe-tools/core/roster';
+import {
+  rosterDeletionRequested,
+  rosterFileAdded,
+  rosterListSelector,
+  RosterModule,
+  RosterService,
+  rosterUpdateRequested,
+  rosterUrlAdded,
+} from '@battle-scribe-tools/core/roster';
 import { FlashCardLessonFormComponent } from '@battle-scribe-tools/feature/flash-card-lesson-form';
 import { TranslationConfigComponent } from '@battle-scribe-tools/feature/translation-settings';
 import { IonicModule } from '@ionic/angular';
+import { Store } from '@ngrx/store';
 
 @Component({
   standalone: true,
@@ -29,10 +38,11 @@ import { IonicModule } from '@ionic/angular';
 export class MainMenuComponent {
   constructor(
     private rostersService: RosterService,
-    private learningService: LearningService
+    private learningService: LearningService,
+    private store$: Store
   ) {}
 
-  public rosterList$ = this.rostersService.list$;
+  public rosterList$ = this.store$.select(rosterListSelector);
   public lessons$ = this.learningService.lessons$;
 
   @ViewChild('modal') public modal?: HTMLIonModalElement;
@@ -47,19 +57,19 @@ export class MainMenuComponent {
     if (!file) {
       return;
     }
-    await this.rostersService.addRoster(file);
+    this.store$.dispatch(rosterFileAdded({ file }));
   }
 
-  public async linkFile(url: string): Promise<void> {
-    await this.rostersService.addRosterFromUrl(url);
+  public linkFile(url: string): void {
+    this.store$.dispatch(rosterUrlAdded({ url }));
   }
 
-  public async updateFile(index: number): Promise<void> {
-    await this.rostersService.updateRoster(index);
+  public async updateFile(rosterIndex: number): Promise<void> {
+    this.store$.dispatch(rosterUpdateRequested({ rosterIndex }));
   }
 
-  public deleteRoster(index: number): void {
-    this.rostersService.deleteRoster(index);
+  public deleteRoster(rosterIndex: number): void {
+    this.store$.dispatch(rosterDeletionRequested({ rosterIndex }));
   }
 
   public deleteDeck(index: number): void {

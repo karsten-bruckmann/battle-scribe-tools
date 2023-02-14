@@ -8,5 +8,5 @@ export const detachmentSelector = (
 ) =>
   createSelector(
     rosterSelector(rosterIndex),
-    (roster): Detachment | null => roster.detachments[detachmentIndex] || null
+    (roster): Detachment | null => roster?.detachments[detachmentIndex] || null
   );

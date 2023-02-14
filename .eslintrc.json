@@ -14,24 +14,19 @@
             "depConstraints": [
               {
                 "sourceTag": "app",
-                "onlyDependOnLibsWithTags": ["page"]
+                "onlyDependOnLibsWithTags": ["page", "utility"]
               },
               {
                 "sourceTag": "page",
-                "onlyDependOnLibsWithTags": [
-                  "feature",
-                  "ui",
-                  "core",
-                  "data-access"
-                ]
+                "onlyDependOnLibsWithTags": ["feature", "ui", "core", "utility"]
               },
               {
                 "sourceTag": "feature",
-                "onlyDependOnLibsWithTags": ["ui", "core", "data-access"]
+                "onlyDependOnLibsWithTags": ["ui", "core", "utility"]
               },
               {
                 "sourceTag": "ui",
-                "onlyDependOnLibsWithTags": ["ui"]
+                "onlyDependOnLibsWithTags": ["ui", "utility"]
               },
               {
                 "sourceTag": "core",

@@ -1,38 +1,42 @@
 import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { RosterService } from '@battle-scribe-tools/core/roster';
+import { RosterModule, rosterSelector } from '@battle-scribe-tools/core/roster';
 import {
   UserSettingsModule,
   UserSettingsService,
 } from '@battle-scribe-tools/core/user-settings';
-import { RostersModule } from '@battle-scribe-tools/data-access/rosters';
 import { AvatarComponent } from '@battle-scribe-tools/feature/avatar';
 import { TranslatableComponent } from '@battle-scribe-tools/feature/translatable';
+import { routeParam } from '@battle-scribe-tools/utility/angular-utilities';
 import { IonicModule } from '@ionic/angular';
+import { Store } from '@ngrx/store';
+import { switchMap } from 'rxjs';
 
 @Component({
   standalone: true,
   imports: [
-    RostersModule,
     UserSettingsModule,
     CommonModule,
     IonicModule,
     RouterModule,
     TranslatableComponent,
     AvatarComponent,
+    RosterModule,
   ],
   templateUrl: './roster.component.html',
   styleUrls: ['./roster.component.scss'],
 })
 export class RosterComponent {
   constructor(
-    private rosterService: RosterService,
+    private store$: Store,
     private userSettings: UserSettingsService,
     private activatedRoute: ActivatedRoute
   ) {}
 
-  public roster$ = this.rosterService.getRosterFromRoute$(this.activatedRoute);
+  public roster$ = routeParam('roster-index', this.activatedRoute).pipe(
+    switchMap((index) => this.store$.select(rosterSelector(parseInt(index))))
+  );
 
   @ViewChild('modal') public modal?: HTMLIonModalElement;
 

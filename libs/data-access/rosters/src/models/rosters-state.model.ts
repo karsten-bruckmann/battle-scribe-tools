@@ -1,3 +1,3 @@
 import { Roster } from './roster.model';
 
-export type State = Roster[];
+export type RostersState = Roster[];

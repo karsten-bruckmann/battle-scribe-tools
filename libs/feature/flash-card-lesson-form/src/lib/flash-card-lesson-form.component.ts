@@ -6,8 +6,9 @@ import {
   flashCardCreationSettingsFormTypeSafeValue,
   LearningService,
 } from '@battle-scribe-tools/core/learning';
-import { RosterService } from '@battle-scribe-tools/core/roster';
+import { rosterListSelector } from '@battle-scribe-tools/core/roster';
 import { IonicModule } from '@ionic/angular';
+import { Store } from '@ngrx/store';
 import { firstValueFrom } from 'rxjs';
 
 @Component({
@@ -19,12 +20,12 @@ import { firstValueFrom } from 'rxjs';
 })
 export class FlashCardLessonFormComponent {
   constructor(
-    private rosterService: RosterService,
-    private learningService: LearningService
+    private learningService: LearningService,
+    private store$: Store
   ) {}
 
   public form = flashCardCreationSettingsForm();
-  public rosterList$ = this.rosterService.list$;
+  public rosterList$ = this.store$.select(rosterListSelector);
 
   @Output() public lessonCreated = new EventEmitter<void>();
 

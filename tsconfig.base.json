@@ -58,11 +58,17 @@
         "libs/pages/main-menu/src/index.ts"
       ],
       "@battle-scribe-tools/pages/roster": ["libs/pages/roster/src/index.ts"],
+      "@battle-scribe-tools/utility/angular-utilities": [
+        "libs/utility/angular-utilities/src/index.ts"
+      ],
       "@battle-scribe-tools/utility/array-utilities": [
         "libs/utility/array-utilities/src/index.ts"
       ],
       "@battle-scribe-tools/utility/ngrx-storage-sync": [
         "libs/utility/ngrx-storage-sync/src/index.ts"
+      ],
+      "@battle-scribe-tools/utility/ngrx-utils": [
+        "libs/utility/ngrx-utils/src/index.ts"
       ],
       "@battle-scribe-tools/utility/rosz2js": [
         "libs/utility/rosz2js/src/index.ts"
