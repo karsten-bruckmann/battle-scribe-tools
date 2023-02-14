@@ -58,6 +58,9 @@
         "libs/pages/main-menu/src/index.ts"
       ],
       "@battle-scribe-tools/pages/roster": ["libs/pages/roster/src/index.ts"],
+      "@battle-scribe-tools/utility/array-utilities": [
+        "libs/utility/array-utilities/src/index.ts"
+      ],
       "@battle-scribe-tools/utility/ngrx-storage-sync": [
         "libs/utility/ngrx-storage-sync/src/index.ts"
       ],

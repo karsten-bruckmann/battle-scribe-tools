@@ -14,7 +14,8 @@ import {
 } from '@battle-scribe-tools/data-access/rosters';
 import { Store } from '@ngrx/store';
 import { firstValueFrom, NEVER, Observable, switchMap } from 'rxjs';
-import { createRoster } from './create-roster';
+import { convertRoster } from './rules/convert-roster.rule';
+import { parseRosterFile } from './rules/parse-roster-file.rule';
 import { rosterListSelector } from './selectors/roster-list.selector';
 
 @Injectable({ providedIn: 'root' })
@@ -81,7 +82,7 @@ export class RosterService {
   }
 
   public async addRoster(file: File): Promise<void> {
-    const roster = await createRoster(file);
+    const roster = convertRoster(await parseRosterFile(file));
     this.store$.dispatch(addRosterAction({ roster }));
   }
 
@@ -91,8 +92,8 @@ export class RosterService {
         responseType: 'blob',
       })
     );
-    const file = new File([blob], 'donwloaded.rosz');
-    const roster = await createRoster(file);
+    const file = new File([blob], 'downloaded.rosz');
+    const roster = convertRoster(await parseRosterFile(file));
     this.store$.dispatch(addRosterAction({ roster: { ...roster, roszUrl } }));
   }
 
@@ -108,8 +109,8 @@ export class RosterService {
         responseType: 'blob',
       })
     );
-    const file = new File([blob], 'donwloaded.rosz');
-    const roster = await createRoster(file);
+    const file = new File([blob], 'downloaded.rosz');
+    const roster = convertRoster(await parseRosterFile(file));
     this.store$.dispatch(
       overwriteRosterAction({ roster: { ...current, ...roster }, index })
     );
