@@ -47,7 +47,11 @@
 
   <ion-item-divider>
     Flash Card Decks
-    <ion-button slot="end" fill="clear" (click)="modal.isOpen = true"
+    <ion-button
+      slot="end"
+      fill="clear"
+      (click)="modal.isOpen = true"
+      *ngIf="(rosterList$ | async)?.length"
       ><ion-icon name="add"></ion-icon
     ></ion-button>
   </ion-item-divider>
