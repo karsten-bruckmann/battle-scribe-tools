@@ -4,8 +4,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import {
   deckDeletionRequested,
+  decksListSelector,
   LearningModule,
-  lessonsSelector,
 } from '@battle-scribe-tools/core/learning';
 import {
   rosterDeletionRequested,
@@ -39,7 +39,7 @@ export class MainMenuComponent {
   constructor(private store$: Store) {}
 
   public rosterList$ = this.store$.select(rosterListSelector);
-  public lessons$ = this.store$.select(lessonsSelector);
+  public deckList$ = this.store$.select(decksListSelector);
 
   @ViewChild('modal') public modal?: HTMLIonModalElement;
 
@@ -60,15 +60,15 @@ export class MainMenuComponent {
     this.store$.dispatch(rosterDownloadRequested({ url }));
   }
 
-  public async updateFile(rosterIndex: number): Promise<void> {
-    this.store$.dispatch(rosterUpdateRequested({ rosterIndex }));
+  public async updateFile(id: string): Promise<void> {
+    this.store$.dispatch(rosterUpdateRequested({ id }));
   }
 
-  public deleteRoster(rosterIndex: number): void {
-    this.store$.dispatch(rosterDeletionRequested({ rosterIndex }));
+  public deleteRoster(id: string): void {
+    this.store$.dispatch(rosterDeletionRequested({ id }));
   }
 
-  public deleteDeck(index: number): void {
-    this.store$.dispatch(deckDeletionRequested({ index }));
+  public deleteDeck(id: string): void {
+    this.store$.dispatch(deckDeletionRequested({ id }));
   }
 }

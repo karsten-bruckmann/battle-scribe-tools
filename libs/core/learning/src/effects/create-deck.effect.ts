@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { first, map, switchMap } from 'rxjs';
+import { map } from 'rxjs';
 import { createDeckRequested } from '../actions/create-deck-requested.action';
 import { deckCreated } from '../actions/internal/deck-created.action';
 import { rosterFlashCardDeckSelector } from '../selectors/roster-flash-card-deck.selector';
@@ -12,11 +12,10 @@ export class CreateDeckEffect {
   public effect$ = createEffect(() =>
     this.actions$.pipe(
       ofType(createDeckRequested),
-      switchMap((action) =>
+      concatLatestFrom((action) =>
         this.store$.select(rosterFlashCardDeckSelector(action.settings))
       ),
-      first(),
-      map((deck) => deckCreated({ deck }))
+      map(([, deck]) => deckCreated({ deck }))
     )
   );
 }

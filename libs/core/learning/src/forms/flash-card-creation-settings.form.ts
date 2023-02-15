@@ -8,9 +8,9 @@ import { FlashCardCreationSettingsForm } from '../models/flash-card-creation-set
 export const flashCardCreationSettingsForm = () =>
   new FormGroup<FlashCardCreationSettingsForm>(
     {
-      rosterIndex: new FormControl(0),
+      rosterId: new FormControl(null),
       name: new FormControl(''),
-      boxes: new FormControl(3),
+      boxes: new FormControl(4),
       rules: new FormControl(true),
       unitRules: new FormControl(true),
       psychicPowers: new FormControl(true),

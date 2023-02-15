@@ -1,7 +1,7 @@
 import { FormControl, FormGroup } from '@angular/forms';
 
 export interface FlashCardCreationSettingsForm {
-  rosterIndex: FormControl<number | null>;
+  rosterId: FormControl<string | null>;
   name: FormControl<string | null>;
   rules: FormControl<boolean | null>;
   unitRules: FormControl<boolean | null>;

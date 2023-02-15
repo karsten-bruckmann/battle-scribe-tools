@@ -2,10 +2,10 @@
   <ion-list [formGroup]="form" *ngIf="rosterList.length > 0">
     <ion-item>
       <ion-label>Roster</ion-label>
-      <ion-select formControlName="rosterIndex">
+      <ion-select formControlName="rosterId">
         <ion-select-option
-          *ngFor="let roster of rosterList; let i = index"
-          [value]="i"
+          *ngFor="let roster of rosterList"
+          [value]="roster.id"
           >{{ roster?.title }}</ion-select-option
         >
       </ion-select>

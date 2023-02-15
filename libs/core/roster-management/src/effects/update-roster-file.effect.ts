@@ -21,7 +21,7 @@ export class UpdateRosterFile {
     this.actions$.pipe(
       ofType(rosterUpdateRequested),
       switchMap((action) =>
-        this.store$.select(rosterSelector(action.rosterIndex)).pipe(
+        this.store$.select(rosterSelector(action.id)).pipe(
           first(),
           concatMap((roster) =>
             roster?.roszUrl
@@ -34,9 +34,7 @@ export class UpdateRosterFile {
             from(parseRosterFile(new File([blob], 'downloaded.rosz')))
           ),
           map((bsRoster) => convertRoster(bsRoster)),
-          map((roster) =>
-            rosterParsedFromUpdate({ roster, index: action.rosterIndex })
-          )
+          map((roster) => rosterParsedFromUpdate({ roster, id: action.id }))
         )
       )
     )

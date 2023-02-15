@@ -5,64 +5,84 @@
         <ion-icon name="chevron-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ng-container *ngIf="session$ | async as session">
+    <ng-container *ngIf="deck$ | async as deck">
       <ion-title>
-        <h1>{{ session.deckName }}</h1>
+        <h1>{{ deck.name }}</h1>
       </ion-title>
     </ng-container>
   </ion-toolbar>
 </ion-header>
-<ng-container *ngIf="session$ | async as session">
-  <ng-container *ngIf="session.currentCard as card; else finished">
-    <ion-content>
-      <p class="session-info">
-        Box {{ session.box + 1 }}/{{ session.maxBox + 1 }} | Noch
-        {{ session.remainingCards }} Karten
-      </p>
+<ng-container *ngIf="session$ | async as session; else done">
+  <ng-container *ngIf="deck$ | async as deck">
+    <ng-container *ngIf="!isFinished; else finished">
+      <ion-content>
+        <p class="session-info">
+          Box {{ session.box + 1 }}/{{ deck.boxContent.length }} | Noch
+          {{ session.remainingCards }} Karten
+        </p>
 
-      <ion-card class="question">
-        <ion-card-content>
-          <h1><bst-translatable [text]="card.question"></bst-translatable>:</h1>
-          <h1 *ngFor="let rule of card.rules">
-            <bst-translatable [text]="rule"></bst-translatable>
-          </h1>
-        </ion-card-content>
-      </ion-card>
-      <ion-card [ngClass]="{ hidden: !card.answers }">
-        <ion-card-content>
-          <h2 *ngFor="let answer of card.answers">
-            <bst-translatable [text]="answer || ''"></bst-translatable>
-          </h2>
-        </ion-card-content>
-      </ion-card>
-    </ion-content>
+        <ion-card class="question">
+          <ion-card-content>
+            <h1>
+              <bst-translatable
+                [text]="session.currentCard.question"
+              ></bst-translatable
+              >:
+            </h1>
+            <h1 *ngFor="let rule of session.currentCard.rules">
+              <bst-translatable [text]="rule"></bst-translatable>
+            </h1>
+          </ion-card-content>
+        </ion-card>
+        <ion-card [ngClass]="{ hidden: answerHidden }">
+          <ion-card-content>
+            <h2 *ngFor="let answer of session.currentCard.answers">
+              <bst-translatable [text]="answer || ''"></bst-translatable>
+            </h2>
+          </ion-card-content>
+        </ion-card>
+      </ion-content>
 
-    <ion-footer>
-      <ion-toolbar>
-        <ion-buttons *ngIf="!card.answers">
-          <ion-button (click)="session.showAnswer()"> Lösung </ion-button>
-          <ion-button (click)="session.skip()"> Überspringen </ion-button>
-        </ion-buttons>
-        <ion-buttons *ngIf="card.answers">
-          <ion-button (click)="session.markIncorrect()">
-            wusste ich nicht
-          </ion-button>
-          <ion-button (click)="session.markCorrect()"> wusste ich </ion-button>
-        </ion-buttons>
-      </ion-toolbar>
-    </ion-footer>
+      <ion-footer>
+        <ion-toolbar>
+          <ion-buttons *ngIf="answerHidden">
+            <ion-button (click)="answerHidden = false">Lösung</ion-button>
+            <ion-button (click)="skipped(session)">Überspringen</ion-button>
+          </ion-buttons>
+          <ion-buttons *ngIf="!answerHidden">
+            <ion-button (click)="notKnown(session)"
+              >wusste ich nicht</ion-button
+            >
+            <ion-button (click)="known(session)">wusste ich</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-footer>
+    </ng-container>
+    <ng-template #finished>
+      <ion-content
+        ><div class="finished">
+          <div class="icon">
+            <ion-icon color="success" name="checkmark-circle"></ion-icon>
+          </div>
+          <div>
+            <ion-button [routerLink]="'../../'">zurück</ion-button>
+            <ion-button *ngIf="session" (click)="continue()">weiter</ion-button>
+          </div>
+        </div>
+      </ion-content>
+    </ng-template>
   </ng-container>
-  <ng-template #finished>
-    <ion-content
-      ><div class="finished">
-        <div class="icon">
-          <ion-icon color="success" name="checkmark-circle"></ion-icon>
-        </div>
-        <div>
-          <ion-button [routerLink]="'../../'">zurück</ion-button>
-          <ion-button (click)="restart()">weiter</ion-button>
-        </div>
-      </div>
-    </ion-content>
-  </ng-template>
 </ng-container>
+<ng-template #done>
+  <ion-content>
+    <p class="session-info">Das wars. Du weißt alles. Wirklich alles!</p>
+    <div class="finished">
+      <div class="icon">
+        <ion-icon color="success" name="checkmark-circle"></ion-icon>
+      </div>
+      <div>
+        <ion-button [routerLink]="'../../'">zurück</ion-button>
+      </div>
+    </div>
+  </ion-content>
+</ng-template>

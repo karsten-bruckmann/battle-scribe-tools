@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
   createDeckRequested,
   flashCardCreationSettingsForm,
   flashCardCreationSettingsFormTypeSafeValue,
-  LearningService,
+  LearningModule,
 } from '@battle-scribe-tools/core/learning';
 import { rosterListSelector } from '@battle-scribe-tools/core/roster-management';
 import { IonicModule } from '@ionic/angular';
@@ -15,20 +15,25 @@ import { firstValueFrom } from 'rxjs';
 @Component({
   selector: 'bst-flash-card-lesson-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, IonicModule],
+  imports: [CommonModule, ReactiveFormsModule, IonicModule, LearningModule],
   templateUrl: './flash-card-lesson-form.component.html',
   styleUrls: ['./flash-card-lesson-form.component.scss'],
 })
-export class FlashCardLessonFormComponent {
-  constructor(
-    private learningService: LearningService,
-    private store$: Store
-  ) {}
+export class FlashCardLessonFormComponent implements OnInit {
+  constructor(private store$: Store) {}
 
   public form = flashCardCreationSettingsForm();
   public rosterList$ = this.store$.select(rosterListSelector);
 
   @Output() public lessonCreated = new EventEmitter<void>();
+
+  public async ngOnInit(): Promise<void> {
+    const rosterList = await firstValueFrom(this.rosterList$);
+    if (!rosterList[0]) {
+      return;
+    }
+    this.form.controls.rosterId.setValue(rosterList[0].id);
+  }
 
   public async create() {
     if (!this.form.valid) {
@@ -44,7 +49,9 @@ export class FlashCardLessonFormComponent {
       createDeckRequested({
         settings: {
           ...value,
-          name: rosterList[value.rosterIndex || 0].title,
+          name:
+            rosterList.find((r) => r.id === value.rosterId)?.title ||
+            'unknown roster',
         },
       })
     );

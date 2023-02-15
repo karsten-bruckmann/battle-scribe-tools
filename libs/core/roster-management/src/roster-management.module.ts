@@ -23,6 +23,6 @@ import { rostersReducer } from './reducers/rosters.reducer';
 })
 export class RosterManagementModule {
   constructor() {
-    rostersCoreReducerRegistry.add(rostersReducer);
+    rostersCoreReducerRegistry.add(rostersReducer, 'roster-management');
   }
 }

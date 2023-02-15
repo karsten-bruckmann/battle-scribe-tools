@@ -30,16 +30,20 @@
     >
   </ion-item>
 
-  <ion-item *ngFor="let roster of rosterList$ | async; let i = index">
-    <ion-label [routerLink]="['roster', i]">
+  <ion-item *ngFor="let roster of rosterList$ | async">
+    <ion-label [routerLink]="['roster', roster.id]">
       <ion-icon color="primary" slot="start" name="document-outline"></ion-icon>
       {{ roster.title }}
     </ion-label>
     <ion-buttons slot="end">
-      <ion-button *ngIf="roster.canUpdate" fill="clear" (click)="updateFile(i)">
+      <ion-button
+        *ngIf="roster.canUpdate"
+        fill="clear"
+        (click)="updateFile(roster.id)"
+      >
         <ion-icon color="primary" name="reload"></ion-icon>
       </ion-button>
-      <ion-button fill="clear" (click)="deleteRoster(i)">
+      <ion-button fill="clear" (click)="deleteRoster(roster.id)">
         <ion-icon color="primary" name="trash"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -55,24 +59,27 @@
       ><ion-icon name="add"></ion-icon
     ></ion-button>
   </ion-item-divider>
-  <ion-item *ngFor="let lesson of lessons$ | async; let i = index">
-    <div [routerLink]="['flash-card-lesson', i]">{{ lesson.name }}</div>
-    <div
-      slot="end"
-      class="boxes"
-      *ngFor="let cardAmount of lesson.boxContent; let i = index"
-    >
-      <ion-icon
-        [name]="
-          cardAmount === 0 ? 'file-tray-outline' : 'file-tray-full-outline'
-        "
-      ></ion-icon>
-      <ion-badge
-        [color]="lesson.boxContent.length - 1 === i ? 'success' : 'medium'"
-        >{{ cardAmount }}</ion-badge
-      >
+  <ion-item *ngFor="let deck of deckList$ | async">
+    <div slot="start" [routerLink]="['flash-card-lesson', deck.deckId]">
+      {{ deck.name }}
     </div>
-    <ion-button slot="end" fill="clear" (click)="deleteDeck(i)">
+    <div class="boxes">
+      <div
+        class="box"
+        *ngFor="let cardAmount of deck.boxContent; let i = index"
+      >
+        <ion-icon
+          [name]="
+            cardAmount === 0 ? 'file-tray-outline' : 'file-tray-full-outline'
+          "
+        ></ion-icon>
+        <ion-badge
+          [color]="deck.boxContent.length - 1 === i ? 'success' : 'medium'"
+          >{{ cardAmount }}</ion-badge
+        >
+      </div>
+    </div>
+    <ion-button slot="end" fill="clear" (click)="deleteDeck(deck.deckId)">
       <ion-icon color="primary" name="trash"></ion-icon>
     </ion-button>
   </ion-item>

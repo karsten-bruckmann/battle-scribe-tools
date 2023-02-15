@@ -19,10 +19,10 @@ export const rostersReducer = createCoreReducer<RostersState>(
   on(rosterParsedFromUpdate, (state, action) =>
     dataReducer(
       state,
-      overwriteRosterAction({ roster: action.roster, index: action.index })
+      overwriteRosterAction({ roster: action.roster, id: action.id })
     )
   ),
   on(rosterDeletionRequested, (state, action) =>
-    dataReducer(state, deleteRosterAction({ index: action.rosterIndex }))
+    dataReducer(state, deleteRosterAction({ id: action.id }))
   )
 );

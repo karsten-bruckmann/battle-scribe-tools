@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export interface FlashCardCreationSettings {
-  rosterIndex: number;
+  rosterId: string;
   unitProfiles: {
     movement: boolean;
     weaponSkill: boolean;
@@ -40,7 +40,7 @@ export function isFlashCardCreationSettings(
   if (Object.keys(value).length !== 9) {
     return false;
   }
-  if (typeof (value as any)['rosterIndex'] !== 'number') {
+  if (typeof (value as any)['rosterId'] !== 'string') {
     return false;
   }
   if (typeof (value as any)['unitProfiles'] !== 'object') {

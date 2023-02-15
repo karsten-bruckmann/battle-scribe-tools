@@ -45,32 +45,28 @@ export class BattleCardComponent {
     private activatedRoute: ActivatedRoute
   ) {}
 
-  public roster$ = routeParam('roster-index', this.activatedRoute).pipe(
-    switchMap((index) => this.store$.select(rosterSelector(parseInt(index))))
+  public roster$ = routeParam('roster-id', this.activatedRoute).pipe(
+    switchMap((rosterId) => this.store$.select(rosterSelector(rosterId)))
   );
 
   public detachment$ = routeParams(
-    ['roster-index', 'detachment-index'],
+    ['roster-id', 'detachment-index'],
     this.activatedRoute
   ).pipe(
-    switchMap(([rosterIndex, detachmentIndex]) =>
+    switchMap(([rosterId, detachmentIndex]) =>
       this.store$.select(
-        detachmentSelector(parseInt(rosterIndex), parseInt(detachmentIndex))
+        detachmentSelector(rosterId, parseInt(detachmentIndex))
       )
     )
   );
 
   public unit$ = routeParams(
-    ['roster-index', 'detachment-index', 'unit-index'],
+    ['roster-id', 'detachment-index', 'unit-index'],
     this.activatedRoute
   ).pipe(
-    switchMap(([rosterIndex, detachmentIndex, unitIndex]) =>
+    switchMap(([rosterId, detachmentIndex, unitIndex]) =>
       this.store$.select(
-        unitSelector(
-          parseInt(rosterIndex),
-          parseInt(detachmentIndex),
-          parseInt(unitIndex)
-        )
+        unitSelector(rosterId, parseInt(detachmentIndex), parseInt(unitIndex))
       )
     )
   );

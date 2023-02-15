@@ -37,8 +37,8 @@ export class RosterComponent {
     private activatedRoute: ActivatedRoute
   ) {}
 
-  public roster$ = routeParam('roster-index', this.activatedRoute).pipe(
-    switchMap((index) => this.store$.select(rosterSelector(parseInt(index))))
+  public roster$ = routeParam('roster-id', this.activatedRoute).pipe(
+    switchMap((rosterId) => this.store$.select(rosterSelector(rosterId)))
   );
 
   @ViewChild('modal') public modal?: HTMLIonModalElement;

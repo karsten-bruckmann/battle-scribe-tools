@@ -2,8 +2,8 @@ import { createSelector } from '@ngrx/store';
 import { Roster } from '../models/roster.model';
 import { rostersSelector } from './rosters.selector';
 
-export const rosterSelector = (index: number) =>
+export const rosterSelector = (id: string) =>
   createSelector(
     rostersSelector,
-    (rosters): Roster | null => rosters[index] || null
+    (rosters): Roster | null => rosters[id] || null
   );
