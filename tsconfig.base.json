@@ -16,6 +16,9 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
+      "@battle-scribe-tools/core/battle-cards": [
+        "libs/core/battle-cards/src/index.ts"
+      ],
       "@battle-scribe-tools/core/learning": ["libs/core/learning/src/index.ts"],
       "@battle-scribe-tools/core/roster-management": [
         "libs/core/roster-management/src/index.ts"

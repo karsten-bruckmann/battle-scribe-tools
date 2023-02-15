@@ -2,11 +2,14 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import {
+  BattleCardsModule,
   detachmentSelector,
-  RosterManagementModule,
-  rosterSelector,
   unitSelector,
   Weapon,
+} from '@battle-scribe-tools/core/battle-cards';
+import {
+  RosterManagementModule,
+  rosterSelector,
 } from '@battle-scribe-tools/core/roster-management';
 import { AvatarComponent } from '@battle-scribe-tools/feature/avatar';
 import { TranslatableComponent } from '@battle-scribe-tools/feature/translatable';
@@ -29,6 +32,7 @@ import { CleanEmptyPipe } from './pipes/clean-empty.pipe';
     AvatarComponent,
     CleanEmptyPipe,
     RouterModule,
+    BattleCardsModule,
   ],
   providers: [CleanEmptyPipe],
   templateUrl: './battle-card.component.html',

@@ -1,9 +1,4 @@
-export {
-  detachmentSelector,
-  rosterSelector,
-  unitSelector,
-  Weapon,
-} from '@battle-scribe-tools/data-access/rosters';
+export { rosterSelector } from '@battle-scribe-tools/data-access/rosters';
 export * from './actions/roster-deletion-requested.action';
 export * from './actions/roster-download-requested.action';
 export * from './actions/roster-file-added.action';
