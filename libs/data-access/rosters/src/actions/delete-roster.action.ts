@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 
 export const deleteRosterAction = createAction(
-  'rosters/delete',
+  'data-access/rosters/delete',
   props<{ index: number }>()
 );

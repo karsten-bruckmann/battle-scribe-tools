@@ -1,4 +1,5 @@
 import { createFeatureSelector } from '@ngrx/store';
-import { State } from '../models/state.model';
+import { FlashCardsState } from '../models/flash-cards-state.model';
 
-export const decksSelector = createFeatureSelector<State>('flash-cards');
+export const decksSelector =
+  createFeatureSelector<FlashCardsState>('flash-cards');

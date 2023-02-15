@@ -1,3 +1,3 @@
 import { Deck } from './deck.model';
 
-export type State = Deck[];
+export type FlashCardsState = Deck[];

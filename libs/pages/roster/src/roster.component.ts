@@ -1,7 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { RosterModule, rosterSelector } from '@battle-scribe-tools/core/roster';
+import {
+  RosterManagementModule,
+  rosterSelector,
+} from '@battle-scribe-tools/core/roster-management';
 import {
   UserSettingsModule,
   UserSettingsService,
@@ -22,7 +25,7 @@ import { switchMap } from 'rxjs';
     RouterModule,
     TranslatableComponent,
     AvatarComponent,
-    RosterModule,
+    RosterManagementModule,
   ],
   templateUrl: './roster.component.html',
   styleUrls: ['./roster.component.scss'],

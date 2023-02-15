@@ -8,13 +8,12 @@ import {
 } from '@battle-scribe-tools/core/learning';
 import {
   rosterDeletionRequested,
+  rosterDownloadRequested,
   rosterFileAdded,
   rosterListSelector,
-  RosterModule,
-  RosterService,
+  RosterManagementModule,
   rosterUpdateRequested,
-  rosterUrlAdded,
-} from '@battle-scribe-tools/core/roster';
+} from '@battle-scribe-tools/core/roster-management';
 import { FlashCardLessonFormComponent } from '@battle-scribe-tools/feature/flash-card-lesson-form';
 import { TranslationConfigComponent } from '@battle-scribe-tools/feature/translation-settings';
 import { IonicModule } from '@ionic/angular';
@@ -26,7 +25,7 @@ import { Store } from '@ngrx/store';
     CommonModule,
     RouterModule,
     IonicModule,
-    RosterModule,
+    RosterManagementModule,
     LearningModule,
     TranslationConfigComponent,
     ReactiveFormsModule,
@@ -37,7 +36,6 @@ import { Store } from '@ngrx/store';
 })
 export class MainMenuComponent {
   constructor(
-    private rostersService: RosterService,
     private learningService: LearningService,
     private store$: Store
   ) {}
@@ -61,7 +59,7 @@ export class MainMenuComponent {
   }
 
   public linkFile(url: string): void {
-    this.store$.dispatch(rosterUrlAdded({ url }));
+    this.store$.dispatch(rosterDownloadRequested({ url }));
   }
 
   public async updateFile(rosterIndex: number): Promise<void> {

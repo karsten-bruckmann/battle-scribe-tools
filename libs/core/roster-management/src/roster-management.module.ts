@@ -5,8 +5,8 @@ import {
   RostersModule,
 } from '@battle-scribe-tools/data-access/rosters';
 import { EffectsModule } from '@ngrx/effects';
+import { AddRosterFromFile } from './effects/add-roster-from-file.effect';
 import { DownloadRosterFile } from './effects/download-roster-file.effect';
-import { ParseRosterFile } from './effects/parse-roster-file.effect';
 import { UpdateRosterFile } from './effects/update-roster-file.effect';
 import { rostersReducer } from './reducers/rosters.reducer';
 
@@ -15,13 +15,13 @@ import { rostersReducer } from './reducers/rosters.reducer';
     RostersModule,
     FlashCardsModule,
     EffectsModule.forFeature([
-      ParseRosterFile,
+      AddRosterFromFile,
       DownloadRosterFile,
       UpdateRosterFile,
     ]),
   ],
 })
-export class RosterModule {
+export class RosterManagementModule {
   constructor() {
     rostersCoreReducerRegistry.add(rostersReducer);
   }

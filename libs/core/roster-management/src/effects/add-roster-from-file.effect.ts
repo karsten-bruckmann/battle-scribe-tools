@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { addRosterAction } from '@battle-scribe-tools/data-access/rosters';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { from, map, switchMap } from 'rxjs';
-import { rosterFileAdded } from '../actions/roster-file-uploaded.action';
+import { rosterParsedFromFile } from '../actions/internal/roster-parsed-from-file.action';
+import { rosterFileAdded } from '../actions/roster-file-added.action';
 import { convertRoster } from '../rules/convert-roster.rule';
 import { parseRosterFile } from '../rules/parse-roster-file.rule';
 
 @Injectable()
-export class ParseRosterFile {
+export class AddRosterFromFile {
   constructor(private actions$: Actions) {}
 
   public effect$ = createEffect(() =>
@@ -15,7 +15,7 @@ export class ParseRosterFile {
       ofType(rosterFileAdded),
       switchMap((action) => from(parseRosterFile(action.file))),
       map((bsRoster) => convertRoster(bsRoster)),
-      map((roster) => addRosterAction({ roster }))
+      map((roster) => rosterParsedFromFile({ roster }))
     )
   );
 }

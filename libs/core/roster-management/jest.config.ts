@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'core-roster',
+  displayName: 'core-roster-management',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -9,7 +9,7 @@ export default {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../coverage/libs/core/roster',
+  coverageDirectory: '../../../coverage/libs/core/roster-management',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

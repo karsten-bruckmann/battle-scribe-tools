@@ -5,9 +5,8 @@ export {
   Weapon,
 } from '@battle-scribe-tools/data-access/rosters';
 export * from './actions/roster-deletion-requested.action';
-export * from './actions/roster-file-uploaded.action';
+export * from './actions/roster-download-requested.action';
+export * from './actions/roster-file-added.action';
 export * from './actions/roster-update-requested.action';
-export * from './actions/roster-url-added.action';
-export * from './roster.module';
-export * from './roster.service';
+export * from './roster-management.module';
 export * from './selectors/roster-list.selector';

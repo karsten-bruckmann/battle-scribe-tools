@@ -15,7 +15,7 @@
   ],
   "include": [
     "src/**/*.ts",
-    "../../data-access/rosters/src/models/roster.model.ts",
+    "../../../data-access/rosters/src/models/roster.model.ts",
     "../learning/src/selectors/roster-flash-card-deck.selector.ts",
     "../learning/src/models/flash-card-creation-settings.ts"
   ]

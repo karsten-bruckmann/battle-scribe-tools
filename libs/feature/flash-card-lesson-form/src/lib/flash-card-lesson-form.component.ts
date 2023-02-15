@@ -6,7 +6,7 @@ import {
   flashCardCreationSettingsFormTypeSafeValue,
   LearningService,
 } from '@battle-scribe-tools/core/learning';
-import { rosterListSelector } from '@battle-scribe-tools/core/roster';
+import { rosterListSelector } from '@battle-scribe-tools/core/roster-management';
 import { IonicModule } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { firstValueFrom } from 'rxjs';

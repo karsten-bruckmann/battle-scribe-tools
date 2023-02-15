@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 
 export const rosterFileAdded = createAction(
-  'roster/file-added',
+  'core/roster-management/update-downloaded',
   props<{ file: File }>()
 );

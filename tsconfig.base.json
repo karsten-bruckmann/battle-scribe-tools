@@ -17,7 +17,9 @@
     "baseUrl": ".",
     "paths": {
       "@battle-scribe-tools/core/learning": ["libs/core/learning/src/index.ts"],
-      "@battle-scribe-tools/core/roster": ["libs/core/roster/src/index.ts"],
+      "@battle-scribe-tools/core/roster-management": [
+        "libs/core/roster-management/src/index.ts"
+      ],
       "@battle-scribe-tools/core/user-settings": [
         "libs/core/user-settings/src/index.ts"
       ],

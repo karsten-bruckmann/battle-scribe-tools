@@ -3,11 +3,11 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import {
   detachmentSelector,
-  RosterModule,
+  RosterManagementModule,
   rosterSelector,
   unitSelector,
   Weapon,
-} from '@battle-scribe-tools/core/roster';
+} from '@battle-scribe-tools/core/roster-management';
 import { AvatarComponent } from '@battle-scribe-tools/feature/avatar';
 import { TranslatableComponent } from '@battle-scribe-tools/feature/translatable';
 import {
@@ -24,7 +24,7 @@ import { CleanEmptyPipe } from './pipes/clean-empty.pipe';
   imports: [
     CommonModule,
     IonicModule,
-    RosterModule,
+    RosterManagementModule,
     TranslatableComponent,
     AvatarComponent,
     CleanEmptyPipe,
