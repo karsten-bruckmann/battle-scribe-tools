@@ -1,7 +1,17 @@
 import { NgModule } from '@angular/core';
-import { FlashCardsModule } from '@battle-scribe-tools/data-access/flash-cards';
+import {
+  flashCardsCoreReducerRegistry,
+  FlashCardsModule,
+} from '@battle-scribe-tools/data-access/flash-cards';
+import { EffectsModule } from '@ngrx/effects';
+import { CreateDeckEffect } from './effects/create-deck.effect';
+import { flashCardsReducer } from './reducers/flash-cards.reducer';
 
 @NgModule({
-  imports: [FlashCardsModule],
+  imports: [FlashCardsModule, EffectsModule.forFeature([CreateDeckEffect])],
 })
-export class LearningModule {}
+export class LearningModule {
+  constructor() {
+    flashCardsCoreReducerRegistry.add(flashCardsReducer);
+  }
+}

@@ -3,8 +3,9 @@ import { Component, ViewChild } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import {
+  deckDeletionRequested,
   LearningModule,
-  LearningService,
+  lessonsSelector,
 } from '@battle-scribe-tools/core/learning';
 import {
   rosterDeletionRequested,
@@ -23,25 +24,22 @@ import { Store } from '@ngrx/store';
   standalone: true,
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     RouterModule,
     IonicModule,
     RosterManagementModule,
     LearningModule,
     TranslationConfigComponent,
-    ReactiveFormsModule,
     FlashCardLessonFormComponent,
   ],
   templateUrl: './main-menu.component.html',
   styleUrls: ['./main-menu.component.scss'],
 })
 export class MainMenuComponent {
-  constructor(
-    private learningService: LearningService,
-    private store$: Store
-  ) {}
+  constructor(private store$: Store) {}
 
   public rosterList$ = this.store$.select(rosterListSelector);
-  public lessons$ = this.learningService.lessons$;
+  public lessons$ = this.store$.select(lessonsSelector);
 
   @ViewChild('modal') public modal?: HTMLIonModalElement;
 
@@ -71,6 +69,6 @@ export class MainMenuComponent {
   }
 
   public deleteDeck(index: number): void {
-    this.learningService.deleteDeck(index);
+    this.store$.dispatch(deckDeletionRequested({ index }));
   }
 }

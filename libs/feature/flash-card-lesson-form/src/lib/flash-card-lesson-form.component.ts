@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
+  createDeckRequested,
   flashCardCreationSettingsForm,
   flashCardCreationSettingsFormTypeSafeValue,
   LearningService,
@@ -39,10 +40,14 @@ export class FlashCardLessonFormComponent {
       return;
     }
     const rosterList = await firstValueFrom(this.rosterList$);
-    this.learningService.createFlashCardDeck({
-      ...value,
-      name: rosterList[value.rosterIndex || 0].title,
-    });
+    this.store$.dispatch(
+      createDeckRequested({
+        settings: {
+          ...value,
+          name: rosterList[value.rosterIndex || 0].title,
+        },
+      })
+    );
     this.lessonCreated.next();
   }
 
