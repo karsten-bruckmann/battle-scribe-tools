@@ -29,8 +29,8 @@
       "@battle-scribe-tools/data-access/flash-cards": [
         "libs/data-access/flash-cards/src/index.ts"
       ],
-      "@battle-scribe-tools/data-access/learnnig-sessions": [
-        "libs/data-access/learnnig-sessions/src/index.ts"
+      "@battle-scribe-tools/data-access/learnig-sessions": [
+        "libs/data-access/learnig-sessions/src/index.ts"
       ],
       "@battle-scribe-tools/data-access/rosters": [
         "libs/data-access/rosters/src/index.ts"

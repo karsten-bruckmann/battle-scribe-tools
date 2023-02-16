@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'data-access-learnnig-sessions',
+  displayName: 'data-access-learnig-sessions',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -9,7 +9,7 @@ export default {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../coverage/libs/data-access/learnnig-sessions',
+  coverageDirectory: '../../../coverage/libs/data-access/learnig-sessions',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

@@ -1,7 +1,7 @@
 import {
   LearningSession,
   LearningSessionsState,
-} from '@battle-scribe-tools/data-access/learnnig-sessions';
+} from '@battle-scribe-tools/data-access/learnig-sessions';
 import { createCoreReducer } from '@battle-scribe-tools/utility/ngrx-utils';
 import { on } from '@ngrx/store';
 import { cardKnown } from '../actions/card-known.action';

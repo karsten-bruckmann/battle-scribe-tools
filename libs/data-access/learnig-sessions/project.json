@@ -1,15 +1,15 @@
 {
-  "name": "data-access-learnnig-sessions",
+  "name": "data-access-learnig-sessions",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "libs/data-access/learnnig-sessions/src",
+  "sourceRoot": "libs/data-access/learnig-sessions/src",
   "prefix": "battle-scribe-tools",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/data-access/learnnig-sessions/jest.config.ts",
+        "jestConfig": "libs/data-access/learnig-sessions/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
@@ -24,8 +24,8 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "libs/data-access/learnnig-sessions/**/*.ts",
-          "libs/data-access/learnnig-sessions/**/*.html"
+          "libs/data-access/learnig-sessions/**/*.ts",
+          "libs/data-access/learnig-sessions/**/*.html"
         ]
       }
     }

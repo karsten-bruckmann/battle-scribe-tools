@@ -6,7 +6,7 @@ import {
 import {
   learningSessionsCoreReducerRegistry,
   LearningSessionsModule,
-} from '@battle-scribe-tools/data-access/learnnig-sessions';
+} from '@battle-scribe-tools/data-access/learnig-sessions';
 import { EffectsModule } from '@ngrx/effects';
 import { CreateDeckEffect } from './effects/create-deck.effect';
 import { flashCardsReducer } from './reducers/flash-cards.reducer';

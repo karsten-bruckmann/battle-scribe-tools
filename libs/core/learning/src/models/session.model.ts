@@ -1,4 +1,4 @@
-import { LearningSession } from '@battle-scribe-tools/data-access/learnnig-sessions';
+import { LearningSession } from '@battle-scribe-tools/data-access/learnig-sessions';
 
 export interface Session extends LearningSession {
   remainingCards: number;

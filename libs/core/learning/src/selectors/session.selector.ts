@@ -1,5 +1,5 @@
 import { deckSelector } from '@battle-scribe-tools/data-access/flash-cards';
-import { learningSessionsSelector } from '@battle-scribe-tools/data-access/learnnig-sessions';
+import { learningSessionsSelector } from '@battle-scribe-tools/data-access/learnig-sessions';
 import { createSelector } from '@ngrx/store';
 import { Session } from '../models/session.model';
 import { createSession } from '../rules/create-session.rule';
