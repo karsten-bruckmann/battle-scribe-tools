@@ -5,21 +5,17 @@ import {
   RosterManagementModule,
   rosterSelector,
 } from '@battle-scribe-tools/core/roster-management';
-import {
-  UserSettingsModule,
-  UserSettingsService,
-} from '@battle-scribe-tools/core/user-settings';
 import { AvatarComponent } from '@battle-scribe-tools/feature/avatar';
 import { TranslatableComponent } from '@battle-scribe-tools/feature/translatable';
 import { routeParam } from '@battle-scribe-tools/utility/angular-utilities';
 import { IonicModule } from '@ionic/angular';
 import { Store } from '@ngrx/store';
+import { LocalStorage } from 'ngx-store';
 import { switchMap } from 'rxjs';
 
 @Component({
   standalone: true,
   imports: [
-    UserSettingsModule,
     CommonModule,
     IonicModule,
     RouterModule,
@@ -31,11 +27,7 @@ import { switchMap } from 'rxjs';
   styleUrls: ['./roster.component.scss'],
 })
 export class RosterComponent {
-  constructor(
-    private store$: Store,
-    private userSettings: UserSettingsService,
-    private activatedRoute: ActivatedRoute
-  ) {}
+  constructor(private store$: Store, private activatedRoute: ActivatedRoute) {}
 
   public roster$ = routeParam('roster-id', this.activatedRoute).pipe(
     switchMap((rosterId) => this.store$.select(rosterSelector(rosterId)))
@@ -43,13 +35,14 @@ export class RosterComponent {
 
   @ViewChild('modal') public modal?: HTMLIonModalElement;
 
-  public view$ = this.userSettings.listView$;
+  @LocalStorage('roster-view')
+  public view: 'list' | 'grid' = 'list';
 
   public open(): void {
     this.modal?.present();
   }
 
   public setView(view: 'list' | 'grid'): void {
-    this.userSettings.setListView(view);
+    this.view = view;
   }
 }

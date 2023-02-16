@@ -64,6 +64,7 @@
     "@ngrx/store-devtools": "^15.2.1",
     "@zip.js/zip.js": "^2.6.62",
     "idb": "^7.1.1",
+    "ngx-store": "^3.1.1",
     "rxjs": "~7.5.0",
     "stream": "^0.0.2",
     "timers": "^0.1.1",
