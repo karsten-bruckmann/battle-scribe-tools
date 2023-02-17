@@ -63,7 +63,7 @@ export class TranslatableComponent implements OnChanges {
   }
 
   public listify(text: string): SafeHtml {
-    let beautified = text;
+    let beautified = text.replaceAll('<', '&lt;').replaceAll('>', '&gt;');
     [...text.matchAll(/(?:(?:^|\n)(?:- [^\n]+(?:\n|$)*)+)/gm)].forEach(
       (match) => {
         beautified = beautified.replace(

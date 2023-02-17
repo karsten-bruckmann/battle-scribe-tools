@@ -134,6 +134,12 @@ bst-avatar {
 
 .keywords {
   font-style: italic;
-  text-align: justify;
   padding: 10px;
+
+  bst-translatable {
+    &:not(:last-child)::after {
+      content: ',';
+      padding-right: 5px;
+    }
+  }
 }
