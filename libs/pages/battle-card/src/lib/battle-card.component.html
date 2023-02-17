@@ -26,6 +26,7 @@
         </ion-text>
         <ion-text color="primary">
           <h3><bst-translatable [text]="unit.title"></bst-translatable></h3>
+          <p class="keywords">{{ unit.keywords.join(', ') }}</p>
         </ion-text>
 
         <ng-container *ngFor="let model of unit.models">

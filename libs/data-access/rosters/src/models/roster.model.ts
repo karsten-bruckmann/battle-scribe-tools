@@ -18,6 +18,7 @@ export interface Costs {
 
 export interface Unit {
   title: string;
+  keywords: string[];
   models: Model[];
   rules: Rule[];
 }
