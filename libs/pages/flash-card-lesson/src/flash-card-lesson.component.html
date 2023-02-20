@@ -1,15 +1,10 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button [routerLink]="['/']">
+      <ion-button [routerLink]="['/']" [routerDirection]="'back'">
         <ion-icon name="chevron-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ng-container *ngIf="deck$ | async as deck">
-      <ion-title>
-        <h1>{{ deck.name }}</h1>
-      </ion-title>
-    </ng-container>
   </ion-toolbar>
 </ion-header>
 <ng-container *ngIf="session$ | async as session; else done">

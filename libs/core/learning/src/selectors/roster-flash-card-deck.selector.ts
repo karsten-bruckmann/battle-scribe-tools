@@ -17,7 +17,7 @@ export const rosterFlashCardDeckSelector = (
   createSelector(rostersSelector, (rosters): Deck => {
     const roster = rosters[settings.rosterId];
     return {
-      name: settings.name,
+      reference: settings.rosterId,
       cards: idAwareArrayToRecord(
         deDuplicateCardsRule(
           [

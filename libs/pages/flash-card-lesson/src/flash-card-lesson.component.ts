@@ -41,11 +41,13 @@ export class FlashCardLessonComponent {
   public deck$ = this.session$.pipe(
     filterNullValues(),
     switchMap((session) =>
-      this.store$
-        .select(decksListSelector)
-        .pipe(
-          map((decks) => decks.find((deck) => deck.deckId === session.deckId))
+      this.store$.select(decksListSelector).pipe(
+        map((decks) =>
+          Object.values(decks)
+            .flat()
+            .find((deck) => deck.deckId === session.deckId)
         )
+      )
     )
   );
 

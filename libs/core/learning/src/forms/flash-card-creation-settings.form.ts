@@ -9,7 +9,6 @@ export const flashCardCreationSettingsForm = () =>
   new FormGroup<FlashCardCreationSettingsForm>(
     {
       rosterId: new FormControl(null),
-      name: new FormControl(''),
       boxes: new FormControl(4),
       rules: new FormControl(true),
       unitRules: new FormControl(true),

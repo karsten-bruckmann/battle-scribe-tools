@@ -1,88 +1,94 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>BattleScribe Tools</ion-title>
+    <ion-title>
+      <h1>Battle Companion</h1>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-item-divider>Roster</ion-item-divider>
-  <ion-item class="add-roster">
-    <ion-label>
-      <ion-icon color="primary" slot="start" name="document-outline"></ion-icon>
-      Neue Datei (exportierte .rosz Datei)
-    </ion-label>
-    <ion-button fill="outline" (click)="f.click()">wählen...</ion-button>
-    <input
-      (change)="saveFile($event); f.value = ''"
-      class="ion-hide"
-      #f
-      type="file"
-    />
-  </ion-item>
-  <ion-item class="add-roster">
-    <ion-label>
-      <ion-icon color="primary" slot="start" name="document-outline"></ion-icon>
-      URL laden
-    </ion-label>
-    <input #u type="text" />
-    <ion-button slot="end" fill="outline" (click)="linkFile(u.value)"
-      >laden...</ion-button
-    >
-  </ion-item>
+  <ion-list>
+    <ion-item-divider>
+      <ion-text [color]="'primary'"
+        ><h3>
+          <bst-translatable text="Amies"></bst-translatable></h3
+      ></ion-text>
+      <ion-buttons slot="end">
+        <ion-button fill="clear" (click)="f.click()">
+          <ion-icon name="add"></ion-icon>
+        </ion-button>
+        <input
+          (change)="saveFile($event); f.value = ''"
+          class="ion-hide"
+          #f
+          type="file"
+        />
+      </ion-buttons>
+    </ion-item-divider>
 
-  <ion-item *ngFor="let roster of rosterList$ | async">
-    <ion-label [routerLink]="['roster', roster.id]">
-      <ion-icon color="primary" slot="start" name="document-outline"></ion-icon>
-      {{ roster.title }}
-    </ion-label>
-    <ion-buttons slot="end">
-      <ion-button
-        *ngIf="roster.canUpdate"
-        fill="clear"
-        (click)="updateFile(roster.id)"
-      >
-        <ion-icon color="primary" name="reload"></ion-icon>
-      </ion-button>
-      <ion-button fill="clear" (click)="deleteRoster(roster.id)">
-        <ion-icon color="primary" name="trash"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-item>
+    <ion-item *ngIf="(rosterList$ | async)?.length === 0">
+      <ion-label>
+        <bst-translatable
+          text="No Army. Add one by clicking on the '+' above."
+        ></bst-translatable>
+      </ion-label>
+      <ion-icon color="medium" name="return-up-back-outline"></ion-icon>
+    </ion-item>
 
-  <ion-item-divider>
-    Flash Card Decks
-    <ion-button
-      slot="end"
-      fill="clear"
-      (click)="modal.isOpen = true"
-      *ngIf="(rosterList$ | async)?.length"
-      ><ion-icon name="add"></ion-icon
-    ></ion-button>
-  </ion-item-divider>
-  <ion-item *ngFor="let deck of deckList$ | async">
-    <div slot="start" [routerLink]="['flash-card-lesson', deck.deckId]">
-      {{ deck.name }}
-    </div>
-    <div class="boxes">
-      <div
-        class="box"
-        *ngFor="let cardAmount of deck.boxContent; let i = index"
-      >
+    <ion-card *ngFor="let roster of rosterList$ | async">
+      <ion-item>
         <ion-icon
-          [name]="
-            cardAmount === 0 ? 'file-tray-outline' : 'file-tray-full-outline'
-          "
+          color="primary"
+          slot="start"
+          name="document-outline"
         ></ion-icon>
-        <ion-badge
-          [color]="deck.boxContent.length - 1 === i ? 'success' : 'medium'"
-          >{{ cardAmount }}</ion-badge
-        >
-      </div>
-    </div>
-    <ion-button slot="end" fill="clear" (click)="deleteDeck(deck.deckId)">
-      <ion-icon color="primary" name="trash"></ion-icon>
-    </ion-button>
-  </ion-item>
+        <ion-label [routerLink]="['roster', roster.id]">
+          <h2>{{ roster.title }}</h2>
+        </ion-label>
+        <ion-buttons slot="end">
+          <ion-button
+            fill="clear"
+            (click)="createLessonForRoster = roster.id; modal.isOpen = true"
+          >
+            <ion-icon color="primary" name="file-tray-full"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear" (click)="deleteRoster(roster.id)">
+            <ion-icon color="primary" name="trash"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+
+      <ion-list>
+        <ion-item *ngFor="let deck of ((deckList$ | async) || {})[roster.id]">
+          <div class="boxes" [routerLink]="['flash-card-lesson', deck.deckId]">
+            <div
+              class="box"
+              *ngFor="let cardAmount of deck.boxContent; let i = index"
+            >
+              <ion-icon
+                [name]="
+                  cardAmount === 0
+                    ? 'file-tray-outline'
+                    : 'file-tray-full-outline'
+                "
+              ></ion-icon>
+              <ion-badge
+                [color]="
+                  deck.boxContent.length - 1 === i ? 'success' : 'medium'
+                "
+                >{{ cardAmount }}</ion-badge
+              >
+            </div>
+          </div>
+          <ion-buttons slot="end">
+            <ion-button fill="clear" (click)="deleteDeck(deck.deckId)">
+              <ion-icon color="primary" name="trash-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+  </ion-list>
 </ion-content>
 
 <bst-translation-settings></bst-translation-settings>
@@ -104,6 +110,7 @@
       </ion-header>
 
       <bst-flash-card-lesson-form
+        [rosterId]="createLessonForRoster"
         (lessonCreated)="modal.isOpen = false"
       ></bst-flash-card-lesson-form>
     </ion-content>

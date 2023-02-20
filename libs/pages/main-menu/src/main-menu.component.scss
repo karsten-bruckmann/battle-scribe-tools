@@ -1,5 +1,5 @@
 .boxes {
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: space-between;
   ion-icon {
@@ -8,10 +8,30 @@
   }
 }
 
-ion-item-divider:not(:first-of-type) {
-  margin-top: 50px;
+ion-item-divider {
+  margin-top: 30px;
 }
 
 .add-roster {
   --background: var(--ion-color-light);
+}
+
+ion-label {
+  font-size: 2em;
+}
+
+ion-item-divider {
+  --padding-top: 3px;
+  --padding-bottom: 3px;
+}
+
+ion-icon[name='return-up-back-outline'] {
+  transform: rotate(90deg);
+  margin-bottom: 21px;
+  margin-top: 3px;
+  margin-right: 6px;
+}
+
+ion-list ion-list {
+  margin-left: 48px;
 }

@@ -25,7 +25,6 @@ export interface FlashCardCreationSettings {
   psychicPowers: boolean;
   unitPsychicPowers: boolean;
   boxes: number;
-  name: string;
 }
 
 export function isFlashCardCreationSettings(
@@ -37,7 +36,7 @@ export function isFlashCardCreationSettings(
   if (typeof value !== 'object') {
     return false;
   }
-  if (Object.keys(value).length !== 9) {
+  if (Object.keys(value).length !== 8) {
     return false;
   }
   if (typeof (value as any)['rosterId'] !== 'string') {
@@ -115,9 +114,6 @@ export function isFlashCardCreationSettings(
     return false;
   }
   if (typeof (value as any)['boxes'] !== 'number') {
-    return false;
-  }
-  if (typeof (value as any)['name'] !== 'string') {
     return false;
   }
 

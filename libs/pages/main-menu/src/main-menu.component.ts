@@ -16,6 +16,7 @@ import {
   rosterUpdateRequested,
 } from '@battle-scribe-tools/core/roster-management';
 import { FlashCardLessonFormComponent } from '@battle-scribe-tools/feature/flash-card-lesson-form';
+import { TranslatableComponent } from '@battle-scribe-tools/feature/translatable';
 import { TranslationConfigComponent } from '@battle-scribe-tools/feature/translation-settings';
 import { IonicModule } from '@ionic/angular';
 import { Store } from '@ngrx/store';
@@ -29,6 +30,7 @@ import { Store } from '@ngrx/store';
     IonicModule,
     RosterManagementModule,
     LearningModule,
+    TranslatableComponent,
     TranslationConfigComponent,
     FlashCardLessonFormComponent,
   ],
@@ -40,6 +42,7 @@ export class MainMenuComponent {
 
   public rosterList$ = this.store$.select(rosterListSelector);
   public deckList$ = this.store$.select(decksListSelector);
+  public createLessonForRoster: string | null = null;
 
   @ViewChild('modal') public modal?: HTMLIonModalElement;
 
