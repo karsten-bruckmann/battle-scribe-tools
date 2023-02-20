@@ -22,7 +22,7 @@
               },
               {
                 "sourceTag": "feature",
-                "onlyDependOnLibsWithTags": ["ui", "core", "utility"]
+                "onlyDependOnLibsWithTags": ["ui", "core", "utility", "feature"]
               },
               {
                 "sourceTag": "ui",

@@ -50,6 +50,9 @@
       "@battle-scribe-tools/feature/translation-settings": [
         "libs/feature/translation-settings/src/index.ts"
       ],
+      "@battle-scribe-tools/feature/unit-card": [
+        "libs/feature/unit-card/src/index.ts"
+      ],
       "@battle-scribe-tools/pages/battle-card": [
         "libs/pages/battle-card/src/index.ts"
       ],

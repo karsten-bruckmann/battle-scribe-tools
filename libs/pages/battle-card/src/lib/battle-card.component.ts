@@ -5,7 +5,6 @@ import {
   BattleCardsModule,
   detachmentSelector,
   unitSelector,
-  Weapon,
 } from '@battle-scribe-tools/core/battle-cards';
 import {
   RosterManagementModule,
@@ -13,6 +12,7 @@ import {
 } from '@battle-scribe-tools/core/roster-management';
 import { AvatarComponent } from '@battle-scribe-tools/feature/avatar';
 import { TranslatableComponent } from '@battle-scribe-tools/feature/translatable';
+import { UnitCardComponent } from '@battle-scribe-tools/feature/unit-card';
 import {
   routeParam,
   routeParams,
@@ -20,7 +20,6 @@ import {
 import { IonicModule } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { combineLatest, map, switchMap } from 'rxjs';
-import { CleanEmptyPipe } from './pipes/clean-empty.pipe';
 
 @Component({
   standalone: true,
@@ -30,20 +29,15 @@ import { CleanEmptyPipe } from './pipes/clean-empty.pipe';
     RosterManagementModule,
     TranslatableComponent,
     AvatarComponent,
-    CleanEmptyPipe,
     RouterModule,
     BattleCardsModule,
+    UnitCardComponent,
   ],
-  providers: [CleanEmptyPipe],
   templateUrl: './battle-card.component.html',
   styleUrls: ['./battle-card.component.scss'],
 })
 export class BattleCardComponent {
-  constructor(
-    private store$: Store,
-    private cleanEmptyPipe: CleanEmptyPipe,
-    private activatedRoute: ActivatedRoute
-  ) {}
+  constructor(private store$: Store, private activatedRoute: ActivatedRoute) {}
 
   public roster$ = routeParam('roster-id', this.activatedRoute).pipe(
     switchMap((rosterId) => this.store$.select(rosterSelector(rosterId)))
@@ -84,12 +78,4 @@ export class BattleCardComponent {
         ) || []
     )
   );
-
-  public getMultiProfileWeaponLineAmount(weapon: Weapon): number {
-    return weapon.profiles.reduce(
-      (lines, profile) =>
-        lines + (this.cleanEmptyPipe.transform(profile.abilities) ? 2 : 1),
-      1
-    );
-  }
 }
