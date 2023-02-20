@@ -35,3 +35,14 @@ ion-icon[name='return-up-back-outline'] {
 ion-list ion-list {
   margin-left: 48px;
 }
+
+bst-avatar {
+  width: 50px;
+}
+
+ion-item.roster {
+  --padding-start: 0;
+  bst-avatar {
+    margin: 5px;
+  }
+}

@@ -21,10 +21,12 @@ export interface Unit {
   keywords: string[];
   models: Model[];
   rules: Rule[];
+  containsWarlord: boolean;
 }
 
 export interface Model {
   title: string;
+  warlord: boolean;
   amount: number;
   profiles: Profile[];
   weapons: Weapon[];

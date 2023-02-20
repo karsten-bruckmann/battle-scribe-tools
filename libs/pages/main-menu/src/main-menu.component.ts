@@ -15,6 +15,7 @@ import {
   RosterManagementModule,
   rosterUpdateRequested,
 } from '@battle-scribe-tools/core/roster-management';
+import { AvatarComponent } from '@battle-scribe-tools/feature/avatar';
 import { FlashCardLessonFormComponent } from '@battle-scribe-tools/feature/flash-card-lesson-form';
 import { TranslatableComponent } from '@battle-scribe-tools/feature/translatable';
 import { TranslationConfigComponent } from '@battle-scribe-tools/feature/translation-settings';
@@ -33,6 +34,7 @@ import { Store } from '@ngrx/store';
     TranslatableComponent,
     TranslationConfigComponent,
     FlashCardLessonFormComponent,
+    AvatarComponent,
   ],
   templateUrl: './main-menu.component.html',
   styleUrls: ['./main-menu.component.scss'],

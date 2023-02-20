@@ -36,12 +36,20 @@
     </ion-item>
 
     <ion-card *ngFor="let roster of rosterList$ | async">
-      <ion-item>
-        <ion-icon
-          color="primary"
-          slot="start"
-          name="document-outline"
-        ></ion-icon>
+      <ion-item class="roster">
+        <bst-avatar
+          *ngIf="roster.warlord as warlord; else noWarlord"
+          [name]="warlord.title"
+          slot=""
+          start
+        ></bst-avatar>
+        <ng-template #noWarlord>
+          <ion-icon
+            color="primary"
+            slot="start"
+            name="document-outline"
+          ></ion-icon>
+        </ng-template>
         <ion-label [routerLink]="['roster', roster.id]">
           <h2>{{ roster.title }}</h2>
         </ion-label>
