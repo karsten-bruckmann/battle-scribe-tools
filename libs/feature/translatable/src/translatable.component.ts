@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Inject,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { TranslationsService } from '@battle-scribe-tools/data-access/translations';
 import { IonicModule } from '@ionic/angular';
@@ -10,6 +16,7 @@ import {
   Observable,
   shareReplay,
 } from 'rxjs';
+import { TRANSLATION_MODE_DISABLED } from './translation-mode-disabled.injection-token';
 
 @Component({
   selector: 'bst-translatable',
@@ -21,7 +28,8 @@ import {
 export class TranslatableComponent implements OnChanges {
   constructor(
     private translationService: TranslationsService,
-    private domSanitizer: DomSanitizer
+    private domSanitizer: DomSanitizer,
+    @Inject(TRANSLATION_MODE_DISABLED) public translationModeDisabled: boolean
   ) {}
 
   @Input() public set text(text: string) {

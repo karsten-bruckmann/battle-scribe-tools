@@ -1,0 +1,38 @@
+<ion-content>
+  <ion-spinner name="dots"></ion-spinner>
+
+  <ng-container *ngIf="roster$ | async as roster">
+    <h1>
+      <bst-translatable
+        [text]="roster.title"
+        [translateOnClick]="false"
+      ></bst-translatable>
+    </h1>
+
+    <ng-container *ngFor="let detachment of roster.detachments">
+      <h2>
+        <bst-translatable [text]="detachment.title"></bst-translatable>
+      </h2>
+
+      <h3>
+        <bst-translatable [text]="'Detachment Rules'"></bst-translatable>
+      </h3>
+
+      <table>
+        <tr *ngFor="let rule of detachment.rules">
+          <td class="wrap">
+            <bst-translatable [text]="rule.title"></bst-translatable>
+          </td>
+          <td class="wrap long">
+            <bst-translatable [text]="rule.description"></bst-translatable>
+          </td>
+        </tr>
+      </table>
+
+      <bst-unit-card
+        *ngFor="let unit of detachment.units"
+        [unit]="unit"
+      ></bst-unit-card>
+    </ng-container>
+  </ng-container>
+</ion-content>

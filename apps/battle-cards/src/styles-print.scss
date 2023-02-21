@@ -1,0 +1,16 @@
+@media print {
+  body,
+  ion-app,
+  ion-router-outlet,
+  ng-component,
+  ion-content,
+  ion-content::part(scroll) {
+    position: relative !important;
+    contain: none !important;
+    overflow: visible !important;
+    display: block !important;
+    height: auto !important;
+    transform: none;
+    visibility: visible;
+  }
+}

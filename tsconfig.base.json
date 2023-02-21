@@ -62,6 +62,9 @@
       "@battle-scribe-tools/pages/main-menu": [
         "libs/pages/main-menu/src/index.ts"
       ],
+      "@battle-scribe-tools/pages/print-roster": [
+        "libs/pages/print-roster/src/index.ts"
+      ],
       "@battle-scribe-tools/pages/roster": ["libs/pages/roster/src/index.ts"],
       "@battle-scribe-tools/utility/angular-utilities": [
         "libs/utility/angular-utilities/src/index.ts"

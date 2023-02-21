@@ -21,7 +21,7 @@
     </ion-text>
 
     <!-- PROFILES -->
-    <div class="scroller">
+    <div class="scroller profile">
       <table class="aligned">
         <tr>
           <th *ngIf="model.profiles.length > 1"></th>
@@ -73,7 +73,7 @@
     </div>
 
     <!-- WEAPONS -->
-    <div class="scroller">
+    <div class="scroller weapons">
       <table class="aligned">
         <tr>
           <th colspan="2">
@@ -198,7 +198,7 @@
     </div>
 
     <!-- PSYCHIC POWERS -->
-    <div class="scroller" *ngIf="model.psychicPowers.length > 0">
+    <div class="scroller spychic-powers" *ngIf="model.psychicPowers.length > 0">
       <table class="aligned">
         <tr>
           <th>
@@ -264,7 +264,7 @@
     </div>
 
     <!-- PRAYERS -->
-    <div class="scroller" *ngIf="model.prayers.length > 0">
+    <div class="scroller prayers" *ngIf="model.prayers.length > 0">
       <table class="aligned">
         <tr>
           <th><bst-translatable [text]="'Prayer'"></bst-translatable></th>
@@ -302,7 +302,7 @@
     </div>
 
     <!-- MUTATIONS -->
-    <div class="scroller" *ngIf="model.mutations.length > 0">
+    <div class="scroller mutations" *ngIf="model.mutations.length > 0">
       <table class="aligned">
         <tr>
           <th>
@@ -325,12 +325,12 @@
   </ng-container>
 
   <!-- UNIT RULES -->
-  <ion-text color="primary">
-    <h3 class="separated">
-      <bst-translatable [text]="'Rules'"></bst-translatable>
-    </h3>
-  </ion-text>
-  <div class="scroller">
+  <div class="scroller rules">
+    <ion-text color="primary">
+      <h3 class="separated">
+        <bst-translatable [text]="'Rules'"></bst-translatable>
+      </h3>
+    </ion-text>
     <table>
       <tr *ngFor="let rule of unit.rules">
         <td class="wrap">

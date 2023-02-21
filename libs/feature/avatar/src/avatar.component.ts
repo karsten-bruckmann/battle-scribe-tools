@@ -1,11 +1,18 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import {
   AvatarImagesService,
   AvatarImagesServiceFactory,
 } from '@battle-scribe-tools/data-access/avatar-images';
 import { IonicModule } from '@ionic/angular';
-import { BehaviorSubject, NEVER, Observable, switchMap } from 'rxjs';
+import {
+  BehaviorSubject,
+  NEVER,
+  Observable,
+  Subject,
+  switchMap,
+  tap,
+} from 'rxjs';
 
 @Component({
   selector: 'bst-avatar',
@@ -30,9 +37,16 @@ export class AvatarComponent {
     this.name$.next(name);
   }
 
+  @Output() avatarLoaded = new Subject<void>();
+
   public name$ = new BehaviorSubject<string | null>(null);
   public data$: Observable<string | null> = this.name$.pipe(
-    switchMap((name) => (name ? this.imagesService.getImage$(name) : NEVER))
+    switchMap((name) => (name ? this.imagesService.getImage$(name) : NEVER)),
+    tap((image) => {
+      if (!image) {
+        this.avatarLoaded.next();
+      }
+    })
   );
 
   public async save(event: Event): Promise<void> {

@@ -14,7 +14,12 @@
             "depConstraints": [
               {
                 "sourceTag": "app",
-                "onlyDependOnLibsWithTags": ["page", "utility"]
+                "onlyDependOnLibsWithTags": [
+                  "page",
+                  "feature",
+                  "core",
+                  "utility"
+                ]
               },
               {
                 "sourceTag": "page",

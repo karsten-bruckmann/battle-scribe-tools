@@ -1,5 +1,5 @@
 <div class="existing" *ngIf="data$ | async as data; else form">
-  <img [src]="data" />
+  <img [src]="data" (load)="avatarLoaded.next()" />
   <ion-icon
     *ngIf="editable"
     (click)="delete()"

@@ -44,6 +44,13 @@ import { AppComponent } from './app.component';
                       ),
                   },
                   {
+                    path: 'print',
+                    loadComponent: () =>
+                      import('@battle-scribe-tools/pages/print-roster').then(
+                        (m) => m.PagesPrintRosterComponent
+                      ),
+                  },
+                  {
                     path: 'detachment/:detachment-index',
                     children: [
                       {
